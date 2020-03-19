@@ -1,0 +1,215 @@
+﻿body
+{
+}
+#DocCapZag
+{
+ text-align:center;
+ text-transform:uppercase;
+ font-size:19;
+ font-family:Arial;
+ font-weight:600;
+}
+ #DocCapCnt
+{
+    border-color: black;
+    text-transform: uppercase;
+    font-size: 25;
+    font-family: Arial;
+    font-weight: 600;
+    padding: 0px 10px; 
+    position: relative;
+	top: 20px;
+	left: 0px;
+	height: 131px;
+}
+
+ #DocCapBrd
+{
+    border: 1px double black;
+    padding: 5px; 
+    margin:0 auto;
+	width: 900px; 
+
+}
+
+#DocCapNum
+{
+    font-size: small;
+    font-family: Arial;
+    font-weight: 100;
+    float:left;
+    width: 50%;
+    
+}
+#DocCapDat
+{
+    font-size: small;
+    font-family: Arial;
+    font-weight: 100;
+    float:left;
+    width: 50%;
+}
+#DocCapPos
+{
+    font-size: small;
+    font-family: Arial;
+    font-weight: 100;
+    float: left;
+    width: 50%;
+}
+#DocCapFio
+{
+    font-size: small;
+    font-family: Arial;
+    font-weight: 100;
+    float: left; 
+    width: 50%;
+}
+#DocCapMol
+{
+    font-size: small;
+    font-family: Arial;
+    font-weight: 100;
+    clear:left;
+    width: 50%;
+}
+#DocCapBtn
+{
+   margin-left: 500px; 
+  
+}
+#DocCapBln
+{
+    font-size: small;
+    font-family: Arial;
+    font-weight: 100;
+    float: left ; 
+}
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+
+.page
+{
+    width: 1200px;
+    background-color: #fff;
+    margin: 20px auto 0px auto;
+    border: 1px solid #496077;
+}
+
+.title
+{
+    display: block;
+    float: left;
+    text-align: left;
+    width: auto;
+}
+
+.header
+{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: #4b6c9e;
+    width: 100%;
+}
+
+.header h1
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 2em;
+}
+
+.main
+{
+    padding: 0px 12px;
+    margin: 12px 8px 8px 8px;
+    min-height: 420px;
+}
+
+.leftCol
+{
+    padding: 6px 0px;
+    margin: 12px 8px 8px 8px;
+    width: 200px;
+    min-height: 200px;
+}
+
+.footer
+{
+    color: #4e5766;
+    padding: 8px 0px 0px 0px;
+    margin: 0px auto;
+    text-align: center;
+    line-height: normal;
+}
+/*
+#LogContent
+{
+    font-size: small;
+    font-family: Arial;
+    font-weight: 100;
+    float: left ; 
+}
+.H1
+{
+    font-size: small;
+    font-family: Arial;
+    font-weight: 100;
+    clear:left;
+    width: 50%;
+}
+*/
+/* TAB MENU   
+----------------------------------------------------------*/
+
+div.hideSkiplink
+{
+    background-color:#3a4f63;
+    width:100%;
+	margin-top: 0px;
+}
+
+div.menu
+{
+    padding: 4px 0px 4px 8px;
+}
+
+div.menu ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+}
+
+div.menu ul li a, div.menu ul li a:visited
+{
+    background-color: #465c71;
+    border: 1px #4e667d solid;
+    color: #dde4ec;
+    display: block;
+    line-height: 1.35em;
+    padding: 4px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+div.menu ul li a:hover
+{
+    background-color: #bfcbd6;
+    color: #465c71;
+    text-decoration: none;
+}
+
+div.menu ul li a:active
+{
+    background-color: #465c71;
+    color: #cfdbe6;
+    text-decoration: none;
+}			

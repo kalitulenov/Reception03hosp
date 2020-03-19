@@ -1,0 +1,292 @@
+Body
+{
+ background:"#D4D0C8"
+}
+
+.Comment
+{
+ font-size:10;
+ font-family:Courier New;
+}
+
+.AccTit
+{
+ text-align: center;
+ color:"#007f00";
+ font-size:20;
+ font-weight:700;
+ text-transform:uppercase;
+ background-color:"#ffffff";
+ border-style:solid;
+ border-width:thick;
+}
+
+.Error
+{
+ text-align: center;
+ color:"#ff0000";
+ font-size:20;
+ font-weight:700;
+ text-transform:uppercase;
+ background-color:"#ffffff";
+ border-style:solid;
+ border-width:thick;
+}
+
+Select
+{
+ Font-size:11;
+ font-family: "Arial";
+ border-top-style:solid;
+ border-top-width:1;
+ border-top-color:"#000000";
+ border-left-style:solid;
+ border-left-width:1;
+ border-left-color:"#000000";
+ border-right-style:solid;
+ border-right-width:1;
+ border-right-color:"#000000";
+ border-bottom-style:solid;
+ border-bottom-width:1;
+ border-bottom-color:"#000000";
+}
+
+input.textbox
+{
+ Font-size:11;
+ font-family: "Arial";
+ border-top-style:solid;
+ border-top-width:1;
+ border-top-color:"#000000";
+ border-left-style:solid;
+ border-left-width:1;
+ border-left-color:"#000000";
+ border-right-style:solid;
+ border-right-width:1;
+ border-right-color:"#000000";
+ border-bottom-style:solid;
+ border-bottom-width:1;
+ border-bottom-color:"#000000";
+}
+
+
+
+input.sum
+{
+ Font-size:11;
+ font-weight:700;
+}
+
+
+textarea
+{
+ Font-size:11;
+ font-family: "Arial";
+ border-top-style:solid;
+ border-top-width:1;
+ border-top-color:"#000000";
+ border-left-style:solid;
+ border-left-width:1;
+ border-left-color:"#000000";
+ border-right-style:solid;
+ border-right-width:1;
+ border-right-color:"#000000";
+ border-bottom-style:solid;
+ border-bottom-width:1;
+ border-bottom-color:"#000000";
+}
+
+Submit
+{
+ Font-size:11;
+ font-family: "Arial";
+}
+
+P.Title1
+{
+ "Times";
+ font-size: 36;
+ font-weight:700;
+ Color:White
+}
+P.Title2
+{
+ font-family: "Times";
+ font-size: 24;
+ font-weight:700;
+ Color:White
+}
+TH
+{
+ background:"#808080";
+ font-color:White;
+ font-weight:700;
+ text-align:"Center";
+ Color:White
+}
+TH.Acc
+{
+ background:"#b7b7b7";
+ font-color:White;
+ font-weight:700;
+ text-align:"Center";
+ Color:White;
+ border-top-style:solid;
+ border-top-width:1;
+ border-top-color:"#000000";
+ border-left-style:solid;
+ border-left-width:1;
+ border-left-color:"#000000";
+}
+TD.AccT
+{
+ font-family: "MS Sans Serif";
+ font-size: 10;
+ border-top-style:solid;
+ border-top-width:1;
+ border-top-color:"#000000";
+ border-left-style:solid;
+ border-left-width:1;
+ border-left-color:"#000000";
+}
+TD.AccA
+{
+ font-family: "MS Sans Serif";
+ font-size: 10;
+ border-top-style:solid;
+ border-top-width:1;
+ border-top-color:"#000000";
+ border-left-style:solid;
+ border-left-width:1;
+ border-left-color:"#000000";
+}
+TD.B
+{
+ font-family: "MS Sans Serif";
+ font-size: 10;
+ background:"#cccc99";
+ border-top-style:solid;
+ border-top-width:1;
+ border-top-color:"#000000";
+ border-left-style:solid;
+ border-left-width:1;
+ border-left-color:"#000000";
+ border-right-style:solid;
+ border-right-width:1;
+ border-right-color:"#000000";
+ border-bottom-style:solid;
+ border-bottom-width:1;
+ border-bottom-color:"#000000";
+}
+TD.T
+{
+ font-family: "MS Sans Serif";
+ font-size: 10;
+}
+TD.A
+{
+ font-family: "MS Sans Serif";
+ font-size: 10;
+ background:"#cccc99"
+}
+TD.AccTot
+{
+ font-family: "MS Sans Serif";
+ font-size: 10;
+ background:"#ffffff";
+ border-top-style:solid;
+ border-top-width:2;
+ border-top-color:"#000000";
+ border-left-style:solid;
+ border-left-width:1;
+ border-left-color:"#000000";
+ border-right-style:solid;
+ border-right-width:1;
+ border-right-color:"#000000";
+ border-bottom-style:solid;
+ border-bottom-width:2;
+ border-bottom-color:"#000000";
+}
+table.menu
+{
+ background:"#606060";
+ border-top-color:"#606060";
+ border-right-color:"#606060";
+ border-left-color:"#606060";
+ border-bottom-color:"#606060";
+ 
+}
+TD.MenuItem
+{
+ background:"#606060";
+ border-top-color:"#606060";
+ border-right-color:"#606060";
+ border-left-color:"#606060";
+ border-bottom-color:"#606060";
+ color:"#ffffff";
+ font-color:"#ffffff";
+ font-family: "MS Sans Serif";
+ font-size: 10;
+ font-weight:700;
+ text-align: center;
+}
+
+Table.AccRpt
+{
+ border-style:solid;
+ border-width:1;
+ border-color:"#000000";
+}
+
+.PO_Caption
+{
+ text-align:center;
+ text-transform:uppercase;
+ font-size:15;
+ font-family:Arial;
+ font-weight:600;
+}
+.RO_Caption
+{
+ color:red;
+ text-align:center;
+ text-transform:uppercase;
+ font-size:15;
+ font-family:Arial;
+ font-weight:600;
+}
+td.PO_Header
+{
+ border-top-style:solid;
+ border-top-width:1;
+ border-top-color:"#000000";
+ border-left-style:solid;
+ border-left-width:1;
+ border-left-color:"#000000";
+ border-right-style:solid;
+ border-right-width:1;
+ border-right-color:"#000000";
+ border-bottom-style:solid;
+ border-bottom-width:1;
+ border-bottom-color:"#000000";
+ font-size:13;
+ text-align: center;
+ vertical-align:top;
+}
+td.PO_RowCap
+{
+ font-size:13;
+ text-align: left;
+ vertical-align:top;
+}
+td.PO_TBCap
+{
+ font-size:13;
+ text-align: center;
+ vertical-align:top;
+}
+
+.PageNavigator
+{
+ font-size:11;
+}

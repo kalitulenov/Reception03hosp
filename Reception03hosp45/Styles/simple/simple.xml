@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<template>
+  <zoompanel>
+    <div style="margin:5px;">
+        <center>
+          {BigImage}
+          <div>
+          <span class="oizOpacityRender">{Description}</span>
+          </div>
+        </center>
+    </div>
+  </zoompanel>
+  <loading>
+    Loading...
+  </loading>
+  <background></background>
+</template>

@@ -1,0 +1,803 @@
+﻿/*iframe:layer under window layer*/
+.xplunaIframeLayer
+{
+	border:0px;
+	background-color:white;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
+}
+/*div:Layer contains window*/
+.xplunaWindowLayer
+{
+	display:none;
+}
+/*Master Table contains window parts*/
+.xplunaMasterTable
+{
+	width:100%;
+	height:100%;
+	border-collapse:collapse;
+	margin:0;
+}
+/*td*/
+.xplunaHeaderContainer
+{
+	height:30px;
+	width:100%;
+	vertical-align:top;
+	padding:0px;
+}
+/*td*/
+.xplunaToolbarContainer
+{
+	height:23px;
+	width:100%;
+	vertical-align:top;
+	padding:0px;
+}
+/*td*/
+.xplunaContentContainer
+{
+	width:100%;
+	padding:0px;
+	vertical-align:top;
+}
+/*td*/
+.xplunaFooterContainer
+{
+	height:23px;
+	width:100%;
+	vertical-align:top;
+	padding:0px;
+
+}
+
+.xplunaBottomLineContainer
+{
+	height:4px;
+	width:100%;
+	vertical-align:bottom;
+	padding:0px;
+}
+/*Header-----------------------------------------------------------------------------------------------*/
+/*td*/
+.xplunaHeaderTable
+{
+	width:100%;
+	border-collapse:collapse;
+	margin:0;
+}
+
+/*tr*/
+.xplunaHeaderTop
+{
+	display:none;
+}
+
+/*tr*/
+.xplunaHeaderBottom
+{
+	display:none;
+}
+
+
+
+/*td*/
+.xplunaHeaderTopLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaHeaderTopCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaHeaderTopRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+
+}
+/*td*/
+.xplunaHeaderMiddleLeft
+{
+	padding:0px;
+	width:5px;
+	height:30px;
+	background-image:url(HeaderMiddleLeft.gif);
+}
+/*td*/
+.xplunaHeaderMiddleCenter
+{
+	padding:0px;
+	height:30px;	
+	background-image:url(HeaderMiddleCenter.gif);
+	background-repeat:repeat;
+}
+/*td*/
+.xplunaHeaderMiddleRight
+{
+	padding:0px;
+	width:5px;
+	height:30px;
+	background-image:url(HeaderMiddleRight.gif);
+}
+/*td*/
+.xplunaHeaderBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaHeaderBottomCenter
+{
+	height:0px;	
+	padding:0px;
+}
+/*td*/
+.xplunaHeaderBottomRight
+{
+	height:0px;
+	width:0px;	
+	padding:0px;
+}
+/*Small table inside header*/
+.xplunaHeaderInnerTable
+{
+	width:100%;
+	border-collapse:collapse;
+	margin:0;	
+}
+/*td*/
+.xplunaHeaderLogoContainer
+{
+	width:1px;
+	padding:0px;
+	padding-left:5px;
+}
+/*img*/
+.xplunaHeaderLogo
+{
+	width:16px;
+	height:16px;
+}
+/*td*/
+.xplunaHeaderTitle
+{
+	padding:0px;
+	padding-left:5px;
+	cursor:default;
+}
+/*div*/
+.xplunaTitlePanel
+{
+	font-weight:bold;
+	font-family:Tahoma;
+	font-size:12px;
+	color:White;
+	overflow:hidden;
+	white-space:nowrap;		
+}
+/*div*/
+.xplunaTitlePanelDisable
+{
+	font-weight:bold;
+	font-family:Tahoma;
+	font-size:12px;
+	color:White;
+	overflow:hidden;
+	white-space:nowrap;		
+}
+
+/*Contain built-in buttons td*/
+/*td*/
+.xplunaHeaderBuiltinButtonsContainer
+{
+	width:1px;
+	padding:0px;
+}
+
+
+/*Buttons table*/
+.xplunaWindowBuiltinButtonsTable
+{
+	width:auto;
+	border-collapse:collapse;
+	margin:0;	
+}
+
+
+/*Individual Button Container, it is the td cover button*/
+.xplunaButtonContainer
+{
+	padding-left:2px;
+}
+/*Minimize Button*/
+/*img*/
+.xplunaButtonMinimizeOver
+{
+	width:21px;
+	height:21px;
+	background:yellow;
+}
+/*img*/
+.xplunaButtonMinimizeDown
+{
+	width:21px;
+	height:21px;
+	background:red;
+}
+
+
+/*img*/
+.xplunaButtonMinimizeOut
+{
+	width:21px;
+	height:21px;
+	background:blue;
+}
+
+
+
+
+/*Maximize Button*/
+/*img*/
+.xplunaButtonMaximizeOver
+{
+	width:21px;
+	height:21px;
+	background:url(MaximizeOver.gif);
+}
+/*img*/
+.xplunaButtonMaximizeDown
+{
+	width:21px;
+	height:21px;
+	background:url(MaximizeDown.gif);	
+}
+/*img*/
+.xplunaButtonMaximizeOut
+{
+	width:21px;
+	height:21px;
+	background:url(MaximizeOut.gif);	
+}
+/*RestoreDown Button*/
+/*img*/
+.xplunaButtonRestoreDownOver
+{
+	width:21px;
+	height:21px;
+	background:url(RestoreDownOver.gif);
+}
+/*img*/
+.xplunaButtonRestoreDownDown
+{
+	width:21px;
+	height:21px;
+	background:url(RestoreDownDown.gif);	
+}
+/*img*/
+.xplunaButtonRestoreDownOut
+{
+	width:21px;
+	height:21px;
+	background:url(RestoreDownOut.gif);	
+}
+
+
+/*Close Button*/
+/*img*/
+.xplunaButtonCloseOver
+{
+	width:21px;
+	height:21px;
+	background:url(CloseOver.gif);	
+}
+/*img*/
+.xplunaButtonCloseDown
+{
+	width:21px;
+	height:21px;
+	background:url(CloseDown.gif);		
+}
+
+/*img*/
+.xplunaButtonCloseOut
+{
+	width:21px;
+	height:21px;
+	background:url(CloseOut.gif);		
+}
+
+/*Toolbar-----------------------------------------------------------------------------------------------*/
+.xplunaToolbarTable
+{
+	width:100%;
+	border-collapse:collapse;
+	margin:0;
+		
+}
+
+/*tr*/
+.xplunaToolbarTop
+{
+	display:none;
+}
+
+/*tr*/
+.xplunaToolbarBottom
+{
+	display:none;
+}
+
+
+/*td*/
+.xplunaToolbarTopLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaToolbarTopCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaToolbarTopRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaToolbarMiddleLeft
+{
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaToolbarMiddleCenter
+{
+	padding:0px;
+}
+/*td*/
+.xplunaToolbarMiddleRight
+{
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaToolbarBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaToolbarBottomCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaToolbarBottomRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*div*/
+.xplunaToolbarPanel
+{
+	background-color:Aqua;
+}
+
+
+/*Content-----------------------------------------------------------------------------------------------*/
+.xplunaContentTable
+{
+	width:100%;
+	height:100%;
+	border-collapse:collapse;
+	margin:0;
+	
+}
+
+/*tr*/
+.xplunaContentTop
+{
+	display:none;
+}
+
+/*tr*/
+.xplunaContentBottom
+{
+	display:none;
+}
+
+
+
+/*td*/
+.xplunaContentTopLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaContentTopCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaContentTopRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaContentMiddleLeft
+{
+	padding:0px;
+	width:4px;
+	background-image:url(ContentMiddleLeft.gif);
+	background-repeat:repeat;
+}
+/*td*/
+.xplunaContentMiddleCenter
+{
+	padding:0px;
+	vertical-align:top;
+	
+}
+/*td*/
+.xplunaContentMiddleRight
+{
+	padding:0px;
+	width:4px;
+	background-image:url(ContentMiddleRight.gif);
+	background-repeat:repeat;
+	
+}
+/*td*/
+.xplunaContentBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+	font-size:1px;
+}
+/*td*/
+.xplunaContentBottomCenter
+{
+	height:0px;
+	padding:0px;
+	font-size:1px;
+}
+/*td*/
+.xplunaContentBottomRight
+{
+	height:0%;
+	width:0px;
+	padding:0px;
+	font-size:1px;
+}
+
+/*IFRAME or DIV*/
+.xplunaContentPanel
+{
+	border:0px;
+	background-color:#ECE9D8;
+	overflow:hidden;
+	padding:0px;	
+}
+
+
+/*Footer-----------------------------------------------------------------------------------------------*/
+.xplunaFooterTable
+{
+	border-collapse:collapse;
+	margin:0;	
+	width:100%;
+}
+
+/*tr*/
+.xplunaFooterTop
+{
+	display:none;
+}
+
+/*tr*/
+.xplunaFooterBottom
+{
+	display:none;	
+}
+
+
+/*td*/
+.xplunaFooterTopLeft 
+{
+	padding:0px;
+}
+/*td*/
+.xplunaFooterTopCenter
+{
+	padding:0px;
+}
+/*td*/
+.xplunaFooterTopRight
+{
+	padding:0px;
+}
+/*td*/
+.xplunaFooterMiddleLeft
+{
+	width:4px;
+	padding:0px;
+	background-image:url(FooterMiddleLeft.gif);
+	background-repeat:repeat;
+}
+/*td*/
+.xplunaFooterMiddleCenter
+{
+	height:23px;
+	padding:0px;
+	background-image:url(FooterMiddleCenter.gif);
+	background-repeat:repeat;
+		
+}
+/*td*/
+.xplunaFooterMiddleRight
+{
+	width:4px;
+	padding:0px;
+	background-image:url(FooterMiddleRight.gif);
+	background-repeat:repeat;
+
+}
+/*td*/
+.xplunaFooterBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+
+}
+/*td*/
+.xplunaFooterBottomCenter
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.xplunaFooterBottomRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+	
+}
+/*div*/
+.xplunaFooterPanel
+{
+	cursor:default;
+	font-family:Tahoma;
+	font-size:11px;
+	padding-left:5px;
+	overflow:hidden;
+	height:13px;
+	white-space:nowrap;	
+}
+/*BottomLine-----------------------------------------------------------------------------------------------*/
+.xplunaBottomLineTable
+{
+	border-collapse:collapse;
+	margin:0;	
+	width:100%;
+}
+.xplunaBottomLineLeft
+{
+	width:4px;
+	height:4px;
+	padding:0px;
+	background-image:url(FooterBottomLeft.gif);	
+}
+.xplunaBottomLineCenter
+{
+	height:4px;
+	padding:0px;
+	background-image:url(FooterBottomCenter.gif);
+	background-repeat:repeat;
+}
+.xplunaBottomLineRight
+{
+	width:4px;
+	height:4px;
+	padding:0px;
+	background-image:url(FooterBottomRight.gif);	
+}
+
+
+
+/*DragPanel-----------------------------------------------------------------------------------------------*/
+
+.xplunaDragPanel
+{
+	z-index:999999999;
+	background-color:Gray;
+	filter:alpha(opacity=25);
+	-moz-opacity:0.25;
+	opacity:0.25;	
+}
+
+/*Filter-----------------------------------------------------------------------------------------------*/
+
+.xplunaFilterIframeLayer
+{
+	border:0px;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;	
+}
+.xplunaFilterDivLayer
+{
+	background-color:gray;
+	filter:alpha(opacity=15);
+	-moz-opacity:0.15;
+	opacity:0.15;	
+}
+/*Window Resize-----------------------------------------------------------------------------------------------*/
+
+
+.xplunaResizeHandle
+{
+	position:absolute;
+	background-color:white;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
+	font-size:1px;
+	height:4px;
+	width:4px;	
+}
+
+/*Handle cursor of mouseover*/
+.xplunaCursorResizeLeft
+{	
+	cursor:e-resize;
+}
+.xplunaCursorResizeTop
+{	
+	cursor:n-resize;
+}
+.xplunaCursorResizeRight
+{
+	cursor:w-resize;
+}
+
+.xplunaCursorResizeBottom
+{
+	cursor:s-resize;
+}
+
+.xplunaCursorResizeTopLeft
+{
+	cursor:nw-resize;	
+}
+
+.xplunaCursorResizeTopRight
+{
+	cursor:ne-resize;
+}
+
+.xplunaCursorResizeBottomRight
+{
+	cursor:se-resize;
+}
+
+.xplunaCursorResizeBottomLeft
+{
+	cursor:sw-resize;
+}
+/*The size of diagonal resize at each conner*/
+.xplunaResizeConnerSize
+{	
+	width:20px;
+	height:20px;
+	background-color:transparent;			
+}
+
+.xplunaResizePanel
+{
+	z-index:99999;
+	background-color:Gray;
+	filter:alpha(opacity=25);
+	-moz-opacity:0.25;
+	opacity:0.25;	
+}
+/*--------------------------------------------------------------*/
+
+.xplunaAlertContentTable
+{
+	width:100%;
+	height:100%;
+}
+
+.xplunaAlertLogoContainer
+{
+	padding:0px;
+	width:30px;
+	vertical-align:top;
+	padding-top:10px;
+	padding-left:15px;
+}
+.xplunaAlertMessageContainer
+{
+	padding:0px;
+	font-family:Verdana;
+	font-size:8pt;
+	vertical-align:top;
+	padding-top:15px;
+	padding-left:10px;
+}
+.xplunaAlertOKContainer
+{
+	padding:0px;
+	text-align:center;
+	vertical-align:bottom;
+	padding-bottom:10px;
+}
+.xplunawarningLogo
+{
+	padding:0px;
+	width:32px;
+	height:32px;
+	background-image:url(windows-warning.png);
+}
+.xplunainfoLogo
+{
+	padding:0px;
+	width:32px;
+	height:32px;
+	background-image:url(windows-info.png);
+}
+.xplunaerrorLogo
+{
+	padding:0px;
+	width:32px;
+	height:32px;
+	background-image:url(windows-error.png);
+}
+
+
+.xplunaAlertOKButton
+{
+	width:60px;
+}
+
+
+/*use to detect finsihed loading, do not change*/
+.xplunaEnd
+{
+	background-color:Transparent;
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:9px;
+	width:9px;
+	font-size:1px;
+}
+
