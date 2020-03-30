@@ -27,8 +27,8 @@ namespace Reception03hosp45.Priem
         string BuxFrm;
         string BuxKod;
 
-        int NumDoc;
-        string TxtDoc;
+        //int NumDoc;
+        //string TxtDoc;
 
         DateTime GlvBegDat;
         DateTime GlvEndDat;
@@ -38,8 +38,8 @@ namespace Reception03hosp45.Priem
         string AmbCntIdn;
         string GlvDocTyp;
         string MdbNam = "HOSPBASE";
-        decimal ItgDocSum = 0;
-        decimal ItgDocKol = 0;
+        //decimal ItgDocSum = 0;
+        //decimal ItgDocKol = 0;
 
         //=============Установки===========================================================================================
 
@@ -113,12 +113,12 @@ namespace Reception03hosp45.Priem
         }
 
         // ============================ чтение таблицы а оп ==============================================
-        void getGrid()
-        {
-            GlvBegDat = (DateTime)Session["GlvBegDat"];
-            GlvEndDat = (DateTime)Session["GlvEndDat"];
+        //void getGrid()
+        //{
+        //    GlvBegDat = (DateTime)Session["GlvBegDat"];
+        //    GlvEndDat = (DateTime)Session["GlvEndDat"];
 
-        }
+        //}
 
         protected void PushButton_Click(object sender, EventArgs e)
         {

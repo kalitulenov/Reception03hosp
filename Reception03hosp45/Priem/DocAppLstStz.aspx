@@ -83,7 +83,7 @@
              case 'МАС': location.href = "/Priem/DocAppMas.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'ЛАБ': location.href = "/Priem/DocAppLab.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'СТМ': location.href = "/Priem/DocAppDnt.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
-             case 'СМП': location.href = "/Priem/DocApp003.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
+             case 'СМП': location.href = "/Priem/DocAppCmp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'АКТ': location.href = "/Priem/DocAppAkt.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'АНЛ': location.href = "/Priem/DocAppAnl.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'ВЫС': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=СМП"; break;

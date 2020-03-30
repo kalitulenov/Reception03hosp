@@ -236,7 +236,6 @@
                                                                  "TelCalMmm=" + Convert.ToString(TelCalMmm) +
                                                                  " WHERE TelCalIdn=" + Convert.ToString(TelCalIdn);
 
-
             // строка соединение
             string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
             // создание соединение Connection
@@ -255,7 +254,7 @@
         void DeleteRecord(object sender, GridRecordEventArgs e)
         {
             int TelCalIdn;
-            string SqlStr = "";
+            //string SqlStr = "";
 
             TelCalIdn = Convert.ToInt32(e.Record["TelCalIdn"]);
             // строка соединение
@@ -482,7 +481,7 @@
                 Language="ru"
                 PageSize="-1"
                 Width="100%"
-                 EnableTypeValidation="true"
+                 EnableTypeValidation="false"
              AllowFiltering="true" 
              FilterType="Normal" 
                 AllowSorting="true"
