@@ -140,12 +140,17 @@
              case 'СТМ':
                  window.open("/Priem/DocAppDnt.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
                  break;
+             case 'АНЛ':
+                 h = h - 200;
+                 w = w - 200;
+                 window.open("/Priem/DocAppAnl.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                 break;
              //case 'УЗИ': location.href = "/Priem/DocAppUzi.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'AMB': location.href = "/Priem/DocAppAmbAcm.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=АМБ"; break;
              case 'АНТ': location.href = "/Priem/DocAppAnt.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'СМП': location.href = "/Priem/DocAppCmp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'АКТ': location.href = "/Priem/DocAppAkt.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
-             case 'АНЛ': location.href = "/Priem/DocAppAnl.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
+//             case 'АНЛ': location.href = "/Priem/DocAppAnl.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'ВЫС': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=СМП"; break;
              case 'ВЫД': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=ДОМ"; break;
              case 'ДОМ': location.href = "/Priem/DocAppDom.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=ДОМ"; break;
@@ -297,11 +302,17 @@
              case 'СТМ':
                  window.open("/Priem/DocAppDnt.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
                  break;
+             case 'АНЛ':
+                 //location.href = "/Priem/DocAppXry.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
+                 h = h - 200;
+                 w = w - 200;
+                 window.open("/Priem/DocAppAnl.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                 break;
              //case 'УЗИ': location.href = "/Priem/DocAppUzi.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
              case 'АНТ': location.href = "/Priem/DocAppAnt.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
              case 'СМП': location.href = "/Priem/DocAppCmp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
              case 'АКТ': location.href = "/Priem/DocAppAkt.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
-             case 'АНЛ': location.href = "/Priem/DocAppAnl.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
+             //case 'АНЛ': location.href = "/Priem/DocAppAnl.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
              case 'ВЫС': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=СМП"; break;
              case 'ВЫД': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=ДОМ"; break;
              case 'ДОМ': location.href = "/Priem/DocAppDom.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=ДОМ"; break;

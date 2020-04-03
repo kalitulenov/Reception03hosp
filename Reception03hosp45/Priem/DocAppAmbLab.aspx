@@ -37,7 +37,7 @@
             }
 */
 
-            if (cellIndex == 4 && GridLab.Rows[rowIndex].Cells[4].Value == "+") {
+            if (cellIndex == 5 && GridLab.Rows[rowIndex].Cells[5].Value == "+") {
                 var ua = navigator.userAgent;
                 if (ua.search(/Chrome/) > -1)
                     window.open("DocAppAnlOneSho.aspx?AmbUslIdn=" + AmbLabIdn + "&AmbUslImgNum=X", "ModalPopUp2", "width=800,height=600,left=250,top=100,modal=yes,directories=no,toolbar=no,menubar=no,location=no,status=no,scrollbars=no,resizable=no,fullscreen=yes");
@@ -45,7 +45,7 @@
                     window.showModalDialog("DocAppAnlOneSho.aspx?AmbUslIdn=" + AmbLabIdn + "&AmbUslImgNum=X", "ModalPopUp2", "center:yes;resizable:yes;status:no;dialogleft:250px;dialogtop:210px;dialogWidth:1100px;dialogHeight:480px;");
             }
 
-            if (cellIndex == 5 && GridLab.Rows[rowIndex].Cells[5].Value == "+") {
+            if (cellIndex == 6 && GridLab.Rows[rowIndex].Cells[6].Value == "+") {
                 var ua = navigator.userAgent;
                 if (ua.search(/Chrome/) > -1)
                     window.open("DocAppAnlOneSho.aspx?AmbUslIdn=" + AmbLabIdn + "&AmbUslImgNum=1", "ModalPopUp2", "width=800,height=600,left=250,top=100,modal=yes,directories=no,toolbar=no,menubar=no,location=no,status=no,scrollbars=no,resizable=no,fullscreen=yes");
@@ -53,7 +53,7 @@
                     window.showModalDialog("DocAppAnlOneSho.aspx?AmbUslIdn=" + AmbLabIdn + "&AmbUslImgNum=1", "ModalPopUp2", "center:yes;resizable:yes;status:no;dialogleft:250px;dialogtop:210px;dialogWidth:1100px;dialogHeight:480px;");
             }
 
-            if (cellIndex == 6 && GridLab.Rows[rowIndex].Cells[6].Value == "+") {
+            if (cellIndex == 7 && GridLab.Rows[rowIndex].Cells[7].Value == "+") {
                 var ua = navigator.userAgent;
                 if (ua.search(/Chrome/) > -1)
                     window.open("DocAppAnlOneSho.aspx?AmbUslIdn=" + AmbLabIdn + "&AmbUslImgNum=2", "ModalPopUp2", "width=800,height=600,left=250,top=100,modal=yes,directories=no,toolbar=no,menubar=no,location=no,status=no,scrollbars=no,resizable=no,fullscreen=yes");
@@ -132,10 +132,6 @@
         //-------------- для высвечивания анализа при подводе курсора ----------------------------------------------------------
     protected void OnRowDataBound_Handle(Object o, GridRowEventArgs e)
     {
-            e.Row.Cells[4].Attributes["onmouseover"] = "this.style.fontSize = '20px'; this.style.fontWeight = 'bold';";
-            e.Row.Cells[4].Attributes["onmouseout"] = "this.style.fontSize = '12px'; this.style.color = 'black';";
-            e.Row.Cells[4].Attributes.Add("onclick", "onClick(" + e.Row.RowIndex + ",4)");
-
             e.Row.Cells[5].Attributes["onmouseover"] = "this.style.fontSize = '20px'; this.style.fontWeight = 'bold';";
             e.Row.Cells[5].Attributes["onmouseout"] = "this.style.fontSize = '12px'; this.style.color = 'black';";
             e.Row.Cells[5].Attributes.Add("onclick", "onClick(" + e.Row.RowIndex + ",5)");
@@ -143,6 +139,10 @@
             e.Row.Cells[6].Attributes["onmouseover"] = "this.style.fontSize = '20px'; this.style.fontWeight = 'bold';";
             e.Row.Cells[6].Attributes["onmouseout"] = "this.style.fontSize = '12px'; this.style.color = 'black';";
             e.Row.Cells[6].Attributes.Add("onclick", "onClick(" + e.Row.RowIndex + ",6)");
+
+            e.Row.Cells[7].Attributes["onmouseover"] = "this.style.fontSize = '20px'; this.style.fontWeight = 'bold';";
+            e.Row.Cells[7].Attributes["onmouseout"] = "this.style.fontSize = '12px'; this.style.color = 'black';";
+            e.Row.Cells[7].Attributes.Add("onclick", "onClick(" + e.Row.RowIndex + ",7)");
             
         
         /*
@@ -211,13 +211,14 @@
                 <Columns>
                     <obout:Column ID="Column0" DataField="USLIDN" HeaderText="Идн" Width="0%" />
                     <obout:Column ID="Column1" DataField="USLAMB" HeaderText="Амб" Width="0%" />
-                    <obout:Column ID="Column2" DataField="GRFDAT" HeaderText="ДАТА" DataFormatString = "{0:dd/MM/yy}" Width="5%" />
-                    <obout:Column ID="Column3" DataField="USLNAM" HeaderText="АНАЛИЗ" Width="60%" />
-                    <obout:Column ID="Column4" DataField="IMGXLS" HeaderText="1.ОБРАЗ" Width="5%" />
-                    <obout:Column ID="Column5" DataField="IMG001" HeaderText="2.ОБРАЗ" Width="5%" ReadOnly="true" />
-                    <obout:Column ID="Column6" DataField="IMG002" HeaderText="3.ОБРАЗ" Width="5%" ReadOnly="true" />
-                    <obout:Column ID="Column7" DataField="USLFIO" HeaderText="ОТВЕТСТВЕННЫЙ" Width="10%" />
-                    <obout:Column ID="Column8" DataField="USLBINGDE" HeaderText="ЛАБОРАТОРИЯ" Width="10%" />
+                    <obout:Column ID="Column2" DataField="TYPDOC" HeaderText="ДОКУМ" Width="5%" />
+                    <obout:Column ID="Column3" DataField="GRFDAT" HeaderText="ДАТА" DataFormatString = "{0:dd/MM/yy}" Width="5%" />
+                    <obout:Column ID="Column4" DataField="NAM" HeaderText="АНАЛИЗ" Width="55%" />
+                    <obout:Column ID="Column5" DataField="IMGXLS" HeaderText="1.ОБРАЗ" Width="5%" />
+                    <obout:Column ID="Column6" DataField="IMG001" HeaderText="2.ОБРАЗ" Width="5%" ReadOnly="true" />
+                    <obout:Column ID="Column7" DataField="IMG002" HeaderText="3.ОБРАЗ" Width="5%" ReadOnly="true" />
+                    <obout:Column ID="Column8" DataField="USLFIO" HeaderText="ОТВЕТСТВЕННЫЙ" Width="10%" />
+                    <obout:Column ID="Column9" DataField="USLBINGDE" HeaderText="ЛАБОРАТОРИЯ" Width="10%" />
                 </Columns>
             </obout:Grid>
         </asp:Panel>

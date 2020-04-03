@@ -133,6 +133,7 @@ namespace Reception03hosp45.Priem
             cmd.Parameters.Add("@GLVBEGDAT", SqlDbType.VarChar).Value = GlvBegDatTxt;
             cmd.Parameters.Add("@GLVENDDAT", SqlDbType.VarChar).Value = GlvEndDatTxt;
 
+            cmd.CommandTimeout = 120;    // задержка
             // создание DataAdapter
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             // заполняем DataSet из хран.процедуры.

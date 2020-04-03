@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Masters/MsrMain.Master" AutoEventWireup="true" Inherits="OboutInc.oboutAJAXPage" Title="Безымянная страница" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="OboutInc.oboutAJAXPage" Title="Безымянная страница" %>
 
 <%@ Register TagPrefix="oajax" Namespace="OboutInc" Assembly="obout_AJAXPage" %>
 <%@ Register TagPrefix="obout" Namespace="Obout.Interface" Assembly="obout_Interface" %>
@@ -14,13 +14,14 @@
 <%@ Import Namespace="System.Web.Services" %>
 <%@ Import Namespace="System.Web.Configuration" %>
 <%@ Import Namespace="System.Collections.Generic" %>
-<%@ Import Namespace="System.IO" %>
 
 <%-- ================================================================================ --%>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
 
     <!--  ссылка на JQUERY DIALOG-------------------------------------------------------------- -->
     <script src="/JS/jquery-1.6.1.min.js" type="text/javascript"></script>
@@ -30,20 +31,22 @@
     <%-- ============================  JAVA ============================================ --%>
      <script type="text/javascript">
 
+         function HandlePopupPost(result) {
+             var jsVar = "dotnetcurry.com";
+             __doPostBack('callPostBack', jsVar);
+         }
+
          //    ---------------- обращение веб методу --------------------------------------------------------
-         function MedDocPic(rowIndex) {
-         //            alert("WebCam");
-             var AmbAnlIdn = GridUsl.Rows[rowIndex].Cells[0].Value;
-             //        alert("AmbAnlIdn =" + AmbAnlIdn);
-             var AmbAnlPth = document.getElementById('MainContent_TextBoxFio').value;
-             var AmbAnlIIN = document.getElementById('MainContent_TextBoxIIN').value;
-           //          alert("AmbAnlPth =" + AmbAnlPth);
+         function WebCam(rowIndex) {
+    //         alert("GridAnl_ClientEdit="+rowIndex);
+             var AmbUslIdn = GridUsl.Rows[rowIndex].Cells[0].Value;
+             var AmbAnlPth = "";  //document.getElementById('parXlsFio').value;
+             var AmbUslIIN = document.getElementById('parGrfIIN').value;
 
              AnlWindow.setTitle(AmbAnlPth);
-             AnlWindow.setUrl("/WebCam/DocAppWebCam.aspx?AmbUslIdn=" + AmbAnlIdn + "&AmbUslPth=" + AmbAnlPth + "&AmbUslIIN=" + AmbAnlIIN);
+             AnlWindow.setUrl("/WebCam/DocAppWebCam.aspx?AmbUslIdn=" + AmbUslIdn + "&AmbUslPth=" + AmbAnlPth + "&AmbUslIIN=" + AmbUslIIN);
              AnlWindow.Open();
              return false;
-
          }
 
          function WindowClose() {
@@ -51,56 +54,29 @@
              __doPostBack('callPostBack', jsVar);
              //  __doPostBack('btnSave', e.innerHTML);
          }
-         // ------------------------  получает сведение из диалогового окна  ------------------------------------------------------------------
-         function HandlePopupResult(result) {
-             //        alert("result of popup is: " + result);
-             var jsVar = "dotnetcurry.com";
-             __doPostBack('callPostBack', jsVar);
+
+         //function GridUsl_ClientAdd(sender, record) {
+
+         //    //                    alert("GridUыд_ClientEdit");
+         //    //            document.getElementById('parPrsIdn').value = 0;
+         //    //            TrfWindow.Open();
+         //    var AmbCrdIdn = document.getElementById('parCrdIdn').value;
+         //    var ua = navigator.userAgent;
+         //    if (ua.search(/Chrome/) > -1)
+         //        window.open("/Priem/DocAppAmbUslSel.aspx?AmbCrdIdn=" + AmbCrdIdn,
+         //            "ModalPopUp", "toolbar=no,width=800,height=550,left=350,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+         //    else
+         //        window.showModalDialog("/Priem/DocAppAmbUslSel.aspx?AmbCrdIdn=" + AmbCrdIdn,
+         //            "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:350px;dialogtop:100px;dialogWidth:800px;dialogHeight:550px;");
+
+         //    return false;
+         //}
 
 
-             //   document.getElementById('ctl00$MainContent$TextBoxFio').value = result;
-             //   document.getElementById('MainContent_HidTextBoxFio').value = result;
-         }
-         // ------------------------  при соглашений на запись к врачу из 1-го диалогового окна  ------------------------------------------------------------------       
-
-         // --------------  ИЗМЕНИТЬ ДАТУ ПРИЕМА ----------------------------
-         function onDateChange(sender, selectedDate) {
-             //          alert("sender=" + sender + "  " + selectedDate);
-             var DatDocMdb = 'HOSPBASE';
-             var DatDocRek;
-             var DatDocTyp = 'Sql';
-
-             var dd = selectedDate.getDate();
-             var mm = selectedDate.getMonth() + 1;
-             if (mm < 10) mm = '0' + mm;
-             var yy = selectedDate.getFullYear();
-
-             var DatDocVal = dd + "." + mm + "." + yy;
-
-             //             var GrfDocRek='GRFCTRDAT';
-             //           alert("DatDocVal " + DatDocVal);
-             //             var GrfDocTyp = 'Dat';
-
-             var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
-             //           alert("AmbCrdIdn " + AmbCrdIdn);
-
-             SqlStr = "UPDATE AMBCRD SET GRFDAT=CONVERT(DATETIME,'" + DatDocVal + "',103) WHERE GRFIDN=" + AmbCrdIdn;
-             //            alert("SqlStr=" + SqlStr);
-
-             $.ajax({
-                 type: 'POST',
-                 url: '/HspUpdDoc.aspx/UpdateOrder',
-                 contentType: "application/json; charset=utf-8",
-                 data: '{"DatDocMdb":"' + DatDocMdb + '","SqlStr":"' + SqlStr + '","DatDocTyp":"' + DatDocTyp + '"}',
-                 dataType: "json",
-                 success: function () { },
-                 error: function () { alert("ERROR=" + SqlStr); }
-             });
-
-         }
 
  </script>
 
+</head>
 
 
 <script runat="server">
@@ -121,6 +97,7 @@
     int UslKod;
     int UslKto;
     string UslGde;
+    string UslDat;
 
     string UslNam;
     string UslMem;
@@ -153,15 +130,20 @@
         parBuxKod.Value = BuxKod;
         //=====================================================================================
         //           sdsUsl.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
+        sdsKto.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
+        sdsKto.SelectCommand = "SELECT BuxKod,FI FROM SprBuxKdr WHERE ISNULL(BUXUBL,0)=0 AND BUXFRM=" + BuxFrm + " ORDER BY FI"; //+ " AND DLGTYP='ФИЗ'"
+
+        sdsGde.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
+        sdsGde.SelectCommand = "SELECT * FROM SprGdePrm ORDER BY GdePrmNam";
 
         GridUsl.InsertCommand += new Obout.Grid.Grid.EventHandler(InsertRecord);
         GridUsl.UpdateCommand += new Obout.Grid.Grid.EventHandler(UpdateRecord);
         GridUsl.DeleteCommand += new Obout.Grid.Grid.EventHandler(DeleteRecord);
 
-        //   sdsGrpUsl.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
+        sdsStx.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
         // SELECT SttStrKey AS STTKEY, SttStrNam AS STTNAM FROM SprSttStr WHERE SttStrFrm=" + BuxFrm + " AND SttStrLvl = 1 ORDER BY SttStrNam";
 
-        //    sdsUsl.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
+        sdsUsl.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
         //=====================================================================================
 
         string par01 = this.Request["__EVENTTARGET"]; // 1st parameter
@@ -214,22 +196,21 @@
 
             }
 
-            Session["AmbCrdIdn"] = Convert.ToString(AmbCrdIdn);
+            //Session["AmbCrdIdn"] = Convert.ToString(AmbCrdIdn);
             HidAmbCrdIdn.Value = AmbCrdIdn;
-            parBuxFrm.Value = BuxFrm;
+            //parBuxFrm.Value = BuxFrm;
         }
 
         getGrid();
-        getDocNum();
+        //   getDocNum();
 
     }
-
 
     // ============================ чтение таблицы а оп ==============================================
     void getGrid()
     {
         string LenCol;
-        string GrpUslKey;
+        string StxKey;
         //------------       чтение уровней дерево
         DataSet ds = new DataSet();
         string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
@@ -239,7 +220,7 @@
         // указать тип команды
         cmd.CommandType = CommandType.StoredProcedure;
         // передать параметр
-        cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
+        cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = HidAmbCrdIdn.Value;
 
         // создание DataAdapter
         SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -248,11 +229,23 @@
 
         if (ds.Tables[0].Rows.Count > 0)
         {
-            GridUsl.DataSource = ds;
-            GridUsl.DataBind();
+            StxKey = Convert.ToString(ds.Tables[0].Rows[0]["STXKEY"]);
+            parGrfIIN.Value = Convert.ToString(ds.Tables[0].Rows[0]["GRFIIN"]);
+
+            //sdsUsl.SelectCommand = "SELECT SprUsl.UslKod,SprUsl.UslNam " +
+            //                       "FROM  SprUsl INNER JOIN SprUslFrm INNER JOIN SprBuxUsl ON SprUslFrm.UslFrmHsp=SprBuxUsl.BuxUslFrm AND SprUslFrm.UslFrmKod=SprBuxUsl.BuxUslPrcKod " +
+            //                                                                             " ON SprUsl.UslKod=SprUslFrm.UslFrmKod " +
+            //                                    "INNER JOIN SprFrmStx ON SprUslFrm.UslFrmHsp=SprFrmStx.FrmStxKodFrm AND SprUslFrm.UslFrmPrc=SprFrmStx.FrmStxPrc " +
+            //                       "WHERE SprBuxUsl.BuxUslFrm=" + BuxFrm + " AND SprBuxUsl.BuxUslDocKod=" + BuxKod + " AND SprFrmStx.FrmStxKodStx='" +StxKey + "' AND SprUslFrm.UslFrmZen>0 " +
+            //                       "ORDER BY SprUsl.UslNam";
         }
 
         con.Close();
+
+        //   sdsStx.SelectCommand = "SELECT CntKey AS StxKod,CntNam AS StxNam FROM SprCnt WHERE CntLvl=0 AND CntFrm=" + BuxFrm + " ORDER BY CntNam";
+
+        GridUsl.DataSource = ds;
+        GridUsl.DataBind();
     }
 
     void PushButton()
@@ -266,7 +259,7 @@
         // указать тип команды
         cmd.CommandType = CommandType.StoredProcedure;
         // передать параметр
-        cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
+        cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = HidAmbCrdIdn.Value;
         cmd.ExecuteNonQuery();
 
         con.Close();
@@ -276,92 +269,87 @@
 
     void InsertRecord(object sender, GridRecordEventArgs e)
     {
-        if (e.Record["USLKOD"] == null | e.Record["USLKOD"] == "") UslKod = 0;
-        else UslKod = Convert.ToInt32(e.Record["USLKOD"]);
-
-        if (e.Record["USLKOL"] == null | e.Record["USLKOL"] == "") UslKol = 1;
-        else UslKol = Convert.ToInt32(e.Record["USLKOL"]);
-
-        if (e.Record["USLLGT"] == null | e.Record["USLLGT"] == "") UslLgt = 0;
-        else UslLgt = Convert.ToInt32(e.Record["USLLGT"]);
-
         if (e.Record["USLMEM"] == null | e.Record["USLMEM"] == "") UslMem = "";
         else UslMem = Convert.ToString(e.Record["USLMEM"]);
 
-        if (e.Record["USLNAP"] == null | e.Record["USLNAP"] == "") UslNap = "";
-        else UslNap = Convert.ToString(e.Record["USLNAP"]);
+        if (e.Record["USLKTO"] == null | e.Record["USLKTO"] == "") UslKto =  Convert.ToInt32(BuxKod);
+        else UslKto = Convert.ToInt32(e.Record["USLKTO"]);
 
-        UslStx = "00000";
-        UslKto =  Convert.ToInt32(BuxKod);
+        UslDat = Convert.ToString(e.Record["USLDAT"]);
+        if (string.IsNullOrEmpty(UslDat)) UslDat = DateTime.Now.ToString("dd.MM.yyyy");
+        else UslDat = Convert.ToDateTime(e.Record["USLDAT"]).ToString("dd.MM.yyyy");
 
-        UslGde = "";
 
         //------------       чтение уровней дерево
         DataSet ds = new DataSet();
         string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
         SqlConnection con = new SqlConnection(connectionString);
         con.Open();
-        SqlCommand cmd = new SqlCommand("HspAmbUslAddGde", con);
-        // указать тип команды
-        cmd.CommandType = CommandType.StoredProcedure;
-        // передать параметр
-        cmd.Parameters.Add("@USLAMB", SqlDbType.Int, 4).Value = AmbCrdIdn;
-        cmd.Parameters.Add("@USLKOD", SqlDbType.Int, 4).Value = 0;
-        cmd.Parameters.Add("@USLKOL", SqlDbType.Int, 4).Value = 0;
-        cmd.Parameters.Add("@USLLGT", SqlDbType.Int, 4).Value = 0;
-        cmd.Parameters.Add("@USLNAP", SqlDbType.VarChar).Value = UslNap;
-        cmd.Parameters.Add("@USLSTX", SqlDbType.VarChar).Value = "00000";
-        cmd.Parameters.Add("@USLKTO", SqlDbType.Int, 4).Value = UslKto;
-        cmd.Parameters.Add("@USLGDE", SqlDbType.VarChar).Value = "";
-        cmd.Parameters.Add("@USLMEM", SqlDbType.VarChar).Value = UslMem;
+        SqlCommand cmd = new SqlCommand("INSERT INTO AMBUSL (USLAMB,USLKTO,USLDAT,USLSTX,USLDOCNAM,USLMEM) " +
+                                        "VALUES("+HidAmbCrdIdn.Value+","+
+                                                  UslKto+","+
+                                                  "CONVERT(DATETIME,'" + UslDat + "',104)," +
+                                                  "'00000','АНЛ','"+
+                                                  UslMem +"')", con);
+
+
+        //// указать тип команды
+        //cmd.CommandType = CommandType.StoredProcedure;
+        //// передать параметр
+        //cmd.Parameters.Add("@USLAMB", SqlDbType.Int, 4).Value = AmbCrdIdn;
+        //cmd.Parameters.Add("@USLKOD", SqlDbType.Int, 4).Value = 0;
+        //cmd.Parameters.Add("@USLKOL", SqlDbType.Int, 4).Value = 0;
+        //cmd.Parameters.Add("@USLLGT", SqlDbType.Int, 4).Value = 0;
+        //cmd.Parameters.Add("@USLNAP", SqlDbType.VarChar).Value = "";
+        //cmd.Parameters.Add("@USLSTX", SqlDbType.VarChar).Value = "00000";
+        //cmd.Parameters.Add("@USLKTO", SqlDbType.Int, 4).Value = UslKto;
+        //cmd.Parameters.Add("@USLGDE", SqlDbType.VarChar).Value = "";
+        //cmd.Parameters.Add("@USLMEM", SqlDbType.VarChar).Value = UslMem;
         // создание команды
         cmd.ExecuteNonQuery();
         con.Close();
 
         getGrid();
+
     }
 
     void UpdateRecord(object sender, GridRecordEventArgs e)
     {
         UslIdn = Convert.ToInt32(e.Record["USLIDN"]);
 
-        if (e.Record["USLKOD"] == null | e.Record["USLKOD"] == "") UslKod = 0;
-        else UslKod = Convert.ToInt32(e.Record["USLKOD"]);
-
-        if (e.Record["USLKOL"] == null | e.Record["USLKOL"] == "") UslKol = 1;
-        else UslKol = Convert.ToInt32(e.Record["USLKOL"]);
-
-        if (e.Record["USLLGT"] == null | e.Record["USLLGT"] == "") UslLgt = 0;
-        else UslLgt = Convert.ToInt32(e.Record["USLLGT"]);
+        UslKod = 0;
 
         if (e.Record["USLMEM"] == null | e.Record["USLMEM"] == "") UslMem = "";
         else UslMem = Convert.ToString(e.Record["USLMEM"]);
 
-        if (e.Record["USLNAP"] == null | e.Record["USLNAP"] == "") UslNap = "";
-        else UslNap = Convert.ToString(e.Record["USLNAP"]);
+        if (e.Record["USLKTO"] == null | e.Record["USLKTO"] == "") UslKto =  Convert.ToInt32(BuxKod);
+        else UslKto = Convert.ToInt32(e.Record["USLKTO"]);
 
-        UslStx = "00000";
-        UslKto =  Convert.ToInt32(BuxKod);
-
-        UslGde = "";
+        UslDat = Convert.ToString(e.Record["USLDAT"]);
+        if (string.IsNullOrEmpty(UslDat)) UslDat = DateTime.Now.ToString("dd.MM.yyyy");
+        else UslDat = Convert.ToDateTime(e.Record["USLDAT"]).ToString("dd.MM.yyyy");
 
         //------------       чтение уровней дерево
         DataSet ds = new DataSet();
         string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
         SqlConnection con = new SqlConnection(connectionString);
         con.Open();
-        SqlCommand cmd = new SqlCommand("HspAmbUslRepGde", con);
-        // указать тип команды
-        cmd.CommandType = CommandType.StoredProcedure;
-        // передать параметр
-        cmd.Parameters.Add("@USLIDN", SqlDbType.Int, 4).Value = UslIdn;
-        cmd.Parameters.Add("@USLKOD", SqlDbType.Int, 4).Value = 0;
-        cmd.Parameters.Add("@USLKOL", SqlDbType.Int, 4).Value = 0;
-        cmd.Parameters.Add("@USLLGT", SqlDbType.Int, 4).Value = 0;
-        cmd.Parameters.Add("@USLNAP", SqlDbType.VarChar).Value = UslNap;
-        cmd.Parameters.Add("@USLSTX", SqlDbType.VarChar).Value = "00000";
-        cmd.Parameters.Add("@USLKTO", SqlDbType.Int, 4).Value = UslKto;
-        cmd.Parameters.Add("@USLGDE", SqlDbType.VarChar).Value = "";
+        //  SqlCommand cmd = new SqlCommand("HspAmbUslRepGde", con);
+
+        SqlCommand cmd = new SqlCommand("UPDATE AMBUSL SET USLKTO="+UslKto+","+
+                                                          "USLDAT=CONVERT(DATETIME,'" + UslDat + "',104)," +
+                                                          "USLMEM='"+UslMem +"' WHERE USLIDN="+UslIdn, con);
+        //// указать тип команды
+        //cmd.CommandType = CommandType.StoredProcedure;
+        //// передать параметр
+        //cmd.Parameters.Add("@USLIDN", SqlDbType.Int, 4).Value = UslIdn;
+        //cmd.Parameters.Add("@USLKOD", SqlDbType.Int, 4).Value = 0;
+        //cmd.Parameters.Add("@USLKOL", SqlDbType.Int, 4).Value = 0;
+        //cmd.Parameters.Add("@USLLGT", SqlDbType.Int, 4).Value = 0;
+        //cmd.Parameters.Add("@USLNAP", SqlDbType.VarChar).Value = "";
+        //cmd.Parameters.Add("@USLKTO", SqlDbType.Int, 4).Value = UslKto;
+        //cmd.Parameters.Add("@USLSTX", SqlDbType.VarChar).Value = "00000";
+        //cmd.Parameters.Add("@USLGDE", SqlDbType.VarChar).Value = "";
         cmd.Parameters.Add("@USLMEM", SqlDbType.VarChar).Value = UslMem;
         // создание команды
         cmd.ExecuteNonQuery();
@@ -397,160 +385,62 @@
     }
 
 
-    // ============================ чтение заголовка таблицы а оп ==============================================
-    void getDocNum()
-    {
-        int KodOrg = 0;
-        int KodCnt = 0;
+    // ==================================== ШАБЛОНЫ  ============================================
+    //------------------------------------------------------------------------
+    //protected void SablonPrvDig(object sender, EventArgs e) { SablonPrv("Dig"); }
+    //protected void SablonPrvDsp(object sender, EventArgs e) { SablonPrv("Dsp"); }
 
-        string KeyOrg;
-        string KeyCnt;
-        int LenCnt;
-        string SqlCnt;
+    //void SablonPrv(string SblTyp)
+    //{
+    //    string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
+    //    // создание соединение Connection
+    //    SqlConnection con = new SqlConnection(connectionString);
+    //    // создание команды
+    //    SqlCommand cmd = new SqlCommand("HspAmbSblPrv", con);
+    //    // указать тип команды
+    //    cmd.CommandType = CommandType.StoredProcedure;
+    //    // передать параметр
+    //    cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
+    //    cmd.Parameters.Add("@GLVTYP", SqlDbType.VarChar).Value = SblTyp;
+    //    // Выполнить команду
+    //    con.Open();
+    //    cmd.ExecuteNonQuery();
 
+    //    con.Close();
 
-        //------------       чтение уровней дерево
-        DataSet ds = new DataSet();
-        string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
-        SqlConnection con = new SqlConnection(connectionString);
-        con.Open();
-        SqlCommand cmd = new SqlCommand("HspAmbCrdIdn", con);
-        // указать тип команды
-        cmd.CommandType = CommandType.StoredProcedure;
-        // передать параметр
-        cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
+    //    //  getDocNum();
+    //}
 
-        // создание DataAdapter
-        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        // заполняем DataSet из хран.процедуры.
-        da.Fill(ds, "HspAmbCrdIdn");
-
-        con.Close();
-
-        if (ds.Tables[0].Rows.Count > 0)
-        {
-            TextBoxDat.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFDAT"]).ToString("dd.MM.yyyy");
-            TextBoxTim.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["HURMIN"]).ToString("hh:mm");
-            TextBoxKrt.Text = Convert.ToString(ds.Tables[0].Rows[0]["GRFPOL"]);
-            TextBoxFio.Text = Convert.ToString(ds.Tables[0].Rows[0]["GRFPTH"]);
-            TextBoxFrm.Text = Convert.ToString(ds.Tables[0].Rows[0]["RABNAM"]);
-            TextBoxIns.Text = Convert.ToString(ds.Tables[0].Rows[0]["STXNAM"]);
-            TextBoxIIN.Text = Convert.ToString(ds.Tables[0].Rows[0]["GRFIIN"]);
-            TextBoxTel.Text = Convert.ToString(ds.Tables[0].Rows[0]["KLTTEL"]);
-            /* для просмотра IMAGE ============================================================================ */
-            /* для просмотра IMAGE ============================================================================ */
-            string path = @"C:\BASEPICKLT\"+ TextBoxIIN.Text+".jpg";
-            // Проверить входной файл ----------------------------------------------------------------
-            string[] files = Directory.GetFiles(@"C:\BASEPICKLT","*.jpg"); // список всех jpg файлов в директории C:\temp
-            string Per = "No";
-            // вывод первого списка файлов
-            if (files.Length > 0)
-            {
-                for (int i = 0; i < files.Length; i++)
-                {
-                    if (path == files[i])
-                    {
-                        Per = "Yes";
-                        break;
-                    }
-                }
-            }
-            if (Per == "Yes") TxtImg.ImageUrl = "DynamicImage.aspx?path=" + path;
-            else TxtImg.ImageUrl = "~/DoctorFoto/NoFoto.jpg";
-            //     TxtImg.Width = 250;
-            //     TxtImg.Height = 250;
-        }
-    }
-
-    // ============================ чтение заголовка таблицы а оп ==============================================
 </script>
 
 
+<body>
 
+    <form id="form1" runat="server">
         <%-- ============================  для передач значении  ============================================ --%>
-         <asp:HiddenField ID="parMkbNum" runat="server" />
+         <asp:HiddenField ID="HidAmbCrdIdn" runat="server" />
         <asp:HiddenField ID="parBuxFrm" runat="server" />
         <asp:HiddenField ID="parBuxKod" runat="server" />
         <asp:HiddenField ID="parCrdIdn" runat="server" />
-        <asp:HiddenField ID="HidAmbCrdIdn" runat="server" />
+        <asp:HiddenField ID="parGrfIIN" runat="server" />
 
         <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true" />
-          <%-- ============================  верхний блок  ============================================ --%>
-                               
-  <asp:Panel ID="PanelTop" runat="server" BorderStyle="None"  
-             Style="left:3%; position: relative; top: 0px; width: 80%; height: 65px;">
 
-       <table border="1" cellspacing="0" width="100%">
-               <tr>
-                  <td width="12%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Дата</td>
-                  <td width="3%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Время</td>
-                  <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">ИИН</td>
-                  <td width="27%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Фамилия И.О.</td>
-                  <td width="8%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Д.рож</td>
-                  <td width="8%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">№ инв</td>
-                  <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Телефон</td>
-                  <td width="12%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Место работы</td>
-                  <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Страхователь</td>
-              </tr>
-              
-               <tr>
-                  <td width="12%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxDat" BorderStyle="None" Width="80px" Height="20" RunAt="server" BackColor="#FFFFE0" />
-			          <obout:Calendar ID="Calendar3" runat="server"
-			 	                    	StyleFolder="/Styles/Calendar/styles/default" 
-    	          					    DatePickerMode="true"
-    	           					    ShowYearSelector="true"
-                					    YearSelectorType="DropDownList"
-    	           					    TitleText="Выберите год: "
-    	           					    CultureName = "ru-RU"
-                					    TextBoxId = "TextBoxDat"
-                                        OnClientDateChanged="onDateChange"   
-                					    DatePickerImagePath ="/Styles/Calendar/styles/icon2.gif"/>
-                  </td>
-                  <td width="3%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxTim" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td>
-                   <td width="10%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxIIN" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td> 
-                  <td width="27%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxFio" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td>
-                   <td width="8%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxBrt" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td> 
-                  <td width="8%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxKrt" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td> 
-                  <td width="10%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxTel" BorderStyle="None" Width="100%" Height="20" RunAt="server" Style="position: relative; font-weight: 700; font-size: medium;" BackColor="#FFFFE0" />
-                  </td>
-                  <td width="12%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxFrm" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td>
-                  <td width="10%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxIns" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td>
-
-              </tr>
-            
-   </table>
-  <%-- ============================  шапка экрана ============================================ --%>
- <asp:TextBox ID="TextBox1" 
-             Text="СКАНИРОВАННЫЕ МЕДИЦИНСКИЕ ДОКУМЕНТЫ" 
-             BackColor="yellow"  
-             Font-Names="Verdana" 
-             Font-Size="12px" 
-             Font-Bold="True" 
-             ForeColor="Blue" 
-             style="top: -5px; left: 0px; position: relative; width: 100%; text-align:center"
-             runat="server"></asp:TextBox>
-
-        </asp:Panel>     
+            <%-- ============================  шапка экрана ============================================ --%>
+            <asp:TextBox ID="Sapka"
+                Text="УСЛУГИ"
+                BackColor="yellow"
+                Font-Names="Verdana"
+                Font-Size="12px"
+                Font-Bold="True"
+                ForeColor="Blue"
+                Style="top: 0px; left: 0px; position: relative; width: 100%; text-align: center"
+                runat="server"></asp:TextBox>
 
         <%-- ============================  средний блок  ============================================ --%>
-      <asp:Panel ID="PanelMid" runat="server" BorderStyle="Double" 
-             Style="left: 3%; position: relative; top: 0px; width: 80%; height: 550px;">
+        <asp:Panel ID="PanelMid" runat="server" BorderStyle="Double" ScrollBars="Vertical"
+            Style="left: 0%; position: relative; top: 0px; width: 100%; height: 380px;">
+
 
             <%-- ============================  шапка экрана ============================================ --%>
             <obout:Grid ID="GridUsl" runat="server"
@@ -570,82 +460,136 @@
                 AllowPageSizeSelection="false"
                 EnableTypeValidation="false"
                 ShowColumnsFooter="true">
+<%--                <ClientSideEvents OnBeforeClientAdd="GridUsl_ClientAdd" 
+                                  ExposeSender="true" />--%>
                 <Columns>
                     <obout:Column ID="Column00" DataField="USLIDN" HeaderText="Идн" Visible="false" Width="0%" />
                     <obout:Column ID="Column01" DataField="USLAMB" HeaderText="Амб" Visible="false" Width="0%" />
-                    <obout:Column ID="Column07" DataField="USLMEM" HeaderText="НАИМЕНОВАНИЕ УСЛУГИ" Width="82%" Align="left" />
+                    <obout:Column ID="Column03" DataField="USLDAT" HeaderText="ДАТА" DataFormatString="{0:dd.MM.yyyy}" ApplyFormatInEditMode="true" Width="12%" >
+                        <TemplateSettings EditTemplateId="tplDatePicker" />
+                    </obout:Column>
+                    <obout:Column ID="Column07" DataField="USLMEM" HeaderText="НАИМЕНОВАНИЕ УСЛУГИ" Width="55%" Align="left" />
+                    <obout:Column ID="Column14" DataField="USLKTO" HeaderText="ОТВЕТСТВЕННЫЙ" Width="18%">
+                        <TemplateSettings TemplateId="TemplateKtoNam" EditTemplateId="TemplateEditKtoNam" />
+                    </obout:Column>
 
-                    <obout:Column HeaderText="ИЗМЕН УДАЛЕНИЕ" Width="8%" AllowEdit="true" AllowDelete="true" runat="server">
+                    <obout:Column HeaderText="ИЗМЕН УДАЛЕНИЕ" Width="10%" AllowEdit="true" AllowDelete="true" runat="server">
                         <TemplateSettings TemplateId="editBtnTemplate" EditTemplateId="updateBtnTemplate" />
                     </obout:Column>
-                    
-                    <obout:Column ID="Column15" DataField="USLFLG" HeaderText="ОБРАЗ" Width="10%" ReadOnly="true">
-                        <TemplateSettings TemplateId="TemplatePic" />
+
+                    <obout:Column ID="Column15" DataField="IMGFLG" HeaderText="ОБРАЗ" Width="5%" ReadOnly="true">
+                        <TemplateSettings TemplateId="TemplateImg" />
                     </obout:Column>
                 </Columns>
 
-                <TemplateSettings NewRecord_TemplateId="addTemplate" NewRecord_EditTemplateId="saveTemplate" />
-                <Templates>
+<%--                <TemplateSettings NewRecord_TemplateId="addTemplate" NewRecord_EditTemplateId="saveTemplate" />--%>
+
+               <Templates>
                     <obout:GridTemplate runat="server" ID="editBtnTemplate">
                         <Template>
-                            <input type="button" id="btnEdit" class="tdTextSmall" value="Изм." onclick="GridUsl.edit_record(this)" />
-                            <input type="button" id="btnDelete" class="tdTextSmall" value="Удл." onclick="GridUsl.delete_record(this)" />
+                            <input type="button" id="btnEdit" class="tdTextSmall" value="Изм" onclick="GridUsl.edit_record(this)" />
+                            <input type="button" id="btnDelete" class="tdTextSmall" value="Удл" onclick="GridUsl.delete_record(this)" />
                         </Template>
                     </obout:GridTemplate>
                     <obout:GridTemplate runat="server" ID="updateBtnTemplate">
                         <Template>
-                            <input type="button" id="btnUpdate" value="Сохр." class="tdTextSmall" onclick="GridUsl.update_record(this)" />
-                            <input type="button" id="btnCancel" value="Отм." class="tdTextSmall" onclick="GridUsl.cancel_edit(this)" />
-                        </Template>
-                    </obout:GridTemplate>
-                    <obout:GridTemplate runat="server" ID="addTemplate">
-                        <Template>
-                            <input type="button" id="btnAddNew" class="tdTextSmall" value="Добавить" onclick="GridUsl.addRecord()" />
-                        </Template>
-                    </obout:GridTemplate>
-                    <obout:GridTemplate runat="server" ID="saveTemplate">
-                        <Template>
-                            <input type="button" id="btnSave" value="Сохр." class="tdTextSmall" onclick="GridUsl.insertRecord()" />
-                            <input type="button" id="btnCancel" value="Отм." class="tdTextSmall" onclick="GridUsl.cancelNewRecord()" />
+                            <input type="button" id="btnUpdate" value="Сохр" class="tdTextSmall" onclick="GridUsl.update_record(this)" />
+                            <input type="button" id="btnCancel" value="Отмена" class="tdTextSmall" onclick="GridUsl.cancel_edit(this)" />
                         </Template>
                     </obout:GridTemplate>
 
-                    <obout:GridTemplate runat="server" ID="TemplatePic">
+                    <obout:GridTemplate runat="server" ID="tplDatePicker" ControlID="txtOrderDate" ControlPropertyName="value">
                         <Template>
-                            <input type="button" id="btnRsx" class="tdTextSmall" value="Образ" onclick="MedDocPic(<%# Container.PageRecordIndex %>)" />
+                            <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
+                                <tr>
+                                    <td valign="middle">
+                                        <obout:OboutTextBox runat="server" ID="txtOrderDate" Width="100%"
+                                            FolderStyle="~/Styles/Grid/premiere_blue/interface/OboutTextBox" />
+                                    </td>
+                                    <td valign="bottom" width="30px">
+                                        <obout:Calendar ID="calBeg" runat="server"
+                                            StyleFolder="~/Styles/Calendar/styles/default"
+                                            DatePickerMode="true"
+                                            DateMin="01.01.2000"
+                                            ShowYearSelector="true"
+                                            YearSelectorType="DropDownList"
+                                            TitleText="Выберите год: "
+                                            TextBoxId="GridUsl$tplDatePicker$ctl00$txtOrderDate"
+                                            CultureName="ru-RU"
+                                            DatePickerImagePath="~/Styles/Calendar/styles/icon2.gif" />
+                                    </td>
+                                </tr>
+                            </table>
                         </Template>
                     </obout:GridTemplate>
+
+                    <obout:GridTemplate runat="server" ID="TemplateImg">
+                        <Template>
+                            <input type="button" id="btnImg" class="tdTextSmall" value="Образ" onclick="WebCam(<%# Container.PageRecordIndex %>)" />
+                        </Template>
+                    </obout:GridTemplate>
+                   			
+
+
+                    <obout:GridTemplate runat="server" ID="TemplateKtoNam">
+                        <Template>
+                            <%# Container.DataItem["FI"]%>
+                        </Template>
+                    </obout:GridTemplate>
+
+                    <obout:GridTemplate runat="server" ID="TemplateEditKtoNam" ControlID="ddlKtoNam" ControlPropertyName="value">
+                        <Template>
+                            <asp:DropDownList ID="ddlKtoNam" runat="server" AppendDataBoundItems="True" Width="99%" DataSourceID="sdsKto" CssClass="ob_gEC" DataTextField="FI" DataValueField="BuxKod">
+                                <asp:ListItem Text="Выберите ..." Value="" Selected="True" />
+                            </asp:DropDownList>
+                        </Template>
+                    </obout:GridTemplate>
+
+                    <obout:GridTemplate runat="server" ControlID="ddlGde" ID="TemplateEditGde" ControlPropertyName="value">
+                        <Template>
+                           <obout:ComboBox runat="server" ID="ddlGde" Width="100%" Height="150" MenuWidth="200"
+                                DataSourceID="sdsGde" DataTextField="GdePrmNam" DataValueField="GdePrmNam">
+                            </obout:ComboBox>
+                        </Template>
+                    </obout:GridTemplate>
+
 
                 </Templates>
             </obout:Grid>
 
         </asp:Panel>
+        <%-- ============================  нижний блок   ExposeSender="true" ============================================ --%>
+          <asp:Panel ID="PanelBot" runat="server" BorderStyle="Double" 
+                     Style="left: 0%; position: relative; top: 0px; width: 100%; height: 30px;">
+                <center>
+                    <asp:Button ID="RefButton" runat="server" CommandName="Add" Text="Обновить" OnClick="RebindGrid" />
+                </center>
+          </asp:Panel> 
 
-        <div style="left: 84%; position: relative; top: -620px; width: 210px; height: 158px; border:double">
-             <asp:Image ID="TxtImg" runat="server" ImageUrl="~/DoctorFoto/NoFoto.jpg"  
-                        style="top:0px; left: 0px; width: 100%; height: 100%; margin-left: 0px" /> 
-        </div> 
-
-             <%--  style=" background-image: url(/Icon/webcam.png);" --%>
-               
-       <!--  -----------------------------------------------------------------------------------------------------------------------  -->
+        <!--  -----------------------------------------------------------------------------------------------------------------------  -->
         <%-- ============================  шапка экрана ============================================ --%>
+        <%-- ============================  для отображение графика врачей на один день в виде окна geryon============================================ --%>
+    </form>
    <%-- ============================  для отображение графика врачей на один день в виде окна geryon============================================ --%>
        <owd:Window ID="AnlWindow" runat="server"  Url="DocAppAmbAnlLstOne.aspx" IsModal="true" ShowCloseButton="true" Status=""
-             Left="300" Top="100" Height="400" Width="600" Visible="true" VisibleOnLoad="false"
+             Left="200" Top="10" Height="350" Width="700" Visible="true" VisibleOnLoad="false"
              StyleFolder="~/Styles/Window/wdstyles/blue"
              Title="График приема врача">
        </owd:Window>
     <%-- ============================  STYLES ============================================ --%>
 
+    <asp:SqlDataSource runat="server" ID="sdsKto" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
     <asp:SqlDataSource runat="server" ID="sdsUsl" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
-    <asp:SqlDataSource runat="server" ID="sdsGrpUsl" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
+    <asp:SqlDataSource runat="server" ID="sdsStx" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
+    <asp:SqlDataSource runat="server" ID="sdsGde" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
               <%--   ------------------------------------- для удаления отступов в GRID --------------------------------%>
     <style type="text/css">
-       /* ------------------------------------- для разлиновки GRID --------------------------------*/
-         .ob_gCS {display: block !important;}
+        /* ------------------------------------- для разлиновки GRID --------------------------------*/
+        .ob_gCS {
+            display: block !important;
+        }
 
-         div.ob_gCc2, div.ob_gCc2C, div.ob_gCc2R {
+        div.ob_gCc2, div.ob_gCc2C, div.ob_gCc2R {
             padding-left: 3px !important;
         }
 
@@ -655,7 +599,11 @@
             font-family: Tahoma;
             font-size: 12px;
         }
-
+        /*------------------------- для OBOUTTEXTBOX  --------------------------------*/
+        .ob_iTIE {
+            font-size: larger;
+            font: bold 12px Tahoma !important; /* для увеличение корректируемого текста*/
+        }
         /*------------------------- для укрупнения шрифта COMBOBOX  --------------------------------*/
 
         .ob_iCboICBC li {
@@ -695,6 +643,7 @@
             width: 45px;
         }
     </style>
+</body>
+</html>
 
-    </asp:Content>
 

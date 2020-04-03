@@ -637,14 +637,14 @@
               //      string ssqlconnectionstring = "Data Source=SAYYED;Initial Catalog=SyncDB;Integrated Security=True"; 
               string ssqlconnectionstring = ConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
 
-            //              ----------------------------------------------------------  очистить таблицу -----------------------
-            //execute a query to erase any previous data from our destination table 
-            string sclearsql = "DELETE FROM TAB_TABEL WHERE FRM='" + BuxFrm + "'";
-            SqlConnection sqlconn = new SqlConnection(ssqlconnectionstring);
-            SqlCommand sqlcmd = new SqlCommand(sclearsql, sqlconn);
-            sqlconn.Open();
-            sqlcmd.ExecuteNonQuery();
-            //        sqlconn.Close();
+              //              ----------------------------------------------------------  очистить таблицу -----------------------
+              //execute a query to erase any previous data from our destination table 
+              string sclearsql = "DELETE FROM TAB_TABEL WHERE FRM='" + BuxFrm + "'";
+              SqlConnection sqlconn = new SqlConnection(ssqlconnectionstring);
+              SqlCommand sqlcmd = new SqlCommand(sclearsql, sqlconn);
+              sqlconn.Open();
+              sqlcmd.ExecuteNonQuery();
+              //        sqlconn.Close();
 
               //              ----------------------------------------------------------  загрузить таблицу -----------------------
               //series of commands to bulk copy data from the excel file into our sql table 
@@ -664,7 +664,7 @@
               //              ----------------------------------------------------------  очистить таблицу -----------------------
               //execute a query to erase any previous data from our destination table 
               //string sclearsql = "DELETE FROM TAB_RPN WHERE FRM='" + BuxFrm + "'";
-             // SqlConnection sqlconn = new SqlConnection(ssqlconnectionstring);
+              // SqlConnection sqlconn = new SqlConnection(ssqlconnectionstring);
               //SqlCommand sqlcmd = new SqlCommand(sclearsql, sqlconn);
               //sqlconn.Open();
               //sqlcmd.ExecuteNonQuery();

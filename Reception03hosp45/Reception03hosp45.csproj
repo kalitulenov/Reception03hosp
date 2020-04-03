@@ -260,6 +260,7 @@
     <Content Include="Priem\DocAppAmbDigNoz.aspx" />
     <Content Include="Delo\EodChkRed.aspx" />
     <Content Include="Priem\DocAppAmbOsmMkb.aspx" />
+    <Content Include="Priem\DocAppAnl.aspx" />
     <Content Include="Referent\RefGlv003SelFio.aspx" />
     <Content Include="Priem\DocAppAmbPrsGosSel.aspx" />
     <Content Include="Priem\DocAppAmbUslSel.aspx" />
@@ -459,7 +460,6 @@
     <Content Include="AIS\DocAisScrLstDocOne.aspx" />
     <Content Include="AIS\DocAisScrLstDocOneScr.aspx" />
     <Content Include="Priem\DocAppAmbGos.aspx" />
-    <Content Include="Priem\DocAppAnl.aspx" />
     <Content Include="Priem\DocAppLab.aspx" />
     <Content Include="Priem\DocAppFnk.aspx" />
     <Content Include="Priem\DocAppFnkOneAspose.aspx" />

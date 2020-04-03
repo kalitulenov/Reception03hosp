@@ -809,9 +809,9 @@
                      <asp:Button ID="ButtonNaz" runat="server" Width="7%" CommandName="Push" Text="Назначения" OnClientClick="NazButton_Click(); return false"/>
                      <asp:Button ID="ButtonUkl" runat="server" Width="7%" CommandName="Push" Text="В проц.каб." OnClientClick="UklButton_Click(); return false"/>
                      <asp:Button ID="ButtonBol" runat="server" Width="7%" CommandName="Push" Text="Бол.лист" OnClientClick="BolButton_Click(); return false"/>
-                     <asp:Button ID="Button095" runat="server" Width="6%" CommandName="Push" Text="095/у" OnClientClick="S95Button_Click(); return false"/>
+                     <asp:Button ID="Button095" runat="server" Width="4%" CommandName="Push" Text="095/у" OnClientClick="S95Button_Click(); return false"/>
                      <asp:Button ID="ButtonSpr" runat="server" Width="6%" CommandName="Push" Text="Справки" OnClientClick="StfButton_Click(); return false"/>
-                     <asp:Button ID="ButtonLab" runat="server" Width="7%" CommandName="Push" Text="Лаб.анал." OnClientClick="LabButton_Click(); return false"/>
+                     <asp:Button ID="ButtonLab" runat="server" Width="9%" CommandName="Push" Text="Лаб.анал / Скан" OnClientClick="LabButton_Click(); return false"/>
                      <asp:Button ID="ButtonUzi" runat="server" Width="7%" CommandName="Push" Text="Функ.диагн." OnClientClick="UziXryButton_Click(); return false"/>
                      <asp:Button ID="ButtonDigUtc" runat="server" Width="8%" CommandName="Push" Text="Все диагнозы" OnClientClick="DigUtcButton_Click(); return false"/>
                      <asp:Button ID="ButtonScr" runat="server" Width="6%" CommandName="Push" Text="Скрининг" OnClientClick="ScrButton_Click(); return false"/>

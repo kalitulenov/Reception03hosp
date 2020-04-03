@@ -290,50 +290,6 @@
 
     void InsertRecord(object sender, GridRecordEventArgs e)
     {
-        //if (e.Record["USLKOD"] == null | e.Record["USLKOD"] == "") UslKod = 0;
-        //else UslKod = Convert.ToInt32(e.Record["USLKOD"]);
-
-        //if (e.Record["USLKOL"] == null | e.Record["USLKOL"] == "") UslKol = 1;
-        //else UslKol = Convert.ToInt32(e.Record["USLKOL"]);
-
-        //if (e.Record["USLLGT"] == null | e.Record["USLLGT"] == "") UslLgt = 0;
-        //else UslLgt = Convert.ToInt32(e.Record["USLLGT"]);
-
-        //if (e.Record["STXKEY"] == null | e.Record["STXKEY"] == "") UslStx = "00000";
-        //else UslStx = Convert.ToString(e.Record["STXKEY"]);
-
-        //if (e.Record["USLKTO"] == null | e.Record["USLKTO"] == "") UslKto =  Convert.ToInt32(BuxKod);
-        //else UslKto = Convert.ToInt32(e.Record["USLKTO"]);
-
-        //if (e.Record["USLPRMGDE"] == null | e.Record["USLPRMGDE"] == "") UslGde = "";
-        //else UslGde = Convert.ToString(e.Record["USLPRMGDE"]);
-
-        //if (e.Record["USLNAP"] == null | e.Record["USLNAP"] == "") UslNap = "";
-        //else UslNap = Convert.ToString(e.Record["USLNAP"]);
-
-        ////------------       чтение уровней дерево
-        //DataSet ds = new DataSet();
-        //string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
-        //SqlConnection con = new SqlConnection(connectionString);
-        //con.Open();
-        //SqlCommand cmd = new SqlCommand("HspAmbUslAddGde", con);
-        //// указать тип команды
-        //cmd.CommandType = CommandType.StoredProcedure;
-        //// передать параметр
-        //cmd.Parameters.Add("@USLAMB", SqlDbType.Int, 4).Value = AmbCrdIdn;
-        //cmd.Parameters.Add("@USLKOD", SqlDbType.Int, 4).Value = UslKod;
-        //cmd.Parameters.Add("@USLKOL", SqlDbType.Int, 4).Value = UslKol;
-        //cmd.Parameters.Add("@USLLGT", SqlDbType.Int, 4).Value = UslLgt;
-        //cmd.Parameters.Add("@USLNAP", SqlDbType.VarChar).Value = UslNap;
-        //cmd.Parameters.Add("@USLSTX", SqlDbType.VarChar).Value = UslStx;
-        //cmd.Parameters.Add("@USLKTO", SqlDbType.Int, 4).Value = UslKto;
-        //cmd.Parameters.Add("@USLGDE", SqlDbType.VarChar).Value = UslGde;
-        //cmd.Parameters.Add("@USLMEM", SqlDbType.VarChar).Value = "";
-        //// создание команды
-        //cmd.ExecuteNonQuery();
-        //con.Close();
-
-        //getGrid();
     }
 
     void UpdateRecord(object sender, GridRecordEventArgs e)
