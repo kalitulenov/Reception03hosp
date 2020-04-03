@@ -124,7 +124,6 @@
 
          function PrsButton_Click() {
              var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
-   //          alert("AmbCrdIdn=" + AmbCrdIdn);
 
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
@@ -136,17 +135,13 @@
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLab').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUzi').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonSpr').style.fontWeight = '';
- //            document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonArxAmb').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonScr').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDigUtc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonBol').style.fontWeight = '';
- //            document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDsp').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_Button095').style.fontWeight = '';
 
              var BuxFrm = document.getElementById('MainContent_parBuxFrm').value;
-            // if (BuxFrm == "1")
              mySpl.loadPage("BottomContent", "DocAppAmbPrsGos.aspx?AmbCrdIdn=" + AmbCrdIdn);
-           //  else mySpl.loadPage("BottomContent", "DocAppAmbPrs.aspx?AmbCrdIdn=" + AmbCrdIdn);
          }
 
          function NazButton_Click() {

@@ -1,0 +1,806 @@
+﻿/*iframe:layer under window layer*/
+.grandgrayIframeLayer
+{
+	border:0px;
+	background-color:white;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
+}
+/*div:Layer contains window*/
+.grandgrayWindowLayer
+{
+	display:none;
+}
+/*Master Table contains window parts*/
+.grandgrayMasterTable
+{
+	width:100%;
+	height:100%;
+	border-collapse:collapse;
+	margin:0;
+}
+/*td*/
+.grandgrayHeaderContainer
+{
+	height:27px;
+	width:100%;
+	vertical-align:top;
+	padding:0px;
+}
+/*td*/
+.grandgrayToolbarContainer
+{
+	height:23px;
+	width:100%;
+	vertical-align:top;
+	padding:0px;
+}
+/*td*/
+.grandgrayContentContainer
+{
+	width:100%;
+	padding:0px;
+	vertical-align:top;
+}
+/*td*/
+.grandgrayFooterContainer
+{
+	height:26px;
+	width:100%;
+	vertical-align:top;
+	padding:0px;
+
+}
+
+.grandgrayBottomLineContainer
+{
+	height:1px;
+	width:100%;
+	vertical-align:bottom;
+	padding:0px;
+}
+/*Header-----------------------------------------------------------------------------------------------*/
+/*td*/
+.grandgrayHeaderTable
+{
+	width:100%;
+	border-collapse:collapse;
+	margin:0;
+}
+
+/*tr*/
+.grandgrayHeaderTop
+{
+	display:none;
+}
+
+/*tr*/
+.grandgrayHeaderBottom
+{
+	display:none;
+}
+
+
+
+/*td*/
+.grandgrayHeaderTopLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayHeaderTopCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayHeaderTopRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+
+}
+/*td*/
+.grandgrayHeaderMiddleLeft
+{
+	padding:0px;
+	width:7px;
+	height:27px;
+	background-image:url(HeaderMiddleLeft.gif);
+}
+/*td*/
+.grandgrayHeaderMiddleCenter
+{
+	padding:0px;
+	height:27px;	
+	background-image:url(HeaderMiddleCenter.gif);
+	background-repeat:repeat;
+	padding-right:2px;
+}
+/*td*/
+.grandgrayHeaderMiddleRight
+{
+	padding:0px;
+	width:7px;
+	height:27px;
+	background-image:url(HeaderMiddleRight.gif);
+}
+/*td*/
+.grandgrayHeaderBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayHeaderBottomCenter
+{
+	height:0px;	
+	padding:0px;
+}
+/*td*/
+.grandgrayHeaderBottomRight
+{
+	height:0px;
+	width:0px;	
+	padding:0px;
+}
+/*Small table inside header*/
+.grandgrayHeaderInnerTable
+{
+	width:100%;
+	border-collapse:collapse;
+	margin:0;	
+}
+/*td*/
+.grandgrayHeaderLogoContainer
+{
+	width:1px;
+	padding:0px;
+	padding-left:5px;
+}
+/*img*/
+.grandgrayHeaderLogo
+{
+	width:16px;
+	height:16px;
+}
+/*td*/
+.grandgrayHeaderTitle
+{
+	padding:0px;
+	padding-left:0px;
+	cursor:default;
+}
+/*div*/
+.grandgrayTitlePanel
+{
+	font-family:Verdana;
+	font-size:11px;
+	color:#2C3856;
+	overflow:hidden;
+	white-space:nowrap;
+	padding-left:5px;		
+}
+/*div*/
+.grandgrayTitlePanelDisable
+{
+	font-weight:bold;
+	font-family:Tahoma;
+	font-size:11px;
+	color:White;
+	overflow:hidden;
+	white-space:nowrap;		
+}
+
+
+/*Contain built-in buttons td*/
+/*td*/
+.grandgrayHeaderBuiltinButtonsContainer
+{
+	width:1px;
+	padding:0px;
+}
+
+
+/*Buttons table*/
+.grandgrayWindowBuiltinButtonsTable
+{
+	width:auto;
+	border-collapse:collapse;
+	margin:0;	
+}
+
+
+/*Individual Button Container, it is the td cover button*/
+.grandgrayButtonContainer
+{
+	padding:1px;
+}
+/*Minimize Button*/
+/*img*/
+.grandgrayButtonMinimizeOver
+{
+	width:10px;
+	height:10px;
+	background:yellow;
+}
+/*img*/
+.grandgrayButtonMinimizeDown
+{
+	width:10px;
+	height:10px;
+	background:red;
+}
+
+
+/*img*/
+.grandgrayButtonMinimizeOut
+{
+	width:10px;
+	height:10px;
+	background:blue;
+}
+
+
+
+
+/*Maximize Button*/
+/*img*/
+.grandgrayButtonMaximizeOver
+{
+	width:26px;
+	height:14px;
+	background:url(MaximizeOut.gif);
+	cursor:pointer;	
+}
+/*img*/
+.grandgrayButtonMaximizeDown
+{
+	width:26px;
+	height:14px;
+	background:url(MaximizeOut.gif);	
+}
+/*img*/
+.grandgrayButtonMaximizeOut
+{
+	width:26px;
+	height:14px;
+	background:url(MaximizeOut.gif);	
+}
+/*RestoreDown Button*/
+/*img*/
+.grandgrayButtonRestoreDownOver
+{
+	width:26px;
+	height:14px;
+	background:url(MaximizeOut.gif);
+	cursor:pointer;	
+}
+/*img*/
+.grandgrayButtonRestoreDownDown
+{
+	width:26px;
+	height:14px;
+	background:url(MaximizeOut.gif);	
+}
+/*img*/
+.grandgrayButtonRestoreDownOut
+{
+	width:26px;
+	height:14px;
+	background:url(MaximizeOut.gif);	
+}
+
+
+/*Close Button*/
+/*img*/
+.grandgrayButtonCloseOver
+{
+	width:26px;
+	height:14px;
+	background:url(CloseOut.gif) no-repeat 0 0;
+	cursor:pointer;	
+}
+/*img*/
+.grandgrayButtonCloseDown
+{
+	width:26px;
+	height:14px;
+	background:url(CloseOut.gif) no-repeat 0 0;
+}
+
+/*img*/
+.grandgrayButtonCloseOut
+{
+	width:26px;
+	height:14px;
+	background:url(CloseOut.gif) no-repeat 0 0;
+}
+
+/*Toolbar-----------------------------------------------------------------------------------------------*/
+.grandgrayToolbarTable
+{
+	width:100%;
+	border-collapse:collapse;
+	margin:0;
+		
+}
+
+/*tr*/
+.grandgrayToolbarTop
+{
+	display:none;
+}
+
+/*tr*/
+.grandgrayToolbarBottom
+{
+	display:none;
+}
+
+
+/*td*/
+.grandgrayToolbarTopLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayToolbarTopCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayToolbarTopRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayToolbarMiddleLeft
+{
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayToolbarMiddleCenter
+{
+	padding:0px;
+}
+/*td*/
+.grandgrayToolbarMiddleRight
+{
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayToolbarBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayToolbarBottomCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayToolbarBottomRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*div*/
+.grandgrayToolbarPanel
+{
+	background-color:Aqua;
+}
+
+
+/*Content-----------------------------------------------------------------------------------------------*/
+.grandgrayContentTable
+{
+	width:100%;
+	height:100%;
+	border-collapse:collapse;
+	margin:0;
+	
+}
+
+/*tr*/
+.grandgrayContentTop
+{
+	display:none;
+}
+
+/*tr*/
+.grandgrayContentBottom
+{
+	display:none;
+}
+
+
+
+/*td*/
+.grandgrayContentTopLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayContentTopCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayContentTopRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayContentMiddleLeft
+{
+	padding:0px;
+	width:1px;
+	background-image:url(Border.gif);
+	background-repeat:repeat;
+}
+/*td*/
+.grandgrayContentMiddleCenter
+{
+	padding:0px;
+	vertical-align:top;
+	
+}
+/*td*/
+.grandgrayContentMiddleRight
+{
+	padding:0px;
+	width:1px;
+	background-image:url(Border.gif);
+	background-repeat:repeat;
+	
+}
+/*td*/
+.grandgrayContentBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+	font-size:1px;
+}
+/*td*/
+.grandgrayContentBottomCenter
+{
+	height:0px;
+	padding:0px;
+	font-size:1px;
+}
+/*td*/
+.grandgrayContentBottomRight
+{
+	height:0%;
+	width:0px;
+	padding:0px;
+	font-size:1px;
+}
+
+/*IFRAME or DIV*/
+.grandgrayContentPanel
+{
+	border:0px;
+	background-color:white;
+	overflow:hidden;
+	padding:0px;	
+}
+
+
+/*Footer-----------------------------------------------------------------------------------------------*/
+.grandgrayFooterTable
+{
+	border-collapse:collapse;
+	margin:0;	
+	width:100%;
+}
+
+/*tr*/
+.grandgrayFooterTop
+{
+	display:none;
+}
+
+/*tr*/
+.grandgrayFooterBottom
+{
+	display:none;	
+}
+
+
+/*td*/
+.grandgrayFooterTopLeft 
+{
+	padding:0px;
+}
+/*td*/
+.grandgrayFooterTopCenter
+{
+	padding:0px;
+}
+/*td*/
+.grandgrayFooterTopRight
+{
+	padding:0px;
+}
+/*td*/
+.grandgrayFooterMiddleLeft
+{
+	width:7px;
+	padding:0px;
+	height:26px;
+	background-image:url(FooterMiddleLeft.gif);
+	background-repeat:no-repeat;
+}
+/*td*/
+.grandgrayFooterMiddleCenter
+{
+	height:26px;
+	padding:0px;
+	background-image:url(FooterMiddleCenter.gif);
+	background-repeat:repeat;
+		
+}
+/*td*/
+.grandgrayFooterMiddleRight
+{
+	width:26px;
+	padding:0px;
+	background-image:url(FooterMiddleRight.gif);
+	background-repeat:repeat;
+	height:26px;
+}
+/*td*/
+.grandgrayFooterBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+
+}
+/*td*/
+.grandgrayFooterBottomCenter
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.grandgrayFooterBottomRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+	
+}
+/*div*/
+.grandgrayFooterPanel
+{
+	cursor:default;
+	font-family:Verdana;
+	font-size:10px;
+	color:#2C3856;
+	padding-left:5px;
+	overflow:hidden;
+	height:13px;
+	white-space:nowrap;
+}
+/*BottomLine-----------------------------------------------------------------------------------------------*/
+.grandgrayBottomLineTable
+{
+	border-collapse:collapse;
+	margin:0;	
+	width:100%;
+}
+.grandgrayBottomLineLeft
+{
+	width:1px;
+	height:0px;
+	padding:0px;
+}
+.grandgrayBottomLineCenter
+{
+	height:0px;
+	padding:0px;
+}
+.grandgrayBottomLineRight
+{
+	width:1px;
+	height:0px;
+	padding:0px;
+}
+
+
+
+/*DragPanel-----------------------------------------------------------------------------------------------*/
+
+.grandgrayDragPanel
+{
+	z-index:999999999;
+	background-color:Gray;
+	filter:alpha(opacity=25);
+	-moz-opacity:0.25;
+	opacity:0.25;	
+}
+
+/*Filter-----------------------------------------------------------------------------------------------*/
+
+.grandgrayFilterIframeLayer
+{
+	border:0px;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;	
+}
+.grandgrayFilterDivLayer
+{
+	background-color:gray;
+	filter:alpha(opacity=15);
+	-moz-opacity:0.15;
+	opacity:0.15;	
+}
+/*Window Resize-----------------------------------------------------------------------------------------------*/
+
+
+.grandgrayResizeHandle
+{
+	position:absolute;
+	background-color:white;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
+	font-size:1px;
+	height:4px;
+	width:4px;	
+}
+
+/*Handle cursor of mouseover*/
+.grandgrayCursorResizeLeft
+{	
+	cursor:e-resize;
+}
+.grandgrayCursorResizeTop
+{	
+	cursor:n-resize;
+}
+.grandgrayCursorResizeRight
+{
+	cursor:w-resize;
+}
+
+.grandgrayCursorResizeBottom
+{
+	cursor:s-resize;
+}
+
+.grandgrayCursorResizeTopLeft
+{
+	cursor:nw-resize;	
+}
+
+.grandgrayCursorResizeTopRight
+{
+	cursor:ne-resize;
+}
+
+.grandgrayCursorResizeBottomRight
+{
+	cursor:se-resize;
+}
+
+.grandgrayCursorResizeBottomLeft
+{
+	cursor:sw-resize;
+}
+/*The size of diagonal resize at each conner*/
+.grandgrayResizeConnerSize
+{	
+	width:20px;
+	height:20px;
+	background-color:transparent;			
+}
+
+.grandgrayResizePanel
+{
+	z-index:99999;
+	background-color:Gray;
+	filter:alpha(opacity=25);
+	-moz-opacity:0.25;
+	opacity:0.25;	
+}
+/*--------------------------------------------------------------*/
+
+.grandgrayAlertContentTable
+{
+	width:100%;
+	height:100%;
+}
+
+.grandgrayAlertLogoContainer
+{
+	padding:0px;
+	width:30px;
+	vertical-align:top;
+	padding-top:10px;
+	padding-left:15px;
+}
+.grandgrayAlertMessageContainer
+{
+	padding:0px;
+	font-family:Verdana;
+	font-size:8pt;
+	vertical-align:top;
+	padding-top:15px;
+	padding-left:10px;
+}
+.grandgrayAlertOKContainer
+{
+	padding:0px;
+	text-align:center;
+	vertical-align:bottom;
+	padding-bottom:10px;
+}
+.grandgraywarningLogo
+{
+	padding:0px;
+	width:32px;
+	height:32px;
+	background-image:url(windows-warning.png);
+}
+.grandgrayinfoLogo
+{
+	padding:0px;
+	width:32px;
+	height:32px;
+	background-image:url(windows-info.png);
+}
+.grandgrayerrorLogo
+{
+	padding:0px;
+	width:32px;
+	height:32px;
+	background-image:url(windows-error.png);
+}
+
+
+.grandgrayAlertOKButton
+{
+	width:60px;
+}
+
+
+/*use to detect finsihed loading, do not change*/
+.grandgrayEnd
+{
+	background-color:Transparent;
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:9px;
+	width:9px;
+	font-size:1px;
+}
+

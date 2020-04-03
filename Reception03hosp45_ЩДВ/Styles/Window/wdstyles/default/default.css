@@ -1,0 +1,818 @@
+﻿/*iframe:layer under window layer*/
+.defaultIframeLayer
+{
+	border:0px;
+	background-color:white;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
+}
+/*div:Layer contains window*/
+.defaultWindowLayer
+{
+	display:none;
+}
+/*Master Table contains window parts*/
+.defaultMasterTable
+{
+	width:100%;
+	height:100%;
+	border-collapse:collapse;
+	margin:0;
+}
+/*td*/
+.defaultHeaderContainer
+{
+	height:22px;
+	width:100%;
+	vertical-align:top;
+	padding:0px;
+}
+/*td*/
+.defaultToolbarContainer
+{
+	height:18px;
+	width:100%;
+	vertical-align:top;
+	padding:0px;
+}
+/*td*/
+.defaultContentContainer
+{
+	width:100%;
+	padding:0px;
+	vertical-align:top;
+}
+/*td*/
+.defaultFooterContainer
+{
+	height:22px;
+	width:100%;
+	vertical-align:top;
+	padding:0px;
+
+}
+
+.defaultBottomLineContainer
+{
+	height:4px;
+	width:100%;
+	vertical-align:bottom;
+	padding:0px;
+}
+/*Header-----------------------------------------------------------------------------------------------*/
+/*td*/
+.defaultHeaderTable
+{
+	width:100%;
+	border-collapse:collapse;
+	margin:0;
+}
+
+/*tr*/
+.defaultHeaderTop
+{
+}
+
+/*tr*/
+.defaultHeaderBottom
+{
+	display:none;
+}
+
+
+
+/*td*/
+.defaultHeaderTopLeft
+{
+	height:4px;
+	width:4px;
+	padding:0px;
+	background-image:url(HeaderTopLeft.gif);
+}
+/*td*/
+.defaultHeaderTopCenter
+{
+	height:4px;
+	padding:0px;
+	background-image:url(HeaderTopCenter.gif);	
+	background-repeat:repeat;
+}
+/*td*/
+.defaultHeaderTopRight
+{
+	height:4px;
+	width:4px;
+	padding:0px;
+	background-image:url(HeaderTopRight.gif);	
+
+}
+/*td*/
+.defaultHeaderMiddleLeft
+{
+	padding:0px;
+	width:4px;
+	height:18px;
+	background-image:url(HeaderMiddleLeft.gif);
+}
+/*td*/
+.defaultHeaderMiddleCenter
+{
+	padding:0px;
+	height:18px;	
+	background-image:url(HeaderMiddleCenter.gif);
+	background-repeat:repeat;
+}
+/*td*/
+.defaultHeaderMiddleRight
+{
+	padding:0px;
+	width:4px;
+	height:18px;
+	background-image:url(HeaderMiddleRight.gif);
+}
+/*td*/
+.defaultHeaderBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.defaultHeaderBottomCenter
+{
+	height:0px;	
+	padding:0px;
+}
+/*td*/
+.defaultHeaderBottomRight
+{
+	height:0px;
+	width:0px;	
+	padding:0px;
+}
+/*Small table inside header*/
+.defaultHeaderInnerTable
+{
+	width:100%;
+	border-collapse:collapse;
+	margin:0;	
+}
+/*td*/
+.defaultHeaderLogoContainer
+{
+	width:1px;
+	padding:0px;
+	padding-left:5px;
+}
+/*img*/
+.defaultHeaderLogo
+{
+	width:16px;
+	height:16px;
+}
+/*td*/
+.defaultHeaderTitle
+{
+	padding:0px;
+	padding-left:2px;
+	cursor:default;
+
+}
+
+/*div*/
+.defaultTitlePanel
+{
+	font-weight:bold;
+	font-family:Tahoma;
+	font-size:11px;
+	color:White;
+	overflow:hidden;
+	white-space:nowrap;	
+}
+
+/*div*/
+.defaultTitlePanelDisable
+{
+	font-weight:bold;
+	font-family:Tahoma;
+	font-size:11px;
+	color:White;
+	overflow:hidden;
+	white-space:nowrap;			
+}
+
+
+
+/*Contain built-in buttons td*/
+/*td*/
+.defaultHeaderBuiltinButtonsContainer
+{
+	width:1px;
+	padding:0px;
+}
+
+
+/*Buttons table*/
+.defaultWindowBuiltinButtonsTable
+{
+	width:auto;
+	border-collapse:collapse;
+	margin:0;	
+}
+
+
+/*Individual Button Container, it is the td cover button*/
+.defaultButtonContainer
+{
+	padding:0px;
+	padding-right:2px;
+}
+/*Minimize Button*/
+/*img*/
+.defaultButtonMinimizeOver
+{
+	width:16px;
+	height:14px;
+	background:yellow;
+}
+/*img*/
+.defaultButtonMinimizeDown
+{
+	width:16px;
+	height:14px;
+	background:red;
+}
+
+
+/*img*/
+.defaultButtonMinimizeOut
+{
+	width:16px;
+	height:14px;
+	background:blue;
+}
+
+
+
+
+/*Maximize Button*/
+/*img*/
+.defaultButtonMaximizeOver
+{
+	width:16px;
+	height:14px;
+	background:url(MaximizeOut.gif);	
+}
+/*img*/
+.defaultButtonMaximizeDown
+{
+	width:16px;
+	height:14px;
+	background:url(MaximizeDown.gif);	
+}
+/*img*/
+.defaultButtonMaximizeOut
+{
+	width:16px;
+	height:14px;
+	background:url(MaximizeOut.gif);		
+}
+
+/*Restore Down Button*/
+/*img*/
+.defaultButtonRestoreDownOver
+{
+	width:16px;
+	height:14px;
+	background:url(RestoreDownOut.gif);	
+}
+/*img*/
+.defaultButtonRestoreDownDown
+{
+	width:16px;
+	height:14px;
+	background:url(RestoreDownDown.gif);	
+}
+/*img*/
+.defaultButtonRestoreDownOut
+{
+	width:16px;
+	height:14px;
+	background:url(RestoreDownOut.gif);		
+}
+
+
+/*Close Button*/
+/*img*/
+.defaultButtonCloseOver
+{
+	width:16px;
+	height:14px;
+	background:url(CloseOut.gif);	
+}
+/*img*/
+.defaultButtonCloseDown
+{
+	width:16px;
+	height:14px;
+	background:url(CloseDown.gif);		
+}
+
+/*img*/
+.defaultButtonCloseOut
+{
+	width:16px;
+	height:14px;
+	background:url(CloseOut.gif);		
+}
+
+/*Toolbar-----------------------------------------------------------------------------------------------*/
+.defaultToolbarTable
+{
+	width:100%;
+	border-collapse:collapse;
+	margin:0;
+		
+}
+
+/*tr*/
+.defaultToolbarTop
+{
+	display:none;
+}
+
+/*tr*/
+.defaultToolbarBottom
+{
+	display:none;
+}
+
+
+/*td*/
+.defaultToolbarTopLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.defaultToolbarTopCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.defaultToolbarTopRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.defaultToolbarMiddleLeft
+{
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.defaultToolbarMiddleCenter
+{
+	padding:0px;
+}
+/*td*/
+.defaultToolbarMiddleRight
+{
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.defaultToolbarBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.defaultToolbarBottomCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.defaultToolbarBottomRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*div*/
+.defaultToolbarPanel
+{
+	background-color:Aqua;
+}
+
+
+/*Content-----------------------------------------------------------------------------------------------*/
+.defaultContentTable
+{
+	width:100%;
+	height:100%;
+	border-collapse:collapse;
+	margin:0;
+	
+}
+
+/*tr*/
+.defaultContentTop
+{
+	display:none;
+}
+
+/*tr*/
+.defaultContentBottom
+{
+	display:none;
+}
+
+
+
+/*td*/
+.defaultContentTopLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.defaultContentTopCenter
+{
+	height:0px;
+	padding:0px;
+}
+/*td*/
+.defaultContentTopRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.defaultContentMiddleLeft
+{
+	padding:0px;
+	width:4px;
+	background-image:url(ContentMiddleLeft.gif);
+	background-repeat:repeat;
+}
+/*td*/
+.defaultContentMiddleCenter
+{
+	padding:0px;
+	vertical-align:top;
+	
+}
+/*td*/
+.defaultContentMiddleRight
+{
+	padding:0px;
+	width:4px;
+	background-image:url(ContentMiddleRight.gif);
+	background-repeat:repeat;
+	
+}
+/*td*/
+.defaultContentBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+	font-size:1px;
+}
+/*td*/
+.defaultContentBottomCenter
+{
+	height:0px;
+	padding:0px;
+	font-size:1px;
+}
+/*td*/
+.defaultContentBottomRight
+{
+	height:0%;
+	width:0px;
+	padding:0px;
+	font-size:1px;
+}
+
+/*IFRAME or DIV*/
+.defaultContentPanel
+{
+	border:0px;
+	background-color:#D6D3CE;
+	overflow:hidden;
+	padding:0px;	
+}
+
+
+/*Footer-----------------------------------------------------------------------------------------------*/
+.defaultFooterTable
+{
+	border-collapse:collapse;
+	margin:0;	
+	width:100%;
+}
+
+/*tr*/
+.defaultFooterTop
+{
+	display:none;
+}
+
+/*tr*/
+.defaultFooterBottom
+{
+	display:none;	
+}
+
+
+/*td*/
+.defaultFooterTopLeft 
+{
+	padding:0px;
+}
+/*td*/
+.defaultFooterTopCenter
+{
+	padding:0px;
+}
+/*td*/
+.defaultFooterTopRight
+{
+	padding:0px;
+}
+/*td*/
+.defaultFooterMiddleLeft
+{
+	width:5px;
+	padding:0px;
+	background-image:url(FooterMiddleLeft.gif);	
+}
+/*td*/
+.defaultFooterMiddleCenter
+{
+	height:22px;
+	padding:0px;
+	background-image:url(FooterMiddleCenter.gif);	
+	background-repeat:repeat;
+	white-space:nowrap;	
+		
+}
+/*td*/
+.defaultFooterMiddleRight
+{
+	width:24px;
+	height:22px;
+	padding:0px;
+	background-image:url(FooterMiddleRight.gif);
+
+}
+/*td*/
+.defaultFooterBottomLeft
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+	background-color:#D6D3CE;
+}
+/*td*/
+.defaultFooterBottomCenter
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+}
+/*td*/
+.defaultFooterBottomRight
+{
+	height:0px;
+	width:0px;
+	padding:0px;
+	
+}
+/*div*/
+.defaultFooterPanel
+{
+	cursor:default;
+	font-family:Tahoma;
+	font-size:11px;
+	padding-left:5px;
+	padding-top:1px;
+	background-color:#D6D3CE;
+	overflow:hidden;
+	height:13px;
+	width:100%;
+	white-space:nowrap;
+}
+
+
+/*BottomLine-----------------------------------------------------------------------------------------------*/
+.defaultBottomLineTable
+{
+	border-collapse:collapse;
+	margin:0;	
+	width:100%;
+}
+.defaultBottomLineLeft
+{
+	width:4px;
+	height:4px;
+	padding:0px;
+	background-image:url(BottomLineLeft.gif);	
+}
+.defaultBottomLineCenter
+{
+	height:4px;
+	padding:0px;
+	background-image:url(BottomLineCenter.gif);
+	background-repeat:repeat;
+}
+.defaultBottomLineRight
+{
+	width:4px;
+	height:4px;
+	padding:0px;
+	background-image:url(BottomLineRight.gif);	
+}
+
+
+
+/*DragPanel-----------------------------------------------------------------------------------------------*/
+
+.defaultDragPanel
+{
+	background-color:Gray;
+	filter:alpha(opacity=25);
+	-moz-opacity:0.25;
+	opacity:0.25;
+	z-index:999999999;	
+}
+
+/*Filter-----------------------------------------------------------------------------------------------*/
+
+.defaultFilterIframeLayer
+{
+	border:0px;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;	
+}
+.defaultFilterDivLayer
+{
+	background-color:gray;
+	filter:alpha(opacity=15);
+	-moz-opacity:0.15;
+	opacity:0.15;	
+}
+/*Window Resize-----------------------------------------------------------------------------------------------*/
+
+
+.defaultResizeHandle
+{
+	position:absolute;
+	background-color:white;
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;
+	font-size:1px;
+	height:4px;
+	width:4px;	
+}
+
+/*Handle cursor of mouseover*/
+.defaultCursorResizeLeft
+{	
+	cursor:e-resize;
+}
+.defaultCursorResizeTop
+{	
+	cursor:n-resize;
+}
+.defaultCursorResizeRight
+{
+	cursor:w-resize;
+}
+
+.defaultCursorResizeBottom
+{
+	cursor:s-resize;
+}
+
+.defaultCursorResizeTopLeft
+{
+	cursor:nw-resize;	
+
+}
+
+.defaultCursorResizeTopRight
+{
+	cursor:ne-resize;
+}
+
+.defaultCursorResizeBottomRight
+{
+	cursor:se-resize;
+}
+
+.defaultCursorResizeBottomLeft
+{
+	cursor:sw-resize;
+}
+/*The size of diagonal resize at each conner*/
+.defaultResizeConnerSize
+{	
+	width:20px;
+	height:20px;
+	background-color:transparent;			
+}
+
+.defaultResizePanel
+{
+	z-index:99999;
+	background-color:Gray;
+	filter:alpha(opacity=25);
+	-moz-opacity:0.25;
+	opacity:0.25;	
+}
+/*-BuiltinWindow------------------------------------------------*/
+
+.defaultAlertContentTable
+{
+	width:100%;
+	height:100%;
+}
+
+.defaultAlertLogoContainer
+{
+	padding:0px;
+	width:30px;
+	vertical-align:top;
+	padding-top:10px;
+	padding-left:15px;
+}
+.defaultAlertMessageContainer
+{
+	padding:0px;
+	font-family:Verdana;
+	font-size:8pt;
+	vertical-align:top;
+	padding-top:15px;
+	padding-left:10px;
+}
+.defaultAlertOKContainer
+{
+	padding:0px;
+	text-align:center;
+	vertical-align:bottom;
+	padding-bottom:10px;
+}
+.defaultwarningLogo
+{
+	padding:0px;
+	width:32px;
+	height:32px;
+	background-image:url(windows-warning.png);
+}
+.defaultinfoLogo
+{
+	padding:0px;
+	width:32px;
+	height:32px;
+	background-image:url(windows-info.png);
+}
+.defaulterrorLogo
+{
+	padding:0px;
+	width:32px;
+	height:32px;
+	background-image:url(windows-error.png);
+}
+
+
+.defaultAlertOKButton
+{
+	width:60px;
+}
+
+/*use to detect finsihed loading, do not change*/
+.defaultEnd
+{
+	background-color:Transparent;
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:9px;
+	width:9px;
+	font-size:1px;
+}
+

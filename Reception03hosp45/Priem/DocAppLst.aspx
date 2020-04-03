@@ -121,13 +121,11 @@
                  window.open("/Priem/DocAppFnk.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
                  break;
              case 'ФИЗ':
-                 //   location.href = "/Priem/DocAppFiz.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
                  h = h - 200;
                  w = w - 200;
                  window.open("/Priem/DocAppPrz.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
                  break;
              case 'МАС':
-                 //   location.href = "/Priem/DocAppMas.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
                  h = h - 200;
                  w = w - 200;
                  window.open("/Priem/DocAppPrz.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");

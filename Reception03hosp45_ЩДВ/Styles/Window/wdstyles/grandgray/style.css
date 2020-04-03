@@ -1,0 +1,117 @@
+.SMParent {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+    background-image:url(background_parent.gif);
+    background-repeat:repeat-x;
+    background-position:middle center;
+    font: 11px verdana;
+    color:#2B3C55;
+    text-align:left;
+    height:25px;
+    padding-left:15px;
+    padding-top:5px;
+}
+
+.SMParentOver {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+    background-image:url(background_parentover.gif);
+    background-repeat:repeat-x;
+    background-position:middle center;
+    font: 11px verdana;
+    color:#0C416F;
+    text-align:left;
+    height:25px;
+    padding-left:15px;
+    padding-top:5px;
+    cursor:pointer;
+}
+
+.SMParentSelected {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+    background-image:url(background_parentselected.gif);
+    background-repeat:repeat-x;
+    background-position:middle center;
+    font: 11px verdana;
+    color:#0C416F;
+    text-align:left;
+    height:25px;
+    padding-left:15px;
+    padding-top:5px;
+}
+
+.SMChild {
+    font:10px verdana;
+    color:#4b555e;
+    padding:3px 15px;
+	border-bottom:1px solid #cdd3d7;
+}
+.SMChild a {
+	color:#4b555e;
+	font:10px verdana;
+	text-decoration:none;
+}
+
+.SMChildOver {
+    font:10px verdana;
+    color:#4b555e;
+    padding:3px 15px;
+	background-image:url(menuitem_hover.gif);
+    background-repeat:repeat-x;
+    background-position:middle center;
+	border-bottom:1px solid #cdd3d7;
+    /*text-decoration:underline;*/
+    cursor:pointer;
+}
+.SMChildOver a {
+	color:#4b555e;
+	font:10px verdana;
+	/*text-decoration:underline;*/
+}
+
+.SMChildSelected {
+    box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	font:10px verdana;
+    color:#4b555e;
+    padding:3px 15px;
+	border-bottom:1px solid #cdd3d7;
+	background-image:url(slide_lighted.gif);
+    background-repeat:repeat-x;
+    background-position:middle center;
+}
+.SMChildSelected a {
+	color:#4b555e;
+	font:10px verdana;
+	text-decoration:none;
+}
+
+.SMChildrenBox {
+    /*height:95px;
+    background-color:#D6DFF7;*/
+    border:1px solid #c3c9ce;
+	text-align:left;
+}
+
+.SMMenu {
+	/*box-sizing:border-box;
+	-moz-box-sizing:border-box;
+    width:205px;
+    padding:10px;
+	background-color:#6F8CDE;*/
+}
+
+.SMImageParent {
+	display:none;
+}
+
+.SMImageChild {
+	display:none;
+}
+
+.SMChildImage {
+	vertical-align:middle;
+	border:0px solid black;
+	margin-right:6px;
+}

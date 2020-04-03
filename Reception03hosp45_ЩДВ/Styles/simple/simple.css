@@ -1,0 +1,415 @@
+﻿.ImageZoomTable
+{
+	width:100%;
+	border:solid 1px #303030;
+}
+.simple_oizg
+{}
+
+.simpleZoomOut
+{
+	    cursor:url("zoomin.cur") pointer !important;
+}
+.simpleOIZ
+{
+	display:inline;
+}
+
+.simpleOIZ .oizZoomPanel
+{
+    position:absolute;
+    background:white;
+    border:solid 1px gray;
+}
+
+.simpleOIZ .oizLoading
+{
+    position:absolute;
+    font-family:Verdana;
+    font-size:11px;
+    background:white;
+    border:solid 1px gray;
+}
+
+.simpleOIZ .oizBigImage
+{
+	cursor:url("zoomout.cur") pointer !important;
+	border:solid 1px gray;
+}
+
+
+.simpleOIZ .oizBackground
+{
+	position:absolute;
+	direction:rtl;
+	background-color:black;
+}
+
+.simpleOIZ .oizEffectPanel
+{
+	background-color:white;
+	border:solid 1px gray;
+}
+
+.simpleOIZ .oizEffectImage
+{
+    border:solid 1px gray;
+}
+
+.simpleOIZ .oizTransparent
+{
+	filter:alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity:0.0;    
+}
+
+.simpleOIZ .oizDescription
+{
+    color:black;
+    font-family:Arial;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.simpleOIZ .oizCloseButton
+{
+
+}
+
+.simpleOIZ .oizMoveButton
+{
+
+}
+
+.oizZoomModeBg
+{
+	z-index: 1010;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	position:absolute;
+	background:url("loading.gif") no-repeat scroll 50% 50% transparent;
+	display:none;
+}
+
+/*image in gallery*/
+.simple_oizg li.ImageZoomEntryCell img
+{
+	cursor:pointer;
+}
+/*selected image*/
+.simple_oizg li.ImageZoomEntryCellSelected img
+{
+	
+}
+
+.simple_oizg li.ImageZoomEntryCell
+{
+	list-style-type: none;
+	display:inline-block;
+	background:none;
+	margin:7px;
+	padding:3px;
+	-webkit-box-shadow: black 1px 1px 5px;
+	-moz-box-shadow: black 1px 1px 5px;
+	box-shadow: black 1px 1px 5px;
+/*	border:solid 1px #303030 !important;*/
+}
+.simple_oizg li.ImageZoomEntryCell:hover
+{
+	-webkit-box-shadow: black 2px 2px 8px;
+	-moz-box-shadow: black 2px 2px 8px;
+	box-shadow: black 2px 2px 8px;
+	list-style-type: none;
+	display:inline-block;
+	background:none;
+	margin:7px;
+	padding:3px;
+}
+.simple_oizg li.ImageZoomEntryCellSelected
+{
+	list-style-type: none;
+	display:inline-block;
+	background:none;
+	margin:7px;
+	padding:3px;
+}
+
+.simple_oizg ul.ImageZoomEntryRow
+{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+	text-align:center;
+}
+/* footer */
+.simple_oizg .ImageZoomPagerCell
+{
+	width:100%;
+	background-color:#303030;
+	height:35px;
+	text-align:center;
+	vertical-align:middle;
+	border-top:solid 1px #404040;
+	margin:0 !important;
+	padding:0;
+	background-image:none;
+}
+/*footer item container*/
+.simple_oizg .ob_izFIC
+{
+	border-width:0px;
+	width:100%;
+	color: #fff;
+	cursor: default;
+	font-family: Verdana;
+	font-size: 10px;
+	bottom:2px;
+	display:block;
+	padding-top:5px;
+	position:relative;
+}
+
+/*image size selector*/
+.simple_oizg .ob_izFIC .ob_izImgsS
+{
+	float:left;
+	margin-top:3px;
+	padding-left:4px;
+	vertical-align:middle;
+}
+.simple_oizg .ob_izImgsS span
+{
+	margin-right:5px;
+	float:left;
+	display:block;
+	margin-top:4px;
+}
+/*Page size selector*/
+.simple_oizg .ob_izPsS
+{
+	float:right;
+	margin-top:3px;
+	padding-left:10px;
+	vertical-align:middle;
+}
+.simple_oizg .ob_izPsS span
+{
+	display:block;
+	float:left;
+	margin-right:5px;
+	margin-top:4px;
+}
+
+/*Paging container*/
+.ob_izPC
+{
+	white-space:nowrap;
+	display:block;
+	height:23px;
+	padding-right:4px;
+}
+/*Page data*/
+.simple_oizg .pageData 
+{
+	float:right;
+	margin-top:7px;
+	padding-left:3px;
+	padding-right:10px;
+}
+.simple_oizg .pageData span
+{
+	margin-left:5px;
+	float:right;
+}
+/*pager*/
+.simple_oizg .pager 
+{
+	margin-top:5px;
+	float:right;
+}
+.simple_oizg .ob_IZPBN
+{
+	display:block;
+	float:left;
+}
+.simple_oizg .ob_IZPBS
+{
+	display:block;
+	float:left;
+}
+.simple_oizg .ob_IZPBN a
+{
+	text-decoration:none;
+	background-image:url('page_number_normal.gif');
+	display:block;
+	margin:0 2px 0 2px;
+	padding: 1px 3px;
+	border: 1px solid #99A3B5;
+	color: #ddd;
+	cursor: pointer;
+	font: normal normal normal 11px/normal Verdana;
+}
+.simple_oizg .ob_IZPBN a:hover
+{
+	text-decoration:none;
+	display:block;
+	margin:0 2px 0 2px;
+	padding: 1px 3px;
+	border: 1px solid #99A3B5;
+	color: #fff;
+	cursor: pointer;
+	font: normal normal normal 11px/normal Verdana;
+}
+.simple_oizg .ob_IZPBS a
+{
+	text-decoration:none;
+	display:block;
+	margin:0 2px 0 2px;
+	padding: 1px 3px;
+	color: #fff;
+	cursor: pointer;
+	font: normal normal normal 11px/normal Verdana;
+}
+/*page buttons*/
+.simple_oizg .first 
+{
+	background:url(btn_normal.png) 0 0;
+	float:right;
+	width:25px;
+	height : 21px;
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+	margin-top:3px;
+}
+.simple_oizg .first:hover 
+{
+	background:url(btn_over.png) 0 0;
+	float:right;
+	width:25px;
+	height : 21px;
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+	margin-top:3px;
+}
+
+.simple_oizg .prev 
+{
+	background:url(btn_normal.png) 0px -21px ;
+	float:right;
+	width:25px;
+	height : 21px;
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+	margin-top:3px;
+}
+.simple_oizg .prev:hover
+{
+	background:url(btn_over.png) 0px -21px ;
+	float:right;
+	width:25px;
+	height : 21px;
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+	margin-top:3px;
+}
+
+.simple_oizg .next 
+{
+	background:url(btn_normal.png) 0px -42px;
+	float:right;
+	width:25px;
+	height : 21px;
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+	margin-top:3px;
+}
+.simple_oizg .next:hover
+{
+	background:url(btn_over.png) 0px -42px;
+	float:right;
+	width:25px;
+	height : 21px;
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+	margin-top:3px;
+}
+.simple_oizg .last 
+{
+	background:url(btn_normal.png) 0px -63px;
+	float:right;
+	width:25px;
+	height : 21px;
+	margin-top:3px;
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+}
+.simple_oizg .last:hover 
+{
+	background:url(btn_over.png) 0px -63px;
+	float:right;
+	width:25px;
+	height : 21px;
+	margin-top:3px;
+	display:block;
+	background-repeat:no-repeat;
+	text-decoration:none;
+}
+
+.simple_oizg .ImageZoomPagerRow
+{
+	margin:0 !important;
+	background-color:White;
+	text-align :center ; 
+	list-style-type:none;
+	padding:0;	
+	border:0;
+	overflow:hidden;
+}
+
+.simple_oizg .ImageZoomEntryContainer
+{
+	text-align:center;
+	border:solid 1px #303030;
+}
+/* Zoom mode paging */
+.simpleOIZ .oizNextPrev
+{
+	left:0;
+	position:absolute;
+	top:0;
+}
+.oizNextPrev span
+{
+	display:none !important;
+}
+.oizNextPrev a
+{
+	text-decoration:none;
+}
+.oizPrevLink
+{
+	display:block;
+	left:0%;
+	top:0%;
+	position:absolute;
+	width:50%;
+	height:100%;
+}
+.oizNextLink
+{
+	display:block;
+	left:50%;
+	top:0%;
+	position:absolute;
+	width:50%;
+	height:100%;
+}

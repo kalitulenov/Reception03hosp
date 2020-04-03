@@ -1,0 +1,22 @@
+﻿
+			
+			.tdText {
+				font:11px Verdana;
+				color:#333333;
+			}
+			.option2{
+				font:11px Verdana;
+				color:#0033cc;
+				background-color:#f6f9fc;
+				padding-left:4px;
+				padding-right:4px;
+			}
+			a {
+				font:11px Verdana;
+				color:#315686;
+				text-decoration:underline;
+			}
+
+			a:hover {
+				color:crimson;
+			}
