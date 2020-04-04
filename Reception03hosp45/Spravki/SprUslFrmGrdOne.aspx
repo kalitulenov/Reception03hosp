@@ -87,7 +87,7 @@
     string AmbCrdIdn;
     string SprUslIdn;
     string SprUslIdnTek;
-    string SprUslCnt;
+    string SprUslPrc;
     string SprUslKey;
     string SprUslFrmIdn;
     string AmbNazTyp;
@@ -103,7 +103,7 @@
         //    else AmbNazTyp = "REP";
         SprUslIdn = Convert.ToString(Request.QueryString["SprUslIdn"]);
         SprUslFrmIdn = Convert.ToString(Request.QueryString["SprUslFrmIdn"]);
-        SprUslCnt = Convert.ToString(Request.QueryString["SprUslCnt"]);
+        SprUslPrc = Convert.ToString(Request.QueryString["SprUslPrc"]);
         SprUslKey = Convert.ToString(Request.QueryString["SprUslKey"]);
 
         BuxFrm = (string)Session["BuxFrmKod"];
@@ -133,7 +133,7 @@
         {
             parUslIdn.Value = SprUslIdn;
             parUslFrmIdn.Value = SprUslFrmIdn;
-            parUslCnt.Value = SprUslCnt;
+            parUslCnt.Value = SprUslPrc;
             parUslKey.Value = SprUslKey;
 
             //           TxtKol.Attributes.Add("onkeypress", "return isNumeric(event)");
@@ -154,7 +154,7 @@
                     // передать параметр
                     cmd.Parameters.Add("@BUXSID", SqlDbType.VarChar).Value = BuxSid;
                     cmd.Parameters.Add("@USLFRM", SqlDbType.VarChar).Value = BuxFrm;
-                    cmd.Parameters.Add("@USLCNT", SqlDbType.VarChar).Value = SprUslCnt;
+                    cmd.Parameters.Add("@USLCNT", SqlDbType.VarChar).Value = SprUslPrc;
                     cmd.Parameters.Add("@USLKEY", SqlDbType.VarChar).Value = SprUslKey;
                     cmd.Parameters.Add("@USLIDN", SqlDbType.Int, 4).Value = 0;
                     cmd.Parameters.Add("@USLFRMIDN", SqlDbType.Int, 4).Value = 0;
@@ -192,16 +192,31 @@
     // ============================ чтение заголовка таблицы а оп ==============================================
     void getDocNum()
     {
+        string SqlStr;
         // --------------------------  считать данные одного врача -------------------------
         DataSet ds = new DataSet();
         string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
         SqlConnection con = new SqlConnection(connectionString);
         con.Open();
-        SqlCommand cmd = new SqlCommand("SELECT SprUslFrm.*,SprUsl.* FROM SprUslFrm RIGHT OUTER JOIN SprUsl ON SprUslFrm.UslFrmKod=SprUsl.UslKod " +
-                                        "WHERE SprUslFrm.UslFrmIdn=" + SprUslFrmIdn + " AND SprUsl.UslIdn=" + SprUslIdn, con);        // указать тип команды
+        if (SprUslFrmIdn != "")
+        {
+            SqlStr = "SELECT SprUslFrm.*,SprUsl.* FROM SprUslFrm RIGHT OUTER JOIN SprUsl ON SprUslFrm.UslFrmKod=SprUsl.UslKod " +
+                                            "WHERE SprUslFrm.UslFrmIdn=" + SprUslFrmIdn + " AND SprUsl.UslIdn=" + SprUslIdn;
+        }
+        else
+        {
+            SqlStr = "SELECT SprUsl.*,(SELECT TOP 1 UslFrmZen FROM SprUslFrm WHERE UslFrmPrc="+SprUslPrc+" AND UslFrmHsp=1 AND UslFrmKod=SprUsl.UslKod) AS USLFRMZEN," +
+                                     "(SELECT TOP 1 UslFrmZenDom FROM SprUslFrm WHERE UslFrmPrc="+SprUslPrc+" AND UslFrmHsp=1 AND UslFrmKod=SprUsl.UslKod) AS USLFRMZENDOM," +
+                                     "(SELECT TOP 1 UslFrmAkz FROM SprUslFrm WHERE UslFrmPrc="+SprUslPrc+" AND UslFrmHsp=1 AND UslFrmKod=SprUsl.UslKod) AS USLFRMAKZ," +
+                                     "(SELECT TOP 1 UslFrmIinKol FROM SprUslFrm WHERE UslFrmPrc="+SprUslPrc+" AND UslFrmHsp=1 AND UslFrmKod=SprUsl.UslKod) AS USLFRMIINKOL," +
+                                     "(SELECT TOP 1 UslFrmIin FROM SprUslFrm WHERE UslFrmPrc="+SprUslPrc+" AND UslFrmHsp=1 AND UslFrmKod=SprUsl.UslKod) AS USLFRMIIN " +
+                                     "FROM SprUsl WHERE UslIdn = " + SprUslIdn;
+        }
+
+        SqlCommand cmd = new SqlCommand(SqlStr, con);        // указать тип команды
 
         // создание DataAdapter
-        SqlDataAdapter da = new SqlDataAdapter(cmd);
+       SqlDataAdapter da = new SqlDataAdapter(cmd);
         // заполняем DataSet из хран.процедуры.
         da.Fill(ds, "SprUslZap");
 
@@ -319,6 +334,7 @@
         if (Convert.ToString(TxtMem.Text) == null || Convert.ToString(TxtMem.Text) == "") USLMEM = "";
         else USLMEM = Convert.ToString(TxtMem.Text);
 
+        if (parUslFrmIdn.Value == "") parUslFrmIdn.Value = "0";
 
         // строка соединение
         string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;

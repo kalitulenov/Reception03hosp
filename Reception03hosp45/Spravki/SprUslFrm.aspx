@@ -107,16 +107,15 @@
             //=====================================================================================
             //=====================================================================================
             SdsPrc.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
-            /*
+
             SdsPrc.SelectCommand = "SELECT SprPrc.PrcKod,SprPrc.PrcNam " +
-                                   "FROM SprFrmStx INNER JOIN SprPrc ON SprFrmStx.FrmStxPrc=SprPrc.PrcKod " +
-                                   "WHERE SprFrmStx.FrmStxKodFrm=" + BuxFrm +
-                                   " GROUP BY SprPrc.PrcKod,SprPrc.PrcNam " +
-                                   "ORDER BY SprPrc.PrcKod";
-            */
-            SdsPrc.SelectCommand = "SELECT CntKod,CntNam " +
-                                   "FROM SprCnt WHERE CntLvl=0 And CntFrm=" + BuxFrm +
-                                   " ORDER BY CntKod";
+                                   "FROM SprPrc INNER JOIN SprCnt ON SprPrc.PrcKod=SprCnt.CntPrc " +
+                                   "WHERE SprCnt.CntLvl = 0 AND SprCnt.CntFrm =" + BuxFrm +
+                                   " GROUP BY SprPrc.PrcKod, SprPrc.PrcNam";
+
+            //SdsPrc.SelectCommand = "SELECT CntKod,CntNam " +
+            //                       "FROM SprCnt WHERE CntLvl=0 And CntFrm=" + BuxFrm +
+            //                       " ORDER BY CntKod";
             //=====================================================================================
             //=====================================================================================
             if (!Page.IsPostBack)
@@ -136,21 +135,19 @@
             string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-            /*
-            SqlCommand cmd = new SqlCommand("SELECT SprStrUsl.StrUslNam, dbo.SprStrUsl.StrUslKey " +
-                                            "FROM SprStrUsl INNER JOIN SprUsl ON SprStrUsl.StrUslKey001=SprUsl.UslKey001 " +
-                                                           "INNER JOIN SprStrUslFrm ON SprStrUsl.StrUslKey=SprStrUslFrm.StrUslFrmKey " +
-                                            "WHERE LEN(STRUSLKEY)=3 AND SprStrUslFrm.StrUslFrmHsp="+ BuxFrm +
-                                                   "AND SprUsl.UslPrc=" + parPrcKod.Value +
-                                            " GROUP BY SprStrUsl.StrUslNam, SprStrUsl.StrUslKey " +
+
+            //SqlCommand cmd = new SqlCommand("SELECT SprStrUsl.StrUslNam,SprStrUsl.StrUslKey " +
+            //     "FROM SprStrUsl INNER JOIN SprStrUslFrm ON SprStrUsl.StrUslKey=SprStrUslFrm.StrUslFrmKey " +
+            //                    "INNER JOIN SprCnt ON SprStrUslFrm.StrUslFrmHsp=SprCnt.CntFrm " +
+            //     "WHERE LEN(SprStrUsl.StrUslKey)=3 AND SprStrUslFrm.StrUslFrmHsp="+ BuxFrm + " AND SprCnt.CntLvl=0 AND SprCnt.CntKod=" + parCntKod.Value +
+            //     " GROUP BY SprStrUsl.StrUslNam, SprStrUsl.StrUslKey " +
+            //     "ORDER BY SprStrUsl.StrUslKey", con);
+
+            SqlCommand cmd = new SqlCommand("SELECT SprStrUsl.StrUslNam, SprStrUsl.StrUslKey " +
+                                            "FROM SprStrUsl INNER JOIN SprStrUslFrm ON SprStrUsl.StrUslKey=SprStrUslFrm.StrUslFrmKey " +
+                                            "WHERE LEN(SprStrUsl.StrUslKey) = 3 AND SprStrUslFrm.StrUslFrmHsp="+ BuxFrm +
+                                            "GROUP BY SprStrUsl.StrUslNam, SprStrUsl.StrUslKey " +
                                             "ORDER BY SprStrUsl.StrUslKey", con);
-            */
-             SqlCommand cmd = new SqlCommand("SELECT SprStrUsl.StrUslNam,SprStrUsl.StrUslKey " +
-                  "FROM SprStrUsl INNER JOIN SprStrUslFrm ON SprStrUsl.StrUslKey=SprStrUslFrm.StrUslFrmKey " + 
-                                 "INNER JOIN SprCnt ON SprStrUslFrm.StrUslFrmHsp=SprCnt.CntFrm " +
-                  "WHERE LEN(SprStrUsl.StrUslKey)=3 AND SprStrUslFrm.StrUslFrmHsp="+ BuxFrm + " AND SprCnt.CntLvl=0 AND SprCnt.CntKod=" + parCntKod.Value +
-                  " GROUP BY SprStrUsl.StrUslNam, SprStrUsl.StrUslKey " +
-                  "ORDER BY SprStrUsl.StrUslKey", con);
 
             //SprUslFrm.UslFrmZen>0 AND 
             // указать тип команды
@@ -211,7 +208,7 @@
                                         "INNER JOIN SprStrUslFrm ON SprStrUsl.StrUslKey=SprStrUslFrm.StrUslFrmKey " +
                         "WHERE LEFT(STRUSLKEY," + NodLen + ")='" + NodVal + "' AND LEN(STRUSLKEY)>0" +  //NodLen004 + 
                                " AND SprUslFrm.UslFrmZen>0 AND SprUslFrm.UslFrmHsp=" + BuxFrm +
-                               " AND SprUslFrm.UslFrmPrc=" + BoxCnt.SelectedValue +
+                               " AND SprUslFrm.UslFrmPrc=" + BoxPrc.SelectedValue +
                         " GROUP BY SprStrUsl.StrUslNam, dbo.SprStrUsl.StrUslKey " +
                         "ORDER BY SprStrUsl.StrUslNam";
 */
@@ -259,7 +256,7 @@
             cmd.CommandType = CommandType.StoredProcedure;
             // передать параметр
             cmd.Parameters.Add("@BUXFRM", SqlDbType.VarChar).Value = BuxFrm;
-            cmd.Parameters.Add("@NUMPRC", SqlDbType.Int,4).Value = BoxCnt.SelectedValue;
+            cmd.Parameters.Add("@NUMPRC", SqlDbType.Int,4).Value = BoxPrc.SelectedValue;
             // Выполнить команду
 
             cmd.ExecuteNonQuery();
@@ -277,7 +274,11 @@
                      "WHERE SprFrmStx.FrmStxKodFrm=" + BuxFrm + " AND PATINDEX('%платно%',SprPrc.PrcNam) > 0 " +
                      " GROUP BY SprPrc.PrcKod,SprPrc.PrcNam";
             */
-            SqlPrc = "SELECT CntKod,CntPrc,CntNam FROM SprCnt WHERE CntLvl=0 And CntFrm=" + BuxFrm + " AND PATINDEX('%платно%',CntNam) > 0 ORDER BY CntKod";
+            SqlPrc = "SELECT SprPrc.PrcKod,SprPrc.PrcNam " +
+                                   "FROM SprPrc INNER JOIN SprCnt ON SprPrc.PrcKod=SprCnt.CntPrc " +
+                                   "WHERE SprCnt.CntLvl = 0 AND SprCnt.CntFrm =" + BuxFrm + " AND PATINDEX('%платно%',CntNam) > 0 ORDER BY CntKod";
+            
+            //SqlPrc = "SELECT CntKod,CntPrc,CntNam FROM SprCnt WHERE CntLvl=0 And CntFrm=" + BuxFrm + " AND PATINDEX('%платно%',CntNam) > 0 ORDER BY CntKod";
 
             DataSet ds = new DataSet();
             string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
@@ -295,22 +296,21 @@
 
             con.Close();
 
-            BoxCnt.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["CntKod"]);
-            parCntKod.Value = Convert.ToString(ds.Tables[0].Rows[0]["CntKod"]);
-            parPrcKod.Value = Convert.ToString(ds.Tables[0].Rows[0]["CntPrc"]);
+            BoxPrc.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["PrcKod"]);
+          //  parCntKod.Value = Convert.ToString(ds.Tables[0].Rows[0]["CntKod"]);
+            parPrcKod.Value = Convert.ToString(ds.Tables[0].Rows[0]["PrcKod"]);
 
             //     UslFrmChk();
 
         }
 
         //------------------------------------------------------------------------
-        protected void BoxCnt_OnSelectedIndexChanged(object sender, EventArgs e)
+        protected void BoxPrc_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            string TekPrc;
-            parCntKod.Value = BoxCnt.SelectedValue;
+            parPrcKod.Value = BoxPrc.SelectedValue;
 
-            //         if (BoxCnt.SelectedValue == null || BoxCnt.SelectedValue == "") TekPrc = "";
-            //         else TekPrc = Convert.ToString(BoxCnt.SelectedValue);
+            //         if (BoxPrc.SelectedValue == null || BoxPrc.SelectedValue == "") TekPrc = "";
+            //         else TekPrc = Convert.ToString(BoxPrc.SelectedValue);
             //     UslFrmChk();
             PopulateTree();
 
@@ -323,7 +323,7 @@
                     string TekDocIdnTxt = Convert.ToString(Session["GLVDOCIDN"]);
                     int TekDocIdn = Convert.ToInt32(Session["GLVDOCIDN"]);
                     // --------------  печать ---------------------------- BuxFrm
-                    Response.Redirect("~/Report/DauaReports.aspx?ReportName=HspSprZen&TekDocIdn=" + BuxFrm + "&TekDocKod=" + BoxCnt.SelectedValue);
+                    Response.Redirect("~/Report/DauaReports.aspx?ReportName=HspSprZen&TekDocIdn=" + BuxFrm + "&TekDocKod=" + BoxPrc.SelectedValue);
                 }
           */
     </script>
@@ -338,20 +338,20 @@
             var ParSpr = document.getElementById('MainContent_parSpr').value;
             var NodKey = sender.getNodeValue(args.node);         // Отбросить с начало 4 символ
             var NodTxt = sender.getNodeText(args.node);         // Отбросить с начало 4 символ
-            var NumCnt = BoxCnt.value();         // Отбросить с начало 4 символ
+            var NumPrc = BoxPrc.value();         // Отбросить с начало 4 символ
             if (NodKey == null) NodKey = "";
             if (NodKey == null) NodKey = "";
-       //       alert("NodKey=" + NodKey);
-       //       alert("NodTxt=" + NodTxt);
-       //       alert("NumCnt=" + NumCnt);
-         //     alert("ParSpr=" + ParSpr);
+              alert("NodKey=" + NodKey);
+              alert("NodTxt=" + NodTxt);
+              alert("NumPrc=" + NumPrc);
+              alert("ParSpr=" + ParSpr);
 
-              if (NumCnt == 1) 
-                 if (ParSpr == "UPD") mySpl.loadPage("RightContent", "SprUslFrmGrdGos.aspx?NodKey=" + NodKey + "&NodTxt=" + NodTxt + "&NumCnt=" + NumCnt);
-                 else mySpl.loadPage("RightContent", "SprUslFrmGrdRed.aspx?NodKey=" + NodKey + "&NodTxt=" + NodTxt + "&NumCnt=" + NumCnt);
+              if (NumPrc == 1) 
+                 if (ParSpr == "UPD") mySpl.loadPage("RightContent", "SprUslFrmGrdGos.aspx?NodKey=" + NodKey + "&NodTxt=" + NodTxt + "&NumPrc=" + NumPrc);
+                 else mySpl.loadPage("RightContent", "SprUslFrmGrdRed.aspx?NodKey=" + NodKey + "&NodTxt=" + NodTxt + "&NumPrc=" + NumPrc);
               else
-                 if (ParSpr == "UPD") mySpl.loadPage("RightContent", "SprUslFrmGrd.aspx?NodKey=" + NodKey + "&NodTxt=" + NodTxt + "&NumCnt=" + NumCnt);
-                 else mySpl.loadPage("RightContent", "SprUslFrmGrdRed.aspx?NodKey=" + NodKey + "&NodTxt=" + NodTxt + "&NumCnt=" + NumCnt);
+                 if (ParSpr == "UPD") mySpl.loadPage("RightContent", "SprUslFrmGrd.aspx?NodKey=" + NodKey + "&NodTxt=" + NodTxt + "&NumPrc=" + NumPrc);
+                 else mySpl.loadPage("RightContent", "SprUslFrmGrdRed.aspx?NodKey=" + NodKey + "&NodTxt=" + NodTxt + "&NumPrc=" + NumPrc);
 
         }
 
@@ -428,10 +428,10 @@
                     <div style="margin: 5px;">
 
                         <asp:ScriptManager runat="server" EnablePartialRendering="true" ID="ScriptManager2" />
-                        <obout:ComboBox runat="server" ID="BoxCnt" Width="100%" Height="200"
+                        <obout:ComboBox runat="server" ID="BoxPrc" Width="100%" Height="200"
                             FolderStyle="/Styles/Combobox/Plain"
-                            AutoPostBack="true" OnSelectedIndexChanged="BoxCnt_OnSelectedIndexChanged"
-                            DataSourceID="SdsPrc" DataTextField="CNTNAM" DataValueField="CNTKOD" />
+                            AutoPostBack="true" OnSelectedIndexChanged="BoxPrc_OnSelectedIndexChanged"
+                            DataSourceID="SdsPrc" DataTextField="PRCNAM" DataValueField="PRCKOD" />
 
                         <obout:Tree ID="OboutTree"
                             runat="server"

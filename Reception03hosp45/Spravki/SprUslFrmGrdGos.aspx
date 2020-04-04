@@ -139,7 +139,7 @@
 
                 ComParKey = (string)Request.QueryString["NodKey"];
                 ComParTxt = (string)Request.QueryString["NodTxt"];
-                ComParCnt = (string)Request.QueryString["NumCnt"];
+                ComParCnt = (string)Request.QueryString["NumPrc"];
                 parSprKey.Value = ComParKey;
                 parSprCnt.Value = ComParCnt;
                 parSprTxt.Value = ComParTxt;
@@ -153,10 +153,10 @@
 
         protected void LoadGridNode()
         {
-            string NumCnt;
+            string NumPrc;
 
-            //            NumCnt = Convert.ToInt32(ComParCnt);
-            NumCnt = parSprCnt.Value;
+            //            NumPrc = Convert.ToInt32(ComParCnt);
+            NumPrc = parSprCnt.Value;
             ComParKey = parSprKey.Value;
             //    Service1 ws = new Service1();
             Service1Soap ws = new Service1SoapClient();
@@ -179,17 +179,17 @@
                         // PopulateCategories(e.Node);
                         break;
                     case 3:
-                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 3, ComParKey, NumCnt));
+                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 3, ComParKey, NumPrc));
                         GridPrc.DataSource = ds;
                         GridPrc.DataBind();
                         break;
                     case 7:
-                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 7, ComParKey, NumCnt));
+                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 7, ComParKey, NumPrc));
                         GridPrc.DataSource = ds;
                         GridPrc.DataBind();
                         break;
                     case 11:
-                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 11, ComParKey, NumCnt));
+                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 11, ComParKey, NumPrc));
                         GridPrc.DataSource = ds;
                         GridPrc.DataBind();
                         break;
@@ -199,7 +199,7 @@
             }
             else
             {
-                ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 0, whereClause, NumCnt));
+                ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 0, whereClause, NumPrc));
                 GridPrc.DataSource = ds;
                 GridPrc.DataBind();
 

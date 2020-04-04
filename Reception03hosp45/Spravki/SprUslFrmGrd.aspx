@@ -56,11 +56,16 @@
                 //           alert("GridPrc_ClientEdit");
                 var SprUslIdn = record.USLIDN;
                 var SprUslFrmIdn = record.USLFRMIDN;
-                var SprUslCnt = document.getElementById('parSprCnt').value;
+                var SprUslPrc = document.getElementById('parSprPrc').value;
                 var SprUslKey = document.getElementById('parSprKey').value;
+                //alert("SprUslIdn=" + SprUslIdn);
+                //alert("SprUslFrmIdn=" + SprUslFrmIdn + "*");
+                //alert("SprUslPrc=" + SprUslPrc);
+                //alert("SprUslKey=" + SprUslKey);
+
 
                 PrcWindow.setTitle(SprUslIdn);
-                PrcWindow.setUrl("SprUslFrmGrdOne.aspx?SprUslIdn=" + SprUslIdn + "&SprUslFrmIdn=" + SprUslFrmIdn + "&SprUslCnt=" + SprUslCnt + "&SprUslKey=" + SprUslKey);
+                PrcWindow.setUrl("SprUslFrmGrdOne.aspx?SprUslIdn=" + SprUslIdn + "&SprUslFrmIdn=" + SprUslFrmIdn + "&SprUslPrc=" + SprUslPrc + "&SprUslKey=" + SprUslKey);
                 //     PrcWindow.setUrl("DocAppAmbPrcOne.aspx?AmbPrcIdn=" + AmbPrcIdn);
                 PrcWindow.Open();
 
@@ -71,12 +76,14 @@
                 //                    alert("GridPrc_ClientInsert");
                 var SprUslIdn = 0;
                 var SprUslFrmIdn =0;
-                var SprUslCnt = document.getElementById('parSprCnt').value;
+                var SprUslPrc = document.getElementById('parSprPrc').value;
                 var SprUslKey = document.getElementById('parSprKey').value;
                //          alert("AmbPrcTyp=" + AmbPrcTyp);parSprKey
+                //alert("SprUslIdn=" + SprUslIdn); 
+                //alert("SprUslFrmIdn=" + SprUslFrmIdn); 
 
                 PrcWindow.setTitle(SprUslIdn);
-                PrcWindow.setUrl("SprUslFrmGrdOne.aspx?SprUslIdn=" + SprUslIdn + "&SprUslFrmIdn=" + SprUslFrmIdn + "&SprUslCnt=" + SprUslCnt + "&SprUslKey=" + SprUslKey);
+                PrcWindow.setUrl("SprUslFrmGrdOne.aspx?SprUslIdn=" + SprUslIdn + "&SprUslFrmIdn=" + SprUslFrmIdn + "&SprUslPrc=" + SprUslPrc + "&SprUslKey=" + SprUslKey);
                 PrcWindow.Open();
 
                 return false;
@@ -155,7 +162,7 @@
 
         string ComParKey = "";
         string ComParTxt = "";
-        string ComParCnt = "";
+        string ComParPrc = "";
         string whereClause = "";
 
         string MdbNam = "HOSPBASE";
@@ -202,9 +209,9 @@
 
                 ComParKey = (string)Request.QueryString["NodKey"];
                 ComParTxt = (string)Request.QueryString["NodTxt"];
-                ComParCnt = (string)Request.QueryString["NumCnt"];
+                ComParPrc = (string)Request.QueryString["NumPrc"];
                 parSprKey.Value = ComParKey;
-                parSprCnt.Value = ComParCnt;
+                parSprPrc.Value = ComParPrc;
                 parSprTxt.Value = ComParTxt;
                 parBuxFrm.Value = BuxFrm;
                 parCond.Value = "";
@@ -216,10 +223,10 @@
 
         protected void LoadGridNode()
         {
-            string NumCnt;
+            string NumPrc;
 
-            //            NumCnt = Convert.ToInt32(ComParCnt);
-            NumCnt = parSprCnt.Value;
+            //            NumPrc = Convert.ToInt32(ComParPrc);
+            NumPrc = parSprPrc.Value;
             ComParKey = parSprKey.Value;
             //    Service1 ws = new Service1();
             Service1Soap ws = new Service1SoapClient();
@@ -242,17 +249,17 @@
                         // PopulateCategories(e.Node);
                         break;
                     case 3:
-                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 3, ComParKey, NumCnt));
+                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 3, ComParKey, NumPrc));
                         GridPrc.DataSource = ds;
                         GridPrc.DataBind();
                         break;
                     case 7:
-                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 7, ComParKey, NumCnt));
+                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 7, ComParKey, NumPrc));
                         GridPrc.DataSource = ds;
                         GridPrc.DataBind();
                         break;
                     case 11:
-                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 11, ComParKey, NumCnt));
+                        ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 11, ComParKey, NumPrc));
                         GridPrc.DataSource = ds;
                         GridPrc.DataBind();
                         break;
@@ -262,7 +269,7 @@
             }
             else
             {
-                ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 0, whereClause, NumCnt));
+                ds.Merge(ws.ComSelUslFrm(MdbNam, BuxSid, BuxFrm, 0, whereClause, NumPrc));
                 GridPrc.DataSource = ds;
                 GridPrc.DataBind();
 
@@ -439,7 +446,7 @@
             cmd.Parameters["@USLFRMIDN"].Value = USLFRMIDN;
             cmd.Parameters["@USLKOD"].Value = USLKOD;
             cmd.Parameters["@USLFRM"].Value = parBuxFrm.Value;
-            cmd.Parameters["@USLPRC"].Value = parSprCnt.Value;
+            cmd.Parameters["@USLPRC"].Value = parSprPrc.Value;
 
             // ------------------------------------------------------------------------------заполняем второй уровень
             cmd.ExecuteNonQuery();
@@ -493,7 +500,7 @@
         <asp:HiddenField ID="parUslKod" runat="server" />
         <asp:HiddenField ID="parUslNam" runat="server" />
         <asp:HiddenField ID="parSprTxt" runat="server" />
-        <asp:HiddenField ID="parSprCnt" runat="server" />
+        <asp:HiddenField ID="parSprPrc" runat="server" />
         <asp:HiddenField ID="parSprKey" runat="server" />
         <asp:HiddenField ID="parBuxFrm" runat="server" />
         <asp:HiddenField ID="parCond" runat="server" />
@@ -562,13 +569,13 @@
                <ScrollingSettings ScrollHeight="450" />
                 <Columns>
                     <obout:Column ID="Column00" DataField="USLIDN" HeaderText="Идн" Visible="false" Width="0%" />
-                    <obout:Column ID="Column01" DataField="USLFRMIDN" HeaderText="Идн2" Visible="false" Width="0%" />
+                    <obout:Column ID="Column01" DataField="USLFRMIDN" HeaderText="Идн2" Visible="true" Width="5%" />
                     <obout:Column ID="Column02" DataField="USLKOD" HeaderText="КОД" ReadOnly="true" Align="right" Width="4%" />
                     <obout:Column ID="Column03" DataField="USLTRF" HeaderText="ТАРИФ" ReadOnly="true" Align="center" Width="7%" />
                     <obout:Column ID="Column04" DataField="USLGRP001" HeaderText="ГРП1" Width="5%" />
                     <obout:Column ID="Column05" DataField="USLGRP002" HeaderText="ГРП2" Align="right" Width="5%" />
                     <obout:Column ID="Column06" DataField="USLGRP003" HeaderText="ГРП3" Align="right" Width="5%" />
-                    <obout:Column ID="Column07" DataField="USLNAM" HeaderText="НАИМЕНОВАНИЕ" ReadOnly = "true" Wrap="true" Width="30%" />
+                    <obout:Column ID="Column07" DataField="USLNAM" HeaderText="НАИМЕНОВАНИЕ" ReadOnly = "true" Wrap="true" Width="25%" />
                     <obout:Column ID="Column08" DataField="EDNNAM" HeaderText="ЕД.ИЗМ" Width="5%" />
                     <obout:Column ID="Column09" DataField="USLFRMZEN" HeaderText="ЦЕНА" Width="5%" Align="right" />
                     <obout:Column ID="Column10" DataField="USLFRMZENDOM" HeaderText="ДОМ" Width="5%" Align="right" />
