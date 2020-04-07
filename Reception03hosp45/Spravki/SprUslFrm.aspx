@@ -341,10 +341,10 @@
             var NumPrc = BoxPrc.value();         // Отбросить с начало 4 символ
             if (NodKey == null) NodKey = "";
             if (NodKey == null) NodKey = "";
-              alert("NodKey=" + NodKey);
-              alert("NodTxt=" + NodTxt);
-              alert("NumPrc=" + NumPrc);
-              alert("ParSpr=" + ParSpr);
+              //alert("NodKey=" + NodKey);
+              //alert("NodTxt=" + NodTxt);
+              //alert("NumPrc=" + NumPrc);
+              //alert("ParSpr=" + ParSpr);
 
               if (NumPrc == 1) 
                  if (ParSpr == "UPD") mySpl.loadPage("RightContent", "SprUslFrmGrdGos.aspx?NodKey=" + NodKey + "&NodTxt=" + NodTxt + "&NumPrc=" + NumPrc);
