@@ -380,6 +380,7 @@
                         parameters11[0] = new ReportParameter("KODHSP", TekDocIdn.ToString(), false);
                         parameters11[1] = new ReportParameter("KODPRC", TekDocKod.ToString(), false);
                         this.DauaReport.ServerReport.SetParameters(parameters11);
+                        format = "NONE"; //Desired format goes here (PDF, Excel, or Image)
                         break;
                     case "HspAmbKrt003":
                         ReportParameter[] parameters12 = new ReportParameter[1];

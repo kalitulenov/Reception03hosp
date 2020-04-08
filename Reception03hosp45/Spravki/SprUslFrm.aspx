@@ -452,7 +452,7 @@
                     <%-- ============================  нижний блок   ExposeSender="true" ============================================ --%>
 
                    <asp:Panel ID="PanelBot" runat="server" BorderStyle="Double" 
-                       Style="left: 0%; position: relative; top: 130px; width: 97%; height: 50px;">
+                       Style="left: 0%; position: relative; top: 0px; width: 97%; height: 50px;">
                        <center>
                           <input type="button" value="Печать прейскуранта"  onclick="PrtButton_Click()" />
                           <input type="button" value="Печать прейскуранта (расшир)"  onclick="PrtAdvButton_Click()" />
