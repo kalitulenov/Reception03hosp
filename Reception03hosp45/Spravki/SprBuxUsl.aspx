@@ -173,8 +173,8 @@
                     // создать коллекцию параметров
                     cmd.Parameters.Add(new SqlParameter("@BUXSID", SqlDbType.VarChar));
                     cmd.Parameters.Add(new SqlParameter("@BUXFRM", SqlDbType.VarChar));
-                    cmd.Parameters.Add(new SqlParameter("@BUXKOD", SqlDbType.Int,4));
-                    cmd.Parameters.Add(new SqlParameter("@BUXPRC", SqlDbType.Int,4));
+                    cmd.Parameters.Add(new SqlParameter("@BUXKOD", SqlDbType.Int, 4));
+                    cmd.Parameters.Add(new SqlParameter("@BUXPRC", SqlDbType.Int, 4));
                     // передать параметр
                     cmd.Parameters["@BUXSID"].Value = BuxSid;
                     cmd.Parameters["@BUXFRM"].Value = BuxFrm;
@@ -186,68 +186,72 @@
                     // заполняем DataSet из хран.процедуры.
                     da.Fill(ds, "ComSprBuxUsl");
 
-                    //=====================================================================================
-                    TextBoxDoc.Text = BuxFio.PadLeft(10) + "  (" + BuxDlg + ")";
-
-                    obout_ASPTreeView_2_NET.Tree oTree = new obout_ASPTreeView_2_NET.Tree();
-
-                    //                  oTree.AddRootNode("<big><ins><b>" + BuxFio + "</b></ins></big>", true, "woman2S.gif");
-
-                    foreach (DataRow row in ds.Tables["ComSprBuxUsl"].Rows)
+                    if (ds == null || ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0) { }  // проверка на пустой ds
+                    else
                     {
-                        BuxFlg = Convert.ToInt32(row["StrUslFlg"]);
-                        BuxTyp = Convert.ToInt32(row["StrUslTyp"]);
+                        //=====================================================================================
+                        TextBoxDoc.Text = BuxFio.PadLeft(10) + "  (" + BuxDlg + ")";
 
-                        if (BuxFlg == 0)
-                            Html = "<input class='c' type='checkbox' id='chk_" +
-                                Convert.ToString(row["StrUslKod"]) + "' onclick='ob_t2c(this)'>" + row["StrUslNam"];
-                        else
-                            Html = "<input class='c' type='checkbox' checked id='chk_" +
-                                 Convert.ToString(row["StrUslKod"]) + "' onclick='ob_t2c(this)'>" + row["StrUslNam"];
+                        obout_ASPTreeView_2_NET.Tree oTree = new obout_ASPTreeView_2_NET.Tree();
 
-                        switch (Convert.ToString(row["StrUslKey"]).Length)
+                        //                  oTree.AddRootNode("<big><ins><b>" + BuxFio + "</b></ins></big>", true, "woman2S.gif");
+
+                        foreach (DataRow row in ds.Tables["ComSprBuxUsl"].Rows)
                         {
-                            case 0:
-                                break;
-                            case 3:
+                            BuxFlg = Convert.ToInt32(row["StrUslFlg"]);
+                            BuxTyp = Convert.ToInt32(row["StrUslTyp"]);
+
+                            if (BuxFlg == 0)
                                 Html = "<input class='c' type='checkbox' id='chk_" +
-                                     Convert.ToString(row["StrUslKod"]) + "' onclick='ob_t2c(this)'><b>" + row["StrUslNam"] + "</b>";
-                                oTree.Add("root", row["StrUslKey"], Html, false, null, null);
-                                BuxKey003 = Convert.ToString(row["StrUslKey"]);
-                                break;
-                            case 7:
-                                if (BuxTyp == 0) oTree.Add(BuxKey003, row["StrUslKey"], Html, false, null, null);
-                                else oTree.Add(BuxKey003, row["StrUslKey"], Html, false, "red_ball.gif", null);
+                                    Convert.ToString(row["StrUslKod"]) + "' onclick='ob_t2c(this)'>" + row["StrUslNam"];
+                            else
+                                Html = "<input class='c' type='checkbox' checked id='chk_" +
+                                     Convert.ToString(row["StrUslKod"]) + "' onclick='ob_t2c(this)'>" + row["StrUslNam"];
 
-                                BuxKey007=Convert.ToString(row["StrUslKey"]);
-                                break;
-                            case 11:
-                                if (BuxTyp == 0) oTree.Add(BuxKey007, row["StrUslKey"], Html, false, null, null);
-                                else oTree.Add(BuxKey007, row["StrUslKey"], Html, false, "red_ball.gif", null);
+                            switch (Convert.ToString(row["StrUslKey"]).Length)
+                            {
+                                case 0:
+                                    break;
+                                case 3:
+                                    Html = "<input class='c' type='checkbox' id='chk_" +
+                                         Convert.ToString(row["StrUslKod"]) + "' onclick='ob_t2c(this)'><b>" + row["StrUslNam"] + "</b>";
+                                    oTree.Add("root", row["StrUslKey"], Html, false, null, null);
+                                    BuxKey003 = Convert.ToString(row["StrUslKey"]);
+                                    break;
+                                case 7:
+                                    if (BuxTyp == 0) oTree.Add(BuxKey003, row["StrUslKey"], Html, false, null, null);
+                                    else oTree.Add(BuxKey003, row["StrUslKey"], Html, false, "red_ball.gif", null);
 
-                                BuxKey011=Convert.ToString(row["StrUslKey"]);
-                                break;
-                            case 15:
-                                oTree.Add(BuxKey011, row["StrUslKey"], Html, false, "red_ball.gif", null);
-                                BuxKey015 = Convert.ToString(row["StrUslKey"]);
-                                break;
-                            default:
-                                break;
+                                    BuxKey007 = Convert.ToString(row["StrUslKey"]);
+                                    break;
+                                case 11:
+                                    if (BuxTyp == 0) oTree.Add(BuxKey007, row["StrUslKey"], Html, false, null, null);
+                                    else oTree.Add(BuxKey007, row["StrUslKey"], Html, false, "red_ball.gif", null);
+
+                                    BuxKey011 = Convert.ToString(row["StrUslKey"]);
+                                    break;
+                                case 15:
+                                    oTree.Add(BuxKey011, row["StrUslKey"], Html, false, "red_ball.gif", null);
+                                    BuxKey015 = Convert.ToString(row["StrUslKey"]);
+                                    break;
+                                default:
+                                    break;
+                            }
+
                         }
 
+                        oTree.FolderIcons = "/Styles/tree2/icons";
+                        oTree.FolderScript = "/Styles/tree2/script";
+                        oTree.FolderStyle = "/Styles/tree2/style";
+                        oTree.SelectedEnable = false;
+                        //oTree.SelectedId = "a1_0";
+                        oTree.ShowIcons = true;
+                        oTree.Width = "600px";
+                        oTree.Height = "520px";
+                        oTree.EventList = "";
+
+                        TreeView.Text = oTree.HTML();
                     }
-
-                    oTree.FolderIcons = "/Styles/tree2/icons";
-                    oTree.FolderScript = "/Styles/tree2/script";
-                    oTree.FolderStyle = "/Styles/tree2/style";
-                    oTree.SelectedEnable = false;
-                    //oTree.SelectedId = "a1_0";
-                    oTree.ShowIcons = true;
-                    oTree.Width = "600px";
-                    oTree.Height = "520px";
-                    oTree.EventList = "";
-
-                    TreeView.Text = oTree.HTML();
                 }
             }
         }
