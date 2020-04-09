@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/MsrMain.Master" AutoEventWireup="true" CodeBehind="DocApp003Dsp.aspx.cs" Inherits="Reception03hosp45.Priem.DocApp003Dsp" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/MsrPusto.Master" AutoEventWireup="true" CodeBehind="DocApp003Dsp.aspx.cs" Inherits="Reception03hosp45.Priem.DocApp003Dsp" %>
 
 <%@ Register TagPrefix="obout" Namespace="Obout.Grid" Assembly="obout_Grid_NET" %>
 <%@ Register TagPrefix="obout" Namespace="Obout.Interface" Assembly="obout_Interface" %>
@@ -376,7 +376,9 @@
 
        <%-- ============================  для передач значении  ============================================ --%>
         <asp:HiddenField ID="HidAmbCrdIdn" runat="server" />
-        <%-- ============================  верхний блок  ============================================ --%>
+        <asp:HiddenField ID="parPovObr" runat="server" />
+        <asp:HiddenField ID="Sapka" runat="server" />
+       <%-- ============================  верхний блок  ============================================ --%>
 
       <%-- ============================  верхний блок  ============================================ --%>
                                
@@ -385,19 +387,20 @@
 
       <table border="1" cellspacing="0" width="100%">
                <tr>
-                  <td width="7%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Дата</td>
+                  <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Дата</td>
                   <td width="3%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Время</td>
-                  <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">ИИН</td>
-                  <td width="32%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Фамилия И.О.</td>
-                  <td width="8%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Д.рож</td>
-                  <td width="8%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">№карты</td>
-                  <td width="12%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Место работы</td>
-                  <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Страхователь</td>
-                  <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Титул</td>
+                  <td width="8%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">ИИН</td>
+                  <td width="30%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Фамилия И.О.</td>
+                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Д.рож</td>
+                  <td width="14%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Телефон</td>
+                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Страхов</td>
+                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">СоцНеЗащ</td>
+                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Диспан.</td>
+                  <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Прикрепление</td>
               </tr>
               
                <tr>
-                   <td width="7%" class="PO_RowCap">
+                  <td width="10%" class="PO_RowCap">
                       <asp:TextBox id="TextBoxDat" BorderStyle="None" Width="80px" Height="20" RunAt="server" BackColor="#FFFFE0" />
 			          <obout:Calendar ID="Calendar3" runat="server"
 			 	                    	StyleFolder="/Styles/Calendar/styles/default" 
@@ -409,45 +412,42 @@
                 					    TextBoxId = "TextBoxDat"
                                         OnClientDateChanged="onDateChange"   
                 					    DatePickerImagePath ="/Styles/Calendar/styles/icon2.gif"/>
-
-
-                      <asp:RegularExpressionValidator ID="regexTextBoxDat" ControlToValidate="TextBoxDat" SetFocusOnError="True" 
-                           ValidationExpression="(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.](19|20)\d\d" ErrorMessage="" runat="server" />
-
-                 </td>
-                  <td width="3%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxTim" BorderStyle="None" Width="100%" Height="20" RunAt="server" Font-Bold="true" BackColor="#FFFFE0" />
-                      <asp:RegularExpressionValidator ID="regexTextBoxTim" ControlToValidate="TextBoxTim" SetFocusOnError="True" 
-                           ValidationExpression="^([0-1][0-9]|[2][0-3]):([0-5][0-9])$" ErrorMessage="" runat="server" />
                   </td>
-
-                   <td width="10%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxIIN" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td> 
-                  <td width="32%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxFio" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
+                  <td width="3%" class="PO_RowCap">
+                      <asp:TextBox id="TextBoxTim" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
                   </td>
                    <td width="8%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxBrt" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td>
-                  <td width="8%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxKrt" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
+                      <asp:TextBox id="TextBoxIIN" BorderStyle="None" Width="100%" Height="20" RunAt="server"  BackColor="#FFFFE0" />
                   </td> 
-                  <td width="12%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxFrm" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
+                  <td width="30%" class="PO_RowCap">
+                      <asp:TextBox id="TextBoxFio" BorderStyle="None" Width="75%" Height="20" RunAt="server" ReadOnly="true" Font-Size="Large" BackColor="#FFFFE0" />
+                      <input type="button" value="ФИО" style="width:17%; height:20px;"  onclick="FindKlt()" />
+                  </td>
+                   <td width="6%" class="PO_RowCap">
+                      <asp:TextBox id="TextBoxBrt" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
+                  </td> 
+                  <td width="14%" class="PO_RowCap">
+                      <asp:TextBox id="TextBoxTel" BorderStyle="None" Width="100%" Height="20" RunAt="server" Style="position: relative; font-weight: 700; font-size: medium;" BackColor="#FFFFE0" />
+                       <asp:TextBox id="TextBoxNum" BorderStyle="None" Width="0%" Height="20" RunAt="server" BackColor="#FFFFE0" Visible="false" />
+                  </td>
+                   <td width="6%" align="center" class="PO_RowCap">
+                       <obout:OboutCheckBox runat="server" ID="StsFlg" FolderStyle="~/Styles/Interface/plain/OboutCheckBox"> </obout:OboutCheckBox>
+                  </td> 
+                  <td width="6%" align="center" class="PO_RowCap">
+                      <obout:OboutCheckBox runat="server" ID="SozFlg" FolderStyle="~/Styles/Interface/plain/OboutCheckBox"> </obout:OboutCheckBox>
+                  </td>
+                  <td width="6%" align="center" class="PO_RowCap">
+                      <obout:OboutCheckBox runat="server" ID="DspFlg" FolderStyle="~/Styles/Interface/plain/OboutCheckBox"> </obout:OboutCheckBox>
                   </td>
                   <td width="10%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxIns" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
+                      <asp:TextBox id="TextBoxIns" BorderStyle="None" Width="0%" Height="20" RunAt="server" BackColor="#FFFFE0" Visible="false" />
+                      <asp:TextBox id="TextBoxPrk" BorderStyle="None" Width="100%" Height="20" RunAt="server"  BackColor="#FFFFE0" />
                   </td>
-                  <td width="10%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxTit" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
-                  </td>
-
               </tr>
             
    </table>
   <%-- ============================  шапка экрана ============================================ --%>
- <asp:TextBox ID="Sapka" 
+<%-- <asp:TextBox ID="Sapka" 
              Text="Семейный врач" 
              BackColor="yellow"  
              Font-Names="Verdana" 
@@ -456,12 +456,12 @@
              ForeColor="Blue" 
              style="top: -5px; left: 0px; position: relative; width: 100%; text-align:center"
              runat="server"></asp:TextBox>
-
+--%>
         </asp:Panel>     
 <%-- ============================  средний блок  ============================================ --%>
                                
   <asp:Panel ID="PanelMid" runat="server" BorderStyle="Double" 
-             Style="left: 2%; position: relative; top: 0px; width: 96%; height: 550px;">
+             Style="left: 2%; position: relative; top: 0px; width: 96%; height: 400px;">
        <%-- ============================  для передач значении  ============================================ --%>
         <asp:HiddenField ID="parMkbNum" runat="server" />
         <asp:HiddenField ID="parGrfIdn" runat="server" />

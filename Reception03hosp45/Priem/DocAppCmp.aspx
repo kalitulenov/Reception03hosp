@@ -56,6 +56,7 @@
              var AmbCrdIdn = document.getElementById('MainContent_parGrfIdn').value;
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonViz').style.fontWeight = 'bold';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonMap').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUsl').style.fontWeight = '';
@@ -69,6 +70,7 @@
 
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonViz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonMap').style.fontWeight = 'bold';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUsl').style.fontWeight = '';
@@ -90,6 +92,7 @@
  //            property.style.fontStyle.bold = true;
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonViz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonMap').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = 'bold';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUsl').style.fontWeight = '';
@@ -103,6 +106,7 @@
 
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonViz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonMap').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = 'bold';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUsl').style.fontWeight = '';
@@ -115,6 +119,7 @@
              var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonViz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonMap').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUsl').style.fontWeight = 'bold';
@@ -129,6 +134,7 @@
 
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonViz').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonMap').style.fontWeight = '';
+              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUsl').style.fontWeight = '';
@@ -137,6 +143,19 @@
               mySpl.loadPage("BottomContent", "DocAppAmbArx.aspx?AmbCrdIdn=" + AmbCrdIdn);
           }
 
+         function DigButton_Click() {
+             var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
+
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonViz').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonMap').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = 'bold';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUsl').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonArxAmb').style.fontWeight = '';
+
+             mySpl.loadPage("BottomContent", "DocAppAmbDigNoz.aspx?AmbCrdIdn=" + AmbCrdIdn);
+         }
 
          // ------------------------  при соглашений на запись к врачу из 1-го диалогового окна  ------------------------------------------------------------------       
          function OK_click() {
@@ -229,17 +248,19 @@
 <%-- ============================  средний блок  ============================================ --%>
                                
   <asp:Panel ID="PanelMid" runat="server" BorderStyle="Double" 
-             Style="left: 2%; position: relative; top: -40px; width: 96%; height: 550px;">
+             Style="left: 2%; position: relative; top: -40px; width: 96%; height: 510px;">
 
        <obspl:HorizontalSplitter ID="mySpl" CookieDays="0" runat="server" IsResizable="false" StyleFolder="~/Styles/Splitter">   
 			    <TopPanel HeightMin="30" HeightMax="30" HeightDefault="30" >
 				    <Content>
-                     <asp:Button ID="ButtonViz" runat="server" Height="30" Width="16%" CommandName="Push" Text="Вызов" OnClientClick="VizButton_Click(); return false;"/>
-                     <asp:Button ID="ButtonMap" runat="server" Height="30" Width="16%" CommandName="Push" Text="На карте" OnClientClick="MapButton_Click(); return false;"/>
-                     <asp:Button ID="ButtonUsl" runat="server" Height="30" Width="16%" CommandName="Push" Text="Услуги" OnClientClick="UslButton_Click(); return false"/>
-                     <asp:Button ID="ButtonOsm" runat="server" Height="30" Width="16%" CommandName="Push" Text="Осмотр" OnClientClick="OsmButton_Click(); return false;"/>
-                     <asp:Button ID="ButtonLoc" runat="server" Height="30" Width="16%" CommandName="Push" Text="Статус" OnClientClick="LocButton_Click(); return false;"/>
-                     <asp:Button ID="ButtonArxAmb" runat="server" Height="30" Width="15%" CommandName="Push" Text="Архив приемов" OnClientClick="ArxAmbButton_Click(); return false;"/>
+                     <asp:Button ID="ButtonBck" runat="server" Height="25" Width="4%" CommandName="Push" Font-Bold="true" ForeColor="Blue" Font-Size="Large" Text="<<<" onclick="CanButton_Click"/>
+                     <asp:Button ID="ButtonViz" runat="server" Height="25" Width="13%" CommandName="Push" Text="Вызов" OnClientClick="VizButton_Click(); return false;"/>
+                     <asp:Button ID="ButtonMap" runat="server" Height="25" Width="13%" CommandName="Push" Text="На карте" OnClientClick="MapButton_Click(); return false;"/>
+                     <asp:Button ID="ButtonDig" runat="server" Height="25" Width="13%" CommandName="Push" Text="Диагноз" OnClientClick="DigButton_Click(); return false;"/>
+                     <asp:Button ID="ButtonUsl" runat="server" Height="25" Width="13%" CommandName="Push" Text="Услуги" OnClientClick="UslButton_Click(); return false"/>
+                     <asp:Button ID="ButtonOsm" runat="server" Height="25" Width="13%" CommandName="Push" Text="Осмотр" OnClientClick="OsmButton_Click(); return false;"/>
+                     <asp:Button ID="ButtonLoc" runat="server" Height="25" Width="13%" CommandName="Push" Text="Статус" OnClientClick="LocButton_Click(); return false;"/>
+                     <asp:Button ID="ButtonArxAmb" runat="server" Height="25" Width="14%" CommandName="Push" Text="Архив приемов" OnClientClick="ArxAmbButton_Click(); return false;"/>
 				    </Content>
 			    </TopPanel>
                 <BottomPanel HeightDefault="400" HeightMin="400" HeightMax="400">

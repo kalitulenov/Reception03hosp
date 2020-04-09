@@ -184,14 +184,41 @@ namespace Reception03hosp45.Priem
             if (ds.Tables[0].Rows.Count > 0)
             {
                 TextBoxDat.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFDAT"]).ToString("dd.MM.yyyy");
-                TextBoxTim.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["HURMIN"]).ToString("hh:mm");
-                TextBoxKrt.Text = Convert.ToString(ds.Tables[0].Rows[0]["GRFPOL"]);
-                TextBoxFio.Text = Convert.ToString(ds.Tables[0].Rows[0]["GRFPTH"]);
-                TextBoxFrm.Text = Convert.ToString(ds.Tables[0].Rows[0]["RABNAM"]);
+
+                //if (Convert.ToString(ds.Tables[0].Rows[0]["GRFBEG"]) == null || Convert.ToString(ds.Tables[0].Rows[0]["GRFBEG"]) == "")
+                //    TextBoxTim.Text = "";
+                //else
+                //{
+                  TextBoxTim.Text = Convert.ToString(ds.Tables[0].Rows[0]["TIMBEG"]);
+                //}
+
+                if (Convert.ToString(ds.Tables[0].Rows[0]["PTHBRT"]) == null || Convert.ToString(ds.Tables[0].Rows[0]["PTHBRT"]) == "") TextBoxBrt.Text = "";
+                else TextBoxBrt.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["PTHBRT"]).ToString("dd.MM.yyyy");
+                //      TextBoxDsp.Text = Convert.ToString(ds.Tables[0].Rows[0]["DSPUCH"]);
                 TextBoxIns.Text = Convert.ToString(ds.Tables[0].Rows[0]["STXNAM"]);
+                TextBoxPrk.Text = Convert.ToString(ds.Tables[0].Rows[0]["PRKNAM"]);
+                TextBoxNum.Text = Convert.ToString(ds.Tables[0].Rows[0]["KLTINV"]);
+                TextBoxFio.Text = Convert.ToString(ds.Tables[0].Rows[0]["GRFPTH"]);
                 TextBoxIIN.Text = Convert.ToString(ds.Tables[0].Rows[0]["GRFIIN"]);
-        //        TextBoxTel.Text = Convert.ToString(ds.Tables[0].Rows[0]["KLTTEL"]);
-                Sapka.Text = Convert.ToString(ds.Tables[0].Rows[0]["DLGNAM"]);
+                TextBoxTel.Text = Convert.ToString(ds.Tables[0].Rows[0]["KLTTEL"]);
+
+                if (Convert.ToString(ds.Tables[0].Rows[0]["STSNAM"]) == null ||
+                    Convert.ToString(ds.Tables[0].Rows[0]["STSNAM"]) == "" ||
+                    Convert.ToString(ds.Tables[0].Rows[0]["STSNAM"]) == "0" ||
+                    Convert.ToString(ds.Tables[0].Rows[0]["STSNAM"]) == "2") StsFlg.Checked = false;
+                else StsFlg.Checked = true;
+
+                if (Convert.ToString(ds.Tables[0].Rows[0]["KLTSOZLGT"]) == null ||
+                    Convert.ToString(ds.Tables[0].Rows[0]["KLTSOZLGT"]) == "" ||
+                    Convert.ToString(ds.Tables[0].Rows[0]["KLTSOZLGT"]) == "0") SozFlg.Checked = false;
+                else SozFlg.Checked = true;
+
+                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["KLTDSP"].ToString())) DspFlg.Checked = false;
+                else DspFlg.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["KLTDSP"]);
+
+                //   Sapka.Text = Convert.ToString(ds.Tables[0].Rows[0]["FI"]) + "(" + Convert.ToString(ds.Tables[0].Rows[0]["DLGNAM"]) +")";
+                Sapka.Value = Convert.ToString(ds.Tables[0].Rows[0]["DLGNAM"]);
+                parPovObr.Value = Convert.ToString(ds.Tables[0].Rows[0]["OBRPVD"]);
             }
         }
 

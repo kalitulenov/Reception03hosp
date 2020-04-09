@@ -143,14 +143,20 @@
                  w = w - 200;
                  window.open("/Priem/DocAppAnl.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
                  break;
+             case 'ВЫС':
+                 window.open("/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=СМП", "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                 break;
+             case 'ВЫС':
+                 window.open("/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=ДОМ", "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                 break;
              //case 'УЗИ': location.href = "/Priem/DocAppUzi.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'AMB': location.href = "/Priem/DocAppAmbAcm.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=АМБ"; break;
              case 'АНТ': location.href = "/Priem/DocAppAnt.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'СМП': location.href = "/Priem/DocAppCmp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
              case 'АКТ': location.href = "/Priem/DocAppAkt.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
 //             case 'АНЛ': location.href = "/Priem/DocAppAnl.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
-             case 'ВЫС': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=СМП"; break;
-             case 'ВЫД': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=ДОМ"; break;
+             //case 'ВЫС': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=СМП"; break;
+             //case 'ВЫД': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=ДОМ"; break;
              case 'ДОМ': location.href = "/Priem/DocAppDom.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=ДОМ"; break;
              case 'ЛБР': location.href = "/Priem/DocAppLab.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=ЛАБ"; break;
              case 'СТЦ': location.href = "/Priem/DocAppStz.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=СТЦ"; break;
@@ -306,13 +312,20 @@
                  w = w - 200;
                  window.open("/Priem/DocAppAnl.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
                  break;
+             case 'ВЫС':
+                 window.open("/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=СМП", "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                 break;
+             case 'ВЫС':
+                 window.open("/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=ДОМ", "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                 break;
+
              //case 'УЗИ': location.href = "/Priem/DocAppUzi.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
              case 'АНТ': location.href = "/Priem/DocAppAnt.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
              case 'СМП': location.href = "/Priem/DocAppCmp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
              case 'АКТ': location.href = "/Priem/DocAppAkt.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
              //case 'АНЛ': location.href = "/Priem/DocAppAnl.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
-             case 'ВЫС': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=СМП"; break;
-             case 'ВЫД': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=ДОМ"; break;
+ //            case 'ВЫС': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=СМП"; break;
+ //            case 'ВЫД': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=ДОМ"; break;
              case 'ДОМ': location.href = "/Priem/DocAppDom.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=ДОМ"; break;
              case 'ЛБР': location.href = "/Priem/DocAppLbr.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=ЛАБ"; break;
              case 'СТЦ': location.href = "/Priem/DocAppStz.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=СТЦ"; break;
@@ -722,32 +735,32 @@
                     GridCrd.Columns[18].Visible = true;
                     break;
                 case "ВЫС":
-                    GridCrd.Columns[05].Width = "20%";
-                    GridCrd.Columns[09].Visible = false;
-                    GridCrd.Columns[10].Visible = false;
+                    //GridCrd.Columns[05].Width = "20%";
+                    //GridCrd.Columns[09].Visible = false;
+                    //GridCrd.Columns[10].Visible = false;
 
-                    GridCrd.Columns[11].Visible = true;
-                    GridCrd.Columns[12].Visible = true;
-                    GridCrd.Columns[13].Visible = true;
-                    GridCrd.Columns[14].Visible = true;
-                    GridCrd.Columns[15].Visible = true;
-                    GridCrd.Columns[16].Visible = true;
-                    GridCrd.Columns[17].Visible = true;
-                    GridCrd.Columns[18].Visible = true;
+                    //GridCrd.Columns[11].Visible = true;
+                    //GridCrd.Columns[12].Visible = true;
+                    //GridCrd.Columns[13].Visible = true;
+                    //GridCrd.Columns[14].Visible = true;
+                    //GridCrd.Columns[15].Visible = true;
+                    //GridCrd.Columns[16].Visible = true;
+                    //GridCrd.Columns[17].Visible = true;
+                    //GridCrd.Columns[18].Visible = true;
                     break;
                 case "ВЫД":
-                    GridCrd.Columns[05].Width = "20%";
-                    GridCrd.Columns[09].Visible = false;
-                    GridCrd.Columns[10].Visible = false;
+                    //GridCrd.Columns[05].Width = "20%";
+                    //GridCrd.Columns[09].Visible = false;
+                    //GridCrd.Columns[10].Visible = false;
 
-                    GridCrd.Columns[11].Visible = true;
-                    GridCrd.Columns[12].Visible = true;
-                    GridCrd.Columns[13].Visible = true;
-                    GridCrd.Columns[14].Visible = true;
-                    GridCrd.Columns[15].Visible = true;
-                    GridCrd.Columns[16].Visible = true;
-                    GridCrd.Columns[17].Visible = true;
-                    GridCrd.Columns[18].Visible = true;
+                    //GridCrd.Columns[11].Visible = true;
+                    //GridCrd.Columns[12].Visible = true;
+                    //GridCrd.Columns[13].Visible = true;
+                    //GridCrd.Columns[14].Visible = true;
+                    //GridCrd.Columns[15].Visible = true;
+                    //GridCrd.Columns[16].Visible = true;
+                    //GridCrd.Columns[17].Visible = true;
+                    //GridCrd.Columns[18].Visible = true;
                     break;
                 case "ДОМ":
                     GridCrd.Columns[05].Width = "20%";
@@ -1009,13 +1022,13 @@
         {
             //   int SozDsp = Convert.ToInt32(e.Row.Cells[01].Text);
             string SozDsp = e.Row.Cells[01].Text;
-            if (SozDsp.Length < 3) SozDsp = "   "; 
+            if (SozDsp.Length < 3) SozDsp = "   ";
             // if (e.Row.Cells[01].Text != "0") e.Row.Cells[07].ForeColor = System.Drawing.Color.Red;
 
             if (SozDsp[0].ToString() ==  "G") e.Row.Cells[07].ForeColor = System.Drawing.Color.Orange; // сгенерированая строка
             else
                if (SozDsp[1].ToString() ==  "C") e.Row.Cells[07].ForeColor = System.Drawing.Color.Red; // соц.не защищенный
-               else 
+            else
                   if (SozDsp[2].ToString() ==  "D") e.Row.Cells[07].ForeColor = System.Drawing.Color.Blue;  // диспансерный
         }
         // ======================================================================================
@@ -1094,7 +1107,7 @@
                           OnClientSelect="OnClientSelect"
      --%>
 
-   <asp:Panel ID="PanelMid" runat="server" BorderStyle="Double" ScrollBars="Vertical"
+   <asp:Panel ID="PanelMid" runat="server" BorderStyle="Double" ScrollBars="none"
              Style="left: 5%; position: relative; top: 0px; width: 90%; height: 400px;">
 	        
 	        <obout:Grid id="GridCrd" runat="server" 
