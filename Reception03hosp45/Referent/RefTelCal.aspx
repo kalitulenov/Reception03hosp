@@ -493,12 +493,12 @@
 <%--                <ClientSideEvents ExposeSender="true" OnClientAdd="OnAdd" />--%>
                 <Columns>
                     <obout:Column ID="Column0" DataField="TelCalIdn" HeaderText="Идн" Visible="false" Width="0%" />
-                    <obout:Column ID="Column1" DataField="TelCalDat" HeaderText="ДАТА" DataFormatString="{0:dd.MM.yyyy}" ApplyFormatInEditMode="true" Width="7%" />
-<%--                        <TemplateSettings EditTemplateId="tplDatePicker" />
-                    </obout:Column>--%>
+                    <obout:Column ID="Column1" DataField="TelCalDat" HeaderText="ДАТА" DataFormatString="{0:dd.MM.yyyy}" ApplyFormatInEditMode="true" Width="10%" >
+                        <TemplateSettings EditTemplateId="tplDatePicker" />
+                    </obout:Column>
                     <obout:Column ID="Column2" DataField="TelCalHhh" HeaderText="ЧАС" Width="4%" />
                     <obout:Column ID="Column3" DataField="TelCalMmm" HeaderText="МИН" Width="4%" />
-                    <obout:Column ID="Column4" DataField="TelCalTab" HeaderText="ФАМИЛИЯ И.О." Width="25%">
+                    <obout:Column ID="Column4" DataField="TelCalTab" HeaderText="ФАМИЛИЯ И.О." Width="22%">
                         <TemplateSettings TemplateId="TemplateBuxNam" EditTemplateId="TemplateEditBuxNam" />
                     </obout:Column>
                     <obout:Column ID="Column5" DataField="TelCalNum" HeaderText="ТЕЛЕФОН" Width="20%" />
@@ -539,7 +539,7 @@
                                             ShowYearSelector="true"
                                             YearSelectorType="DropDownList"
                                             TitleText="Выберите год: "
-                                            TextBoxId="txtOrderDate"
+                                            TextBoxId="ctl00$MainContent$GridTelCal$tplDatePicker$ctl00$txtOrderDate"
                                             CultureName="ru-RU"
                                             DatePickerImagePath="~/Styles/Calendar/styles/icon2.gif" />
                                     </td>
