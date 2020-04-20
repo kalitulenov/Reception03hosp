@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Reception03hosp45.Referent {
-    
-    
-    public partial class RefGlv003 {
-        
+namespace Reception03hosp45.Referent
+{
+
+
+    public partial class RefGlv003
+    {
+
         /// <summary>
         /// parPnl control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField parPnl;
-        
+
         /// <summary>
         /// parUpd control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField parUpd;
-        
+
         /// <summary>
         /// SdsDoc control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SdsDoc;
-        
+
         /// <summary>
         /// SdsFio control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SdsFio;
-        
+
         /// <summary>
         /// SdsKlt control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SdsKlt;
-        
+
         /// <summary>
         /// SdsMedDoc control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SdsMedDoc;
-        
+
         /// <summary>
         /// HidTextBoxFio control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidTextBoxFio;
-        
+
         /// <summary>
         /// HidTextBoxIIN control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidTextBoxIIN;
-        
+
         /// <summary>
         /// HidTextBoxTel control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidTextBoxTel;
-        
+
         /// <summary>
         /// HidTextBoxBrt control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidTextBoxBrt;
-        
+
         /// <summary>
         /// HidTextBoxKrt control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidTextBoxKrt;
-        
+
         /// <summary>
         /// HidTextBoxStx control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidTextBoxStx;
-        
+
         /// <summary>
         /// HidTextBoxDsp control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidTextBoxDsp;
-        
+
         /// <summary>
         /// HidTextBoxEnd control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidTextBoxEnd;
-        
+
         /// <summary>
         /// HidTextBoxInv control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidTextBoxInv;
-        
+
         /// <summary>
         /// HidCntIdn control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidCntIdn;
-        
+
         /// <summary>
         /// HidKltIdn control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidKltIdn;
-        
+
         /// <summary>
         /// HidBuxFrm control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidBuxFrm;
-        
+
         /// <summary>
         /// HidBuxKod control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidBuxKod;
-        
+
         /// <summary>
         /// HidBoxDoc001 control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidBoxDoc001;
-        
+
         /// <summary>
         /// HidBoxFio001 control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidBoxFio001;
-        
+
         /// <summary>
         /// HidBoxDoc002 control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidBoxDoc002;
-        
+
         /// <summary>
         /// HidBoxFio002 control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidBoxFio002;
-        
+
         /// <summary>
         /// HidBoxDoc003 control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidBoxDoc003;
-        
+
         /// <summary>
         /// HidBoxFio003 control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidBoxFio003;
-        
+
         /// <summary>
         /// TextBoxBegDat control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxBegDat;
-        
+
         /// <summary>
         /// cal1 control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Calendar2.Calendar cal1;
-        
+
         /// <summary>
         /// TextBoxEndDat control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxEndDat;
-        
+
         /// <summary>
         /// cal2 control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Calendar2.Calendar cal2;
-        
+
         /// <summary>
         /// TextBoxIIN control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxIIN;
-        
+
         /// <summary>
         /// TextBoxFio control.
         /// </summary>
@@ -290,25 +292,16 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Obout.Interface.OboutTextBox TextBoxFio;
-        
+
         /// <summary>
-        /// TextBoxBrt control.
+        /// CallButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxBrt;
-        
-        /// <summary>
-        /// TextBoxInv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxInv;
-        
+        protected global::System.Web.UI.WebControls.Button CallButton;
+
         /// <summary>
         /// TextBoxTel control.
         /// </summary>
@@ -317,16 +310,43 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxTel;
-        
+
         /// <summary>
-        /// TextBoxStx control.
+        /// StsFlg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxStx;
-        
+        protected global::Obout.Interface.OboutCheckBox StsFlg;
+
+        /// <summary>
+        /// SozFlg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Obout.Interface.OboutCheckBox SozFlg;
+
+        /// <summary>
+        /// DspFlg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Obout.Interface.OboutCheckBox DspFlg;
+
+        /// <summary>
+        /// TextBoxPrk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxPrk;
+
         /// <summary>
         /// TextBoxDoc control.
         /// </summary>
@@ -335,7 +355,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxDoc;
-        
+
         /// <summary>
         /// PanelTop control.
         /// </summary>
@@ -344,7 +364,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelTop;
-        
+
         /// <summary>
         /// ScriptManager3 control.
         /// </summary>
@@ -353,7 +373,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager3;
-        
+
         /// <summary>
         /// mySpl01 control.
         /// </summary>
@@ -362,7 +382,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Splitter2.Splitter mySpl01;
-        
+
         /// <summary>
         /// mySpl0101 control.
         /// </summary>
@@ -371,7 +391,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Splitter2.HorizontalSplitter mySpl0101;
-        
+
         /// <summary>
         /// BoxDoc001 control.
         /// </summary>
@@ -380,7 +400,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Obout.ComboBox.ComboBox BoxDoc001;
-        
+
         /// <summary>
         /// BoxFio001 control.
         /// </summary>
@@ -389,7 +409,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Obout.ComboBox.ComboBox BoxFio001;
-        
+
         /// <summary>
         /// mySpl02 control.
         /// </summary>
@@ -398,7 +418,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Splitter2.Splitter mySpl02;
-        
+
         /// <summary>
         /// mySpl0201 control.
         /// </summary>
@@ -407,7 +427,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Splitter2.HorizontalSplitter mySpl0201;
-        
+
         /// <summary>
         /// BoxDoc002 control.
         /// </summary>
@@ -416,7 +436,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Obout.ComboBox.ComboBox BoxDoc002;
-        
+
         /// <summary>
         /// BoxFio002 control.
         /// </summary>
@@ -425,7 +445,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Obout.ComboBox.ComboBox BoxFio002;
-        
+
         /// <summary>
         /// mySpl0301 control.
         /// </summary>
@@ -434,7 +454,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Splitter2.HorizontalSplitter mySpl0301;
-        
+
         /// <summary>
         /// BoxDoc003 control.
         /// </summary>
@@ -443,7 +463,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Obout.ComboBox.ComboBox BoxDoc003;
-        
+
         /// <summary>
         /// KltWindow control.
         /// </summary>
@@ -452,7 +472,7 @@ namespace Reception03hosp45.Referent {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Window.Window KltWindow;
-        
+
         /// <summary>
         /// KltOneWindow control.
         /// </summary>

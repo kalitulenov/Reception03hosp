@@ -127,22 +127,22 @@
             document.getElementById('MainContent_TextBoxTel').value = hashes[4];
             document.getElementById('MainContent_TextBoxIIN').value = hashes[2];
             document.getElementById('ctl00$MainContent$TextBoxFio').value = hashes[1];
-            document.getElementById('MainContent_TextBoxBrt').value = hashes[3];
+    //        document.getElementById('MainContent_TextBoxBrt').value = hashes[3];
     //        document.getElementById('MainContent_TextBoxKrt').value = hashes[5];
     //        document.getElementById('MainContent_TextBoxDsp').value = hashes[6];
             document.getElementById('MainContent_TextBoxStx').value = hashes[7];
      //       document.getElementById('MainContent_TextBoxEnd').value = hashes[8];
-            document.getElementById('MainContent_TextBoxInv').value = hashes[9];
+     //       document.getElementById('MainContent_TextBoxInv').value = hashes[9];
 
             document.getElementById('MainContent_HidTextBoxTel').value = hashes[4];
             document.getElementById('MainContent_HidTextBoxIIN').value = hashes[2];
             document.getElementById('MainContent_HidTextBoxFio').value = hashes[1];
-            document.getElementById('MainContent_HidTextBoxBrt').value = hashes[3];
+      //      document.getElementById('MainContent_HidTextBoxBrt').value = hashes[3];
             document.getElementById('MainContent_HidTextBoxKrt').value = "";  //hashes[5];
             document.getElementById('MainContent_HidTextBoxDsp').value = hashes[6];
             document.getElementById('MainContent_HidTextBoxStx').value = hashes[7];
             document.getElementById('MainContent_HidTextBoxEnd').value = "";   //hashes[8];
-            document.getElementById('MainContent_HidTextBoxInv').value = hashes[9];
+      //      document.getElementById('MainContent_HidTextBoxInv').value = hashes[9];
 
             localStorage.setItem("CntIdn", hashes[0]); //setter
             localStorage.setItem("GrfPth", hashes[1]); //setter
@@ -176,14 +176,33 @@
                 if (strCheck.indexOf(GlvKltIin[i]) == -1) { alert("Ошибка в ИИН " + GlvKltIin); return false; }
             }
 
+
             KltOneWindow.setTitle("Поиск клиентов в РПН " + GlvKltIin);
             KltOneWindow.setUrl("RefGlv003rpnAPI.aspx?KltOneIin=" + GlvKltIin);
-     //       KltOneWindow.setUrl("RefGlv003RpnInsApi.aspx?KltOneIin=" + GlvKltIin);
             KltOneWindow.Open();
             // return false;
         }
 
-       
+        // ------------------------  соглашения на ввод информаций о себе при записи к врачу из диалогового окна  ------------------------------------------------------------------
+        function GetSqt() {
+            //    alert("FindRPN=" + document.getElementById('ctl00$MainContent$TextBoxFio').value);
+            var GlvKltIin = document.getElementById('ctl00$MainContent$TextBoxFio').value;
+
+            if (GlvKltIin == "") { alert("ИИН не указан "); return false; }
+            if (GlvKltIin.length != 12) { alert("длина ИИН не верен " + GlvKltIin); return false; }
+
+            var strCheck = "0123456789";
+            var i;
+
+            for (var i = 0; i < GlvKltIin.length; i++) {
+                //          alert("i=" + i + "DatDocVal=" + DatDocVal[i]);
+                if (strCheck.indexOf(GlvKltIin[i]) == -1) { alert("Ошибка в ИИН " + GlvKltIin); return false; }
+            }
+
+            document.getElementById("MainContent_CallButton").click();    // вызов функции из JavaScript
+        }
+
+
         // ------------------------  соглашения на ввод информаций о себе при записи к врачу из диалогового окна  ------------------------------------------------------------------
         function FindKlt() {
        //     alert("FindKlt=" + document.getElementById('ctl00$MainContent$TextBoxFio').value);
@@ -206,24 +225,24 @@
           //  alert("Fio=" + document.getElementById('ctl00$MainContent$TextBoxFio').value);
             document.getElementById('MainContent_HidTextBoxFio').value = document.getElementById('ctl00$MainContent$TextBoxFio').value;
           //  alert("Brt=" + document.getElementById('MainContent_TextBoxBrt').value);
-            document.getElementById('MainContent_HidTextBoxBrt').value = document.getElementById('MainContent_TextBoxBrt').value;
+          //  document.getElementById('MainContent_HidTextBoxBrt').value = document.getElementById('MainContent_TextBoxBrt').value;
             document.getElementById('MainContent_HidTextBoxKrt').value = "";  //hashes[5];
             document.getElementById('MainContent_HidTextBoxDsp').value = hashes[6];
             document.getElementById('MainContent_HidTextBoxStx').value = document.getElementById('MainContent_TextBoxStx').value;
             document.getElementById('MainContent_HidTextBoxEnd').value = "";   //hashes[8];
-            document.getElementById('MainContent_HidTextBoxInv').value = document.getElementById('MainContent_TextBoxInv').value;
+          //  document.getElementById('MainContent_HidTextBoxInv').value = document.getElementById('MainContent_TextBoxInv').value;
 
         //    alert("RpnKlt2=");
      //       localStorage.setItem("CntIdn", hashes[0]); //setter
             localStorage.setItem("GrfPth", document.getElementById('ctl00$MainContent$TextBoxFio').value);
             localStorage.setItem("GrfIIN", document.getElementById('MainContent_TextBoxIIN').value);
             localStorage.setItem("GrfTel", document.getElementById('MainContent_TextBoxTel').value);
-            localStorage.setItem("GrfBrt", document.getElementById('MainContent_TextBoxBrt').value);
+     //       localStorage.setItem("GrfBrt", document.getElementById('MainContent_TextBoxBrt').value);
      //       localStorage.setItem("GrfKrt", hashes[5]); //setter
      //       localStorage.setItem("GrfCmp", hashes[6]); //setter
             localStorage.setItem("GrfStx", document.getElementById('MainContent_TextBoxStx').value);
      //       localStorage.setItem("GrfEnd", hashes[8]); //setter
-            localStorage.setItem("GrfInv", document.getElementById('MainContent_TextBoxInv').value);
+      //      localStorage.setItem("GrfInv", document.getElementById('MainContent_TextBoxInv').value);
        //     alert("RpnKlt3=");
         }
 
@@ -238,22 +257,22 @@
             document.getElementById('MainContent_TextBoxTel').value = hashes[4];
             document.getElementById('MainContent_TextBoxIIN').value = hashes[2];
             document.getElementById('ctl00$MainContent$TextBoxFio').value = hashes[1];
-            document.getElementById('MainContent_TextBoxBrt').value = hashes[3];
+       //     document.getElementById('MainContent_TextBoxBrt').value = hashes[3];
       //      document.getElementById('MainContent_TextBoxKrt').value = hashes[5];
      //       document.getElementById('MainContent_TextBoxDsp').value = hashes[6];
             document.getElementById('MainContent_TextBoxStx').value = hashes[7];
      //       document.getElementById('MainContent_TextBoxEnd').value = hashes[8];
-            document.getElementById('MainContent_TextBoxInv').value = hashes[9];
+      //      document.getElementById('MainContent_TextBoxInv').value = hashes[9];
 
             document.getElementById('MainContent_HidTextBoxTel').value = hashes[4];
             document.getElementById('MainContent_HidTextBoxIIN').value = hashes[2];
             document.getElementById('MainContent_HidTextBoxFio').value = hashes[1];
-            document.getElementById('MainContent_HidTextBoxBrt').value = hashes[3];
+      //      document.getElementById('MainContent_HidTextBoxBrt').value = hashes[3];
             document.getElementById('MainContent_HidTextBoxKrt').value = "";    //hashes[5];
             document.getElementById('MainContent_HidTextBoxDsp').value = hashes[6];
             document.getElementById('MainContent_HidTextBoxStx').value = hashes[7];
             document.getElementById('MainContent_HidTextBoxEnd').value = "";    //hashes[8];
-            document.getElementById('MainContent_HidTextBoxInv').value = hashes[9];
+      //      document.getElementById('MainContent_HidTextBoxInv').value = hashes[9];
 
             localStorage.setItem("CntIdn", hashes[0]); //setter
             localStorage.setItem("GrfPth", hashes[1]); //setter
@@ -279,22 +298,22 @@
             document.getElementById('MainContent_TextBoxTel').value = hashes[4];
             document.getElementById('MainContent_TextBoxIIN').value = hashes[2];
             document.getElementById('ctl00$MainContent$TextBoxFio').value = hashes[1];
-            document.getElementById('MainContent_TextBoxBrt').value = hashes[3];
+      //      document.getElementById('MainContent_TextBoxBrt').value = hashes[3];
       //      document.getElementById('MainContent_TextBoxKrt').value = hashes[5];
      //       document.getElementById('MainContent_TextBoxDsp').value = hashes[6];
             document.getElementById('MainContent_TextBoxStx').value = hashes[7];
      //       document.getElementById('MainContent_TextBoxEnd').value = hashes[8];
-            document.getElementById('MainContent_TextBoxInv').value = hashes[9];
+     //       document.getElementById('MainContent_TextBoxInv').value = hashes[9];
 
             document.getElementById('MainContent_HidTextBoxTel').value = hashes[4];
             document.getElementById('MainContent_HidTextBoxIIN').value = hashes[2];
             document.getElementById('MainContent_HidTextBoxFio').value = hashes[1];
-            document.getElementById('MainContent_HidTextBoxBrt').value = hashes[3];
+      //      document.getElementById('MainContent_HidTextBoxBrt').value = hashes[3];
             document.getElementById('MainContent_HidTextBoxKrt').value = "";    //hashes[5];
             document.getElementById('MainContent_HidTextBoxDsp').value = hashes[6];
             document.getElementById('MainContent_HidTextBoxStx').value = hashes[7];
             document.getElementById('MainContent_HidTextBoxEnd').value = "";    //hashes[8];
-            document.getElementById('MainContent_HidTextBoxInv').value = hashes[9];
+     //       document.getElementById('MainContent_HidTextBoxInv').value = hashes[9];
 
             localStorage.setItem("CntIdn", hashes[0]); //setter
             localStorage.setItem("GrfPth", hashes[1]); //setter
@@ -872,12 +891,14 @@
                   <td width="19%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Период</td>
                   <td width="8%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">ИИН</td>
                   <td width="32%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Фамилия И.О., ИИН</td>
-                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Год.р</td>
-                  <td width="5%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">№ инв</td>
-                  <td width="17%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Телефон</td>
-                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Страховат.</td>
+<%--                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Год.р</td>
+                  <td width="5%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">№ инв</td>--%>
+                  <td width="16%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Телефон</td>
+                  <td width="4%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Стс</td>
+                  <td width="4%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Соц</td>
+                  <td width="4%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Дсп</td>
+                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Прикреп.</td>
                   <td width="4%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Запись</td>
-<%--                  <td width="3%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Архив</td>--%>
                   <td width="4%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Титул</td>
               </tr>
               
@@ -920,24 +941,39 @@
                       </obout:OboutTextBox>
                       
                       <input type="button" value="БД" style="width:10%"  onclick="FindKlt()" />
-                      <input type="button" value="РПН" style="width:10%"  onclick="FindRPN()" />
+<%--                      <input type="button" value="РПН" style="width:10%"  onclick="FindRPN()" />--%>
+                      <input type="button" ID="RpnButton" value="РПН" style="width:10%"  onclick="GetSqt()" />
                       <input type="button" value="Архив" style="width:15%"  onclick="SelFioCnd()" />
                       <input type="button" value="SPC" style="display:none;" onclick="FindKlt()" />
+                      <asp:Button runat="server" ID="CallButton" Text="" style="display:none;" OnClick="GetSqt_Click" />
+                  </td>
+
+<%--                  <td width="6%" class="PO_RowCap">
+                      <asp:TextBox id="TextBoxBrt" BorderStyle="None" Width="100%" Height="20" Font-Bold="true" RunAt="server" BackColor="#FFFFE0" ReadOnly="true" />
+                  </td> --%>
+
+<%--                  <td width="5%" class="PO_RowCap">
+                      <asp:TextBox id="TextBoxInv" BorderStyle="None" Width="100%" Height="20" Font-Bold="true" RunAt="server" BackColor="#FFFFE0" ReadOnly="true" />
+                   </td> --%>
+
+                  <td width="16%" class="PO_RowCap">
+                      <asp:TextBox id="TextBoxTel" BorderStyle="None" Width="100%" Height="20" Font-Bold="true" RunAt="server" BackColor="#FFFFE0" ReadOnly="true" />
+                  </td> 
+
+                  <td width="4%" align="center" class="PO_RowCap">
+                       <obout:OboutCheckBox runat="server" ID="StsFlg" FolderStyle="~/Styles/Interface/plain/OboutCheckBox"> </obout:OboutCheckBox>
+                  </td> 
+                  
+                   <td width="4%" align="center" class="PO_RowCap">
+                      <obout:OboutCheckBox runat="server" ID="SozFlg" FolderStyle="~/Styles/Interface/plain/OboutCheckBox"> </obout:OboutCheckBox>
+                  </td>
+                  
+                   <td width="4%" align="center" class="PO_RowCap">
+                      <obout:OboutCheckBox runat="server" ID="DspFlg" FolderStyle="~/Styles/Interface/plain/OboutCheckBox"> </obout:OboutCheckBox>
                   </td>
 
                   <td width="6%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxBrt" BorderStyle="None" Width="100%" Height="20" Font-Bold="true" RunAt="server" BackColor="#FFFFE0" ReadOnly="true" />
-                  </td> 
-
-                  <td width="5%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxInv" BorderStyle="None" Width="100%" Height="20" Font-Bold="true" RunAt="server" BackColor="#FFFFE0" ReadOnly="true" />
-                   </td> 
-
-                   <td width="17%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxTel" BorderStyle="None" Width="100%" Height="20" Font-Bold="true" RunAt="server" BackColor="#FFFFE0" ReadOnly="true" />
-                  </td> 
-                  <td width="6%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxStx" BorderStyle="None" Width="100%" Height="20" Font-Bold="true" RunAt="server" BackColor="#FFFFE0" ReadOnly="true" />
+                      <asp:TextBox id="TextBoxPrk" BorderStyle="None" Width="100%" Height="20" Font-Bold="true" RunAt="server" BackColor="#FFFFE0" ReadOnly="true" />
                   </td>
 
                   <td width="4%" class="PO_RowCap">
