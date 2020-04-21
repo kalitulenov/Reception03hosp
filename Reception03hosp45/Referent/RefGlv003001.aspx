@@ -22,7 +22,7 @@
         // ------------------------  соглашения на ввод информаций о себе при записи к врачу из диалогового окна  ------------------------------------------------------------------
         function onchanged(checkbox, iRowIndex) 
         {
-  //        alert("checkbox1="+checkbox);
+ //         alert("checkbox1="+checkbox);
 
             document.getElementById('parInd').value = iRowIndex;
 
@@ -35,7 +35,14 @@
             var FndCmp = localStorage.GrfCmp; //getter
             var FndStx = localStorage.GrfStx; //getter
 
-    //        alert('FIO1=' + FndFio);
+            //alert('FndIdn=' + FndIdn);
+            //alert('FndFio=' + FndFio);
+            //alert('FndIIN=' + FndIIN);
+            //alert('FndTel=' + FndTel);
+            //alert('FndBrt=' + FndBrt);
+            //alert('FndKrt=' + FndKrt);
+            //alert('FndCmp=' + FndCmp);
+            //alert('FndStx=' + FndStx);
 
             document.getElementById('parUpd').value = "0";
             var oRecord = new Object();
@@ -44,7 +51,7 @@
             oRecord.GRFBUS = GridGrf.Rows[iRowIndex].Cells[5].Value;
 
             if (checkbox == false) {
-   //             alert("checkbox == false");
+ //               alert("checkbox == false");
                 // ----------------------------установит флажок-----------------------------------------------------------------------
                 if (FndFio == "") {
                     windowalert("Клиент не указан", "Предупреждения", "warning"); 
@@ -102,7 +109,7 @@
             }
                 // ------------------------------снять флажок---------------------------------------------------
             else {
- //               alert("checkbox == true");
+//                alert("checkbox == true");
 //                if (oRecord.GRFWWW == '@') {
 //                    alert("Записан через Интернет!");
 //                }

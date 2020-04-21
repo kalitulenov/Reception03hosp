@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Reception03hosp45.Priem {
-    
-    
-    public partial class DocAppAmb {
-        
+namespace Reception03hosp45.Priem
+{
+
+
+    public partial class DocAppAmb
+    {
+
         /// <summary>
         /// HidAmbCrdIdn control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HidAmbCrdIdn;
-        
+
         /// <summary>
         /// parBuxFrm control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField parBuxFrm;
-        
+
         /// <summary>
         /// parPovObr control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField parPovObr;
-        
+
         /// <summary>
         /// Sapka control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField Sapka;
-        
+
         /// <summary>
         /// PanelTop control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelTop;
-        
+
         /// <summary>
         /// TextBoxDat control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxDat;
-        
+
         /// <summary>
         /// Calendar3 control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Calendar2.Calendar Calendar3;
-        
+
         /// <summary>
         /// TextBoxTim control.
         /// </summary>
@@ -82,8 +84,8 @@ namespace Reception03hosp45.Priem {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxTim;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TextBoxTim;
+
         /// <summary>
         /// TextBoxIIN control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxIIN;
-        
+
         /// <summary>
         /// TextBoxFio control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxFio;
-        
+
         /// <summary>
         /// TextBoxBrt control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxBrt;
-        
+
         /// <summary>
         /// TextBoxTel control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxTel;
-        
+
         /// <summary>
         /// TextBoxNum control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxNum;
-        
+
         /// <summary>
         /// StsFlg control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Obout.Interface.OboutCheckBox StsFlg;
-        
+
         /// <summary>
         /// SozFlg control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Obout.Interface.OboutCheckBox SozFlg;
-        
+
         /// <summary>
         /// DspFlg control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Obout.Interface.OboutCheckBox DspFlg;
-        
+
         /// <summary>
         /// TextBoxIns control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxIns;
-        
+
         /// <summary>
         /// TextBoxPrk control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxPrk;
-        
+
         /// <summary>
         /// PanelMid control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelMid;
-        
+
         /// <summary>
         /// mySpl control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Splitter2.HorizontalSplitter mySpl;
-        
+
         /// <summary>
         /// ButtonOsm control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonOsm;
-        
+
         /// <summary>
         /// ButtonLoc control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonLoc;
-        
+
         /// <summary>
         /// ButtonDig control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonDig;
-        
+
         /// <summary>
         /// ButtonUsl control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonUsl;
-        
+
         /// <summary>
         /// ButtonPrs control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonPrs;
-        
+
         /// <summary>
         /// ButtonNaz control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonNaz;
-        
+
         /// <summary>
         /// ButtonUkl control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonUkl;
-        
+
         /// <summary>
         /// ButtonBol control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonBol;
-        
+
         /// <summary>
         /// Button095 control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button095;
-        
+
         /// <summary>
         /// ButtonSpr control.
         /// </summary>
@@ -281,7 +283,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonSpr;
-        
+
         /// <summary>
         /// ButtonLab control.
         /// </summary>
@@ -290,7 +292,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonLab;
-        
+
         /// <summary>
         /// ButtonUzi control.
         /// </summary>
@@ -299,7 +301,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonUzi;
-        
+
         /// <summary>
         /// ButtonDigUtc control.
         /// </summary>
@@ -308,7 +310,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonDigUtc;
-        
+
         /// <summary>
         /// ButtonScr control.
         /// </summary>
@@ -317,7 +319,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonScr;
-        
+
         /// <summary>
         /// PanelBot control.
         /// </summary>
@@ -326,7 +328,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelBot;
-        
+
         /// <summary>
         /// Button2 control.
         /// </summary>
@@ -335,7 +337,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
-        
+
         /// <summary>
         /// Button1 control.
         /// </summary>
@@ -344,7 +346,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// myConfirmBeforeDelete control.
         /// </summary>
@@ -353,7 +355,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Window.Dialog myConfirmBeforeDelete;
-        
+
         /// <summary>
         /// myDialogAPP control.
         /// </summary>
@@ -362,7 +364,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Window.Dialog myDialogAPP;
-        
+
         /// <summary>
         /// Button3 control.
         /// </summary>
@@ -371,7 +373,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button3;
-        
+
         /// <summary>
         /// KltWindow control.
         /// </summary>
@@ -380,7 +382,7 @@ namespace Reception03hosp45.Priem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::OboutInc.Window.Window KltWindow;
-        
+
         /// <summary>
         /// SqlDataSource1 control.
         /// </summary>

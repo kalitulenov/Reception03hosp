@@ -566,6 +566,35 @@
 
          }
 
+         // --------------  ИЗМЕНИТЬ ВРЕМЯ ПРИЕМА ----------------------------
+         function onTimeChange() {
+            // alert("onTimeChange ");
+           //  SET @BEG = CAST('01.01.2018 08:00' AS TIME) 
+             var DatDocMdb = 'HOSPBASE';
+             var DatDocRek;
+             var DatDocTyp = 'Sql';
+
+             var DatDocVal = "CAST('01.01.2020 " + document.getElementById("MainContent_TextBoxTim").value + ":00' AS TIME)";
+
+                  //      alert("DatDocVal " + DatDocVal);
+
+             var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
+                //    alert("AmbCrdIdn " + AmbCrdIdn);
+
+             SqlStr = "UPDATE AMBCRD SET GRFBEG=" + DatDocVal + " WHERE GRFIDN=" + AmbCrdIdn;
+              //           alert("SqlStr=" + SqlStr);
+
+             $.ajax({
+                 type: 'POST',
+                 url: '/HspUpdDoc.aspx/UpdateOrder',
+                 contentType: "application/json; charset=utf-8",
+                 data: '{"DatDocMdb":"' + DatDocMdb + '","SqlStr":"' + SqlStr + '","DatDocTyp":"' + DatDocTyp + '"}',
+                 dataType: "json",
+                 success: function () { },
+                 error: function () { alert("ERROR=" + SqlStr); }
+             });
+
+         }
 
          // --------------  ИЗМЕНИТЬ ТЕЛЕФОН ----------------------------
          function onChange(sender, newText) {
@@ -591,6 +620,7 @@
          }
 
          function FindKlt() {
+           //  alert("FindKlt");
              KltWindow.setTitle("Поиск клиентов");
              KltWindow.setUrl("/Referent/RefGlv003Klt.aspx");
              KltWindow.Open();
@@ -732,18 +762,19 @@
     	           					    TitleText="Выберите год: "
     	           					    CultureName = "ru-RU"
                 					    TextBoxId = "TextBoxDat"
-                                        OnClientDateChanged="onDateChange"   
+                                        OnClientDateChanged="onDateChange"    
                 					    DatePickerImagePath ="/Styles/Calendar/styles/icon2.gif"/>
                   </td>
                   <td width="3%" class="PO_RowCap">
-                      <asp:TextBox id="TextBoxTim" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />
+<%--                      <asp:TextBox id="TextBoxTim" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />--%>
+                      <input type="time" id="TextBoxTim" name="appt" min="08:00" max="20:00" runat="server" style="width:100%; height:25px; background-color:#FFFFE0; font-size:15px;" onblur="onTimeChange()"   required>
                   </td>
                    <td width="8%" class="PO_RowCap">
                       <asp:TextBox id="TextBoxIIN" BorderStyle="None" Width="100%" Height="20" RunAt="server"  BackColor="#FFFFE0" />
                   </td> 
                   <td width="30%" class="PO_RowCap">
                       <asp:TextBox id="TextBoxFio" BorderStyle="None" Width="75%" Height="20" RunAt="server" ReadOnly="true" Font-Size="Large" BackColor="#FFFFE0" />
-                      <input type="button" value="ФИО" style="width:17%; height:20px;"  onclick="FindKlt()" />
+                      <input type="button" value="ФИО" style="width:17%; height:30px;"  onclick="FindKlt()" />
                   </td>
                    <td width="6%" class="PO_RowCap">
                       <asp:TextBox id="TextBoxBrt" BorderStyle="None" Width="100%" Height="20" RunAt="server" BackColor="#FFFFE0" />

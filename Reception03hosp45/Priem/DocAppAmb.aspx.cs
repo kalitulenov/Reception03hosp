@@ -173,10 +173,10 @@ namespace Reception03hosp45.Priem
                 TextBoxDat.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFDAT"]).ToString("dd.MM.yyyy");
 
                 if (Convert.ToString(ds.Tables[0].Rows[0]["GRFBEG"]) == null || Convert.ToString(ds.Tables[0].Rows[0]["GRFBEG"]) == "")
-                    TextBoxTim.Text = "";
+                    TextBoxTim.Value = "";
                 else
                 {
-                    TextBoxTim.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFBEG"].ToString().Substring(0, 5)).ToString("hh:mm");
+                    TextBoxTim.Value = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFBEG"].ToString().Substring(0, 5)).ToString("hh:mm");
                 }
 
                 if (Convert.ToString(ds.Tables[0].Rows[0]["PTHBRT"]) == null || Convert.ToString(ds.Tables[0].Rows[0]["PTHBRT"]) == "") TextBoxBrt.Text = "";
@@ -233,10 +233,10 @@ namespace Reception03hosp45.Priem
                 TextBoxDat.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFDAT"]).ToString("dd.MM.yyyy");
 
                 if (Convert.ToString(ds.Tables[0].Rows[0]["GRFBEG"]) == null || Convert.ToString(ds.Tables[0].Rows[0]["GRFBEG"]) == "")
-                    TextBoxTim.Text = "";
+                    TextBoxTim.Value = "";
                 else
                 {
-                    TextBoxTim.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFBEG"].ToString().Substring(0, 5)).ToString("hh:mm");
+                    TextBoxTim.Value = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFBEG"].ToString().Substring(0, 5)).ToString("hh:mm");
                 }
 
                 if (Convert.ToString(ds.Tables[0].Rows[0]["PTHBRT"]) == null || Convert.ToString(ds.Tables[0].Rows[0]["PTHBRT"]) == "") TextBoxBrt.Text = "";
@@ -285,11 +285,11 @@ namespace Reception03hosp45.Priem
                 TextBoxDat.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFDAT"]).ToString("dd.MM.yyyy");
 
                 if (Convert.ToString(ds.Tables[0].Rows[0]["GRFBEG"]) == null || Convert.ToString(ds.Tables[0].Rows[0]["GRFBEG"]) == "")
-                    TextBoxTim.Text = "";
+                    TextBoxTim.Value = "";
                 else
                 {
                     //TextBoxTim.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["GRFBEG"].ToString().Substring(0, 5)).ToString("hh:mm");
-                    TextBoxTim.Text = Convert.ToString(ds.Tables[0].Rows[0]["TIMBEG"]);
+                    TextBoxTim.Value = Convert.ToString(ds.Tables[0].Rows[0]["TIMBEG"]);
                 }
 
                 if (Convert.ToString(ds.Tables[0].Rows[0]["PTHBRT"]) == null || Convert.ToString(ds.Tables[0].Rows[0]["PTHBRT"]) == "") TextBoxBrt.Text = "";

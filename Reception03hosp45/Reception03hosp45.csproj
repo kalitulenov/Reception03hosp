@@ -261,7 +261,6 @@
     <Content Include="Delo\EodChkRed.aspx" />
     <Content Include="Priem\DocAppAmbOsmMkb.aspx" />
     <Content Include="Priem\DocAppAnl.aspx" />
-    <Content Include="Referent\RefGlv003sqtAPI.aspx" />
     <Content Include="Referent\RefGlv003SelFio.aspx" />
     <Content Include="Priem\DocAppAmbPrsGosSel.aspx" />
     <Content Include="Priem\DocAppAmbUslSel.aspx" />
@@ -2131,12 +2130,6 @@
     </Compile>
     <Compile Include="Referent\RefGlv003086.aspx.designer.cs">
       <DependentUpon>RefGlv003086.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Referent\RefGlv003.aspx.cs">
-      <DependentUpon>RefGlv003.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Referent\RefGlv003.aspx.designer.cs">
-      <DependentUpon>RefGlv003.aspx</DependentUpon>
     </Compile>
     <Compile Include="Referent\RefGlv003001.aspx.cs">
       <DependentUpon>RefGlv003001.aspx</DependentUpon>
