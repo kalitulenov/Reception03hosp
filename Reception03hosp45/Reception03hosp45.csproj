@@ -232,6 +232,7 @@
     <Content Include="Aspose\acw_client\x.gif" />
     <Content Include="BuxDoc\BuxDocPrxSrdOneMat.aspx" />
     <Content Include="BuxDoc\BuxDocPrxSrd_NEW.aspx" />
+    <Content Include="Delo\EodLstGrdOne632.aspx" />
     <Content Include="Delo\EodLstGrdOne634.aspx" />
     <Content Include="Delo\EodLstGrdOne631.aspx" />
     <Content Include="Delo\EodLstGrdOneTxt.aspx" />
@@ -251,10 +252,8 @@
     <Content Include="ImportFile\ImportRPN_NEW.aspx" />
     <Content Include="ImportFile\ImportRPN.aspx" />
     <Content Include="JS\PhoneFormat.js" />
-    <Content Include="Logo\LogoDariga.jpg" />
-    <Content Include="Logo\LogoKorudoPrt.jpg" />
     <Content Include="Logo\LogoRFMCprt.jpg" />
-    <Content Include="Logo\LogoSmartPrt.jpg" />
+    <Content Include="Logo\RFMCsign.jpg" />
     <Content Include="Priem\BuxKasPrxSprDocSbl.aspx" />
     <Content Include="Priem\DocAppAmbArxFio.aspx" />
     <Content Include="Priem\DocAppAmbDigNoz.aspx" />
@@ -576,7 +575,6 @@
     <Content Include="Localization\Schema.xml" />
     <Content Include="Logo\brt.gif" />
     <Content Include="Logo\favicon.gif" />
-    <Content Include="Logo\LogoAvtorMed.jpg" />
     <Content Include="Logo\LogoDaua.jpg" />
     <Content Include="Logo\LogoDauaBeauty.jpg" />
     <Content Include="Logo\LogoDauaBig.jpg" />

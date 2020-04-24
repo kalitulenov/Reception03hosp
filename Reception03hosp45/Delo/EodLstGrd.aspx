@@ -54,7 +54,7 @@
                 var EodTxt = document.getElementById('parNodTxt').value;
                 //alert("EodKey=" + EodKey);
                 //alert("EodTxt=" + EodTxt);
-               // alert("EodIdn=" + EodIdn);
+                //alert("EodIdn=" + EodIdn);
 
                 switch (EodSts) {
                     case '6.1.1':
@@ -99,6 +99,13 @@
                             window.open("EodLstGrdOne631.aspx?EodIdn=" + EodIdn + "&EodKey=" + EodSts + "&EodTxt=" + EodTxt, "ModalPopUp2", "width=1100,height=630,left=250,top=100,modal=yes,directories=no,toolbar=no,menubar=no,location=no,status=no,scrollbars=no,resizable=no,fullscreen=yes");
                         else
                             window.showModalDialog("EodLstGrdOne631.aspx?EodIdn=" + EodIdn + "&EodKey=" + EodSts + "&EodTxt=" + EodTxt, "ModalPopUp2", "center:yes;resizable:yes;status:no;dialogleft:250px;dialogtop:100px;dialogWidth:1100px;dialogHeight:630px;");
+                        break;
+                    case '6.3.2':     // НА РЕЗОЛЮЦИЙ
+                        var ua = navigator.userAgent;
+                        if (ua.search(/Chrome/) > -1)
+                            window.open("EodLstGrdOne632.aspx?EodIdn=" + EodIdn + "&EodKey=" + EodSts + "&EodTxt=" + EodTxt, "ModalPopUp2", "width=1100,height=630,left=250,top=100,modal=yes,directories=no,toolbar=no,menubar=no,location=no,status=no,scrollbars=no,resizable=no,fullscreen=yes");
+                        else
+                            window.showModalDialog("EodLstGrdOne632.aspx?EodIdn=" + EodIdn + "&EodKey=" + EodSts + "&EodTxt=" + EodTxt, "ModalPopUp2", "center:yes;resizable:yes;status:no;dialogleft:250px;dialogtop:100px;dialogWidth:1100px;dialogHeight:630px;");
                         break;
                     case '6.3.4':     // НА ИСПОЛНЕНИИ
                         var ua = navigator.userAgent;

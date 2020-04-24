@@ -766,7 +766,7 @@
         SqlCommand cmd = new SqlCommand("UPDATE TABEOD SET EODNUM="+EodNum+
                                                          ",EODPRF='"+EodPrf+
                                                          "',EODNAM='"+EodNam+
-                                                         "',EODSTS='6.3.4'"+
+                                                         "',EODSTS='6.3.2'"+
                                                          ",EODDAT=CONVERT(DATETIME,'" + EodDat + "',103)"+
                                                          ",EODENDDAT=CONVERT(DATETIME,'" + EodEndDat + "',103)"+
                                                          ",EODTYP="+EodTyp+" WHERE EODIDN="+parEodIdn.Value, con);
@@ -1067,7 +1067,7 @@
             <center>
                 <asp:Button ID="Button1" runat="server" CommandName="Add" Style="display: none" Text="1" />
                 <asp:Button ID="AddButton" runat="server" CommandName="Add" OnClick="ChkButton_Click" Text="Записать" />
-                <asp:Button ID="RslButton" runat="server" CommandName="Add" OnClick="IspButton_Click" Text="Отправить на исполнение"/>
+                <asp:Button ID="RslButton" runat="server" CommandName="Add" OnClick="IspButton_Click" Text="Отправить на резолюцию"/>
             </center>
         </asp:Panel>
 

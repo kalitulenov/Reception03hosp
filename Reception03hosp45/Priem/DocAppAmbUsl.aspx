@@ -507,6 +507,7 @@
                 <Columns>
                     <obout:Column ID="Column00" DataField="USLIDN" HeaderText="Идн" Visible="false" Width="0%" />
                     <obout:Column ID="Column01" DataField="USLAMB" HeaderText="Амб" Visible="false" Width="0%" />
+                    <obout:Column ID="Column02" DataField="USLKOD" HeaderText="Амб" Visible="false" Width="0%" />
                     <obout:Column ID="Column03" DataField="USLNAP" HeaderText="№ НАПР" Width="5%" />
                     <obout:Column ID="Column04" DataField="KASOPL" HeaderText="КАССА" Width="4%" ReadOnly="true" />
                     <obout:Column ID="Column05" DataField="USLTRF" HeaderText="ТАРИФ" Width="6%" ReadOnly="true" />
