@@ -402,22 +402,32 @@
                                  <obout:ComboBox runat="server" ID="BoxDocPvd"  Width="22%" Height="200" 
                                         FolderStyle="/Styles/Combobox/Plain" >
                                         <Items>
-                                            <obout:ComboBoxItem ID="ComboBoxItem09" runat="server" Text="" Value="0" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem10" runat="server" Text="Заболевание" Value="1" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem11" runat="server" Text="Профосмотр" Value="2" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem12" runat="server" Text="Диспансеризация" Value="3" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem13" runat="server" Text="Прививка" Value="4" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem14" runat="server" Text="Медико-социальный" Value="5" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem15" runat="server" Text="Прочие" Value="6" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem16" runat="server" Text="Травма на производстве" Value="7" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem17" runat="server" Text="Травма в сель.хоз." Value="8" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem18" runat="server" Text="Травма ДТП на производстве" Value="9" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem19" runat="server" Text="Травма прочая на производстве" Value="10" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem20" runat="server" Text="Травма бытовая" Value="11" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem21" runat="server" Text="Травма уличная" Value="12" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem22" runat="server" Text="Травма в ДТП" Value="13" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem23" runat="server" Text="Травма спортивная" Value="14" />
-                                            <obout:ComboBoxItem ID="ComboBoxItem24" runat="server" Text="Травма школьная" Value="15" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt00" runat="server" Text="Любой кроме <Платные профосмотры>" Value="0" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt01" runat="server" Text="Острое заболевание (состояние)/Обострение хронического заболевания" Value="1" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt02" runat="server" Text="Подозрение на социально-значимое заболевание" Value="2" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt03" runat="server" Text="Консультирование дистанционное по поводу заболевания" Value="3" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt04" runat="server" Text="Актив" Value="4" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt05" runat="server" Text="Медицинская реабилитация (3 этап)" Value="5" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt06" runat="server" Text="Стоматологическая помощь" Value="6" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt07" runat="server" Text="Острая травма (Травмпункт, АПО)" Value="7" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt08" runat="server" Text="Последствия травмы (АПО)" Value="8" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt09" runat="server" Text="Обращение с профилактической целью (кроме скрининга)" Value="9" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt10" runat="server" Text="Иммунопрофилактика" Value="10" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt11" runat="server" Text="Скрининг (Профосмотр)" Value="11" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt12" runat="server" Text="Патронаж" Value="12" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt13" runat="server" Text="Услуги по вопросам планирования семьи" Value="13" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt14" runat="server" Text="Прием при антенатальном наблюдении" Value="14" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt15" runat="server" Text="Прием при постнатальном наблюдении" Value="15" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt16" runat="server" Text="Услуги по охране здоровья обучающихся (школьная медицина)" Value="16" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt17" runat="server" Text="Мероприятия по здоровому образу жизни" Value="17" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt18" runat="server" Text="Платные медосмотры" Value="18" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt19" runat="server" Text="Стоматологические услуги" Value="19" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt20" runat="server" Text="Динамическое наблюдение с хроническими заболеваниями" Value="20" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt21" runat="server" Text="Медико-социальная поддержка" Value="21" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt22" runat="server" Text="Психологическая поддержка" Value="22" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt23" runat="server" Text="Административный" Value="23" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt24" runat="server" Text="Оформление документов на медико-социальную экспертизу" Value="24" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt25" runat="server" Text="Выписка рецептов" Value="25" />
                                          </Items>
                                          <ClientSideEvents OnSelectedIndexChanged="OnSelectedIndexChanged" />
                                  </obout:ComboBox>  

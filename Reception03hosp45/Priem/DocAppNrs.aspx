@@ -307,6 +307,28 @@
 
              mySpl.loadPage("BottomContent", "DocAppAmbDigNoz.aspx?AmbCrdIdn=" + AmbCrdIdn);
          }
+         function DigUtcButton_Click() {
+             var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
+
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUsl').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLab').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUzi').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonSpr').style.fontWeight = '';
+             //              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonArxAmb').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonScr').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDigUtc').style.fontWeight = 'bold';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonBol').style.fontWeight = '';
+             //              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDsp').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_Button095').style.fontWeight = '';
+
+             mySpl.loadPage("BottomContent", "DocAppAmbDig.aspx?AmbCrdIdn=" + AmbCrdIdn);
+         }
 
 
           function BolButton_Click() {

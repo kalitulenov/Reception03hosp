@@ -70,6 +70,13 @@
              mySpl.loadPage("BottomContent", "DocAppAmbArxOneNaz.aspx?AmbCrdIdn=" + AmbCrdIdn);
          }
 
+         function DigButton_Click() {
+             var QueryString = getQueryString();
+             var AmbCrdIdn = QueryString[1];
+
+             mySpl.loadPage("BottomContent", "DocAppAmbDig.aspx?AmbCrdIdn=" + AmbCrdIdn);
+        }
+
          function PrtButton_Click() {
              //    ==========================  ПЕЧАТЬ =============================================================================================
                  var QueryString = getQueryString();
@@ -176,10 +183,11 @@
        <obspl:HorizontalSplitter ID="mySpl" CookieDays="0" runat="server" IsResizable="false" StyleFolder="~/Styles/Splitter">   
 			    <TopPanel HeightMin="20" HeightMax="350" HeightDefault="23">
 				    <Content>
-                     <asp:Button ID="ButtonOsm" runat="server" Width="20%" CommandName="Push" Text="Прием и осмотр" OnClientClick="OsmButton_Click(); return false;"/>
-                     <asp:Button ID="ButtonPrs" runat="server" Width="20%" CommandName="Push" Text="Направления" OnClientClick="PrsButton_Click(); return false"/>
-                     <asp:Button ID="ButtonNaz" runat="server" Width="20%" CommandName="Push" Text="Назначения" OnClientClick="NazButton_Click(); return false"/>
-                     <asp:Button ID="ButtonPrt" runat="server" Width="20%" CommandName="Push" Text="Печать Амб.Карты" OnClientClick="PrtButton_Click(); return false"/>
+                     <asp:Button ID="ButtonOsm" runat="server" Width="17%" CommandName="Push" Text="Прием и осмотр" OnClientClick="OsmButton_Click(); return false;"/>
+                     <asp:Button ID="ButtonPrs" runat="server" Width="17%" CommandName="Push" Text="Направления" OnClientClick="PrsButton_Click(); return false"/>
+                     <asp:Button ID="ButtonNaz" runat="server" Width="17%" CommandName="Push" Text="Назначения" OnClientClick="NazButton_Click(); return false"/>
+                     <asp:Button ID="ButtonDig" runat="server" Width="17%" CommandName="Push" Text="Диагноз" OnClientClick="DigButton_Click(); return false"/>
+                     <asp:Button ID="ButtonPrt" runat="server" Width="17%" CommandName="Push" Text="Печать Амб.Карты" OnClientClick="PrtButton_Click(); return false"/>
 				    </Content>
 			    </TopPanel>
                 <BottomPanel HeightDefault="300" HeightMin="200" HeightMax="400">
