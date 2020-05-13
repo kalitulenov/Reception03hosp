@@ -39,9 +39,10 @@
 
          //    ---------------- ПРОСМОТР ОПИСАНИИ В ФОРМАТЕ EXCEL --------------------------------------------------------
          function MedDocXls(rowIndex) {
-         //    alert("GridAnl_ClientEdit="+rowIndex);
-             var SblYes = GridUsl.Rows[rowIndex].Cells[17].Value;
+          //   alert("GridAnl_ClientEdit="+rowIndex);
+             var SblYes = GridUsl.Rows[rowIndex].Cells[18].Value;
              var AmbDocTyp = SblYes;
+           //  alert("SblYes=" + SblYes);
           //   var AmbDocTyp = document.getElementById('MainContent_parDocTyp').value;
            //  if (AmbDocTyp == "РНТ") SblYes = "+";
 
@@ -525,23 +526,19 @@
                         <TemplateSettings TemplateId="TemplateKtoNam" EditTemplateId="TemplateEditKtoNam" />
                     </obout:Column>
 
-                    <obout:Column HeaderText="ИЗМЕН УДАЛЕНИЕ" Width="8%" AllowEdit="true" AllowDelete="true" runat="server">
+                    <obout:Column ID="Column15" HeaderText="ИЗМЕН УДАЛЕНИЕ" Width="8%" AllowEdit="true" AllowDelete="true" runat="server">
                         <TemplateSettings TemplateId="editBtnTemplate" EditTemplateId="updateBtnTemplate" />
                     </obout:Column>
 
-                    <obout:Column ID="Column15" DataField="IMGFLG" HeaderText="ОБРАЗ" Width="5%" ReadOnly="true">
+                   <obout:Column ID="Column16" DataField="IMGFLG" HeaderText="ОБРАЗ" Width="5%" ReadOnly="true">
                         <TemplateSettings TemplateId="TemplateImg" />
                     </obout:Column>
 
-<%--                    <obout:Column ID="Column16" DataField="RSXFLG" HeaderText="РАСХОД" Width="5%" ReadOnly="true" >
-				         <TemplateSettings TemplateId="TemplateRsx" />
-				    </obout:Column>				--%>
-
-                    <obout:Column ID="Column16" DataField="RSXFLG" HeaderText="ОПИСАНИЕ" Width="5%" ReadOnly="true">
+                    <obout:Column ID="Column17" DataField="RSXFLG" HeaderText="ОПИСАНИЕ" Width="5%" ReadOnly="true">
                         <TemplateSettings TemplateId="TemplateRsx" />
                     </obout:Column>
-                 
-                    <obout:Column ID="Column17" DataField="SBLYESALL" HeaderText="+" Visible="false" Width="0%" />
+                    <obout:Column ID="Column18" DataField="SBLYESALL" HeaderText="+" Visible="false" Width="0%" />
+               
                 </Columns>
 
                 <TemplateSettings NewRecord_TemplateId="addTemplate" NewRecord_EditTemplateId="saveTemplate" />
