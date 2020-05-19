@@ -442,7 +442,7 @@
                      SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "='" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
                      break;
              }
-       //    alert("SqlStr=" + SqlStr);
+         //  alert("SqlStr=" + SqlStr);
 
              $.ajax({
                  type: 'POST',
@@ -689,16 +689,14 @@
           AmbCrdIdn = Convert.ToString(Request.QueryString["AmbCrdIdn"]);
           parCrdIdn.Value = AmbCrdIdn;
 
+              //=====================================================================================
+              sdsPvd.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
+              sdsPvd.SelectCommand = "SELECT ObrPvdKod,ObrPvdNam FROM SprObrPvd ORDER BY ObrPvdKod";
+              //=====================================================================================
 
           if (!Page.IsPostBack)
           {
 
-              //=====================================================================================
-              //     sdsNoz.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
-              //     sdsNoz.SelectCommand = "SELECT NozKod,NozNam FROM SprNoz ORDER BY NozNam";
-          //    sdsMkb.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
-          //    sdsMkb.SelectCommand = "SELECT TOP 100 * FROM MKB10 ORDER BY MkbNam";
-              //=====================================================================================
               Session.Add("KLTIDN", (string)"");
               Session.Add("WHERE", (string)"");
 
@@ -738,15 +736,15 @@
               Anm003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANM"]);
               AnmLif003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANMLIF"]);
               Stt003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCLOC"]);
-       //       Dig003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIG"]);
-       //       Dsp003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIGSOP"]);
+              //       Dig003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIG"]);
+              //       Dsp003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIGSOP"]);
               Lch003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCPLNLCH"]);
-       //       Mkb001.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB001"]);
-       //       Mkb002.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB002"]);
-       //       Mkb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB003"]);
-       //       MkbSop001.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKBSOP001"]);
-       //       MkbSop002.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKBSOP002"]);
-       //       MkbSop003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKBSOP003"]);
+              //       Mkb001.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB001"]);
+              //       Mkb002.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB002"]);
+              //       Mkb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB003"]);
+              //       MkbSop001.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKBSOP001"]);
+              //       MkbSop002.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKBSOP002"]);
+              //       MkbSop003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKBSOP003"]);
 
               TekDat = Convert.ToString(ds.Tables[0].Rows[0]["GRFCTRDAT"]);
 
@@ -763,8 +761,8 @@
               //       if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCNOZ"].ToString())) BoxDocNoz.SelectedValue = "0";
               //       else BoxDocNoz.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["DOCNOZ"]);
 
-              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRPVD"].ToString())) BoxDocPvd.SelectedIndex = 0;
-              else BoxDocPvd.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCOBRPVD"]);
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRPVD"].ToString())) BoxDocPvd.SelectedValue = "0";
+              else BoxDocPvd.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["DOCOBRPVD"]);
 
               if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRNPR"].ToString())) BoxDocNpr.SelectedIndex = 0;
               else BoxDocNpr.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCOBRNPR"]);
@@ -910,39 +908,46 @@
  <!--  Повод обращения ----------------------------------------------------------------------------------------------------------  -->    
                         <tr> 
                               <td width="100%" style="vertical-align: central;" >
-                                 <asp:Label id="LblPvd" Text="Повод обращения:" runat="server"  Width="12%" Font-Bold="true" />                             
+                                 <asp:Label id="LblPvd" Text="Повод обращения:" runat="server"  Width="12%" Font-Bold="true" /> 
                                  <obout:ComboBox runat="server" ID="BoxDocPvd"  Width="31%" Height="300" 
+                                        DataSourceID="SdsPvd" DataTextField="ObrPvdNam" DataValueField="ObrPvdKod" 
+                                        FolderStyle="/Styles/Combobox/Plain"> 
+                                        <ClientSideEvents OnSelectedIndexChanged="OnSelectedIndexChanged" />
+                                </obout:ComboBox>  
+
+<%--                                 <obout:ComboBox runat="server" ID="BoxDocPvd"  Width="31%" Height="300" 
                                         FolderStyle="/Styles/Combobox/Plain" >
                                         <Items>
                                             <obout:ComboBoxItem ID="ComboBoxIt00" runat="server" Text="Любой кроме <Платные профосмотры>" Value="0" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt01" runat="server" Text="Острое заболевание (состояние)/Обострение хронического заболевания" Value="1" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt02" runat="server" Text="Подозрение на социально-значимое заболевание" Value="2" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt03" runat="server" Text="Консультирование дистанционное по поводу заболевания" Value="3" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt04" runat="server" Text="Актив" Value="4" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt05" runat="server" Text="Медицинская реабилитация (3 этап)" Value="5" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt06" runat="server" Text="Стоматологическая помощь" Value="6" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt07" runat="server" Text="Острая травма (Травмпункт, АПО)" Value="7" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt08" runat="server" Text="Последствия травмы (АПО)" Value="8" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt09" runat="server" Text="Обращение с профилактической целью (кроме скрининга)" Value="9" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt10" runat="server" Text="Иммунопрофилактика" Value="10" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt11" runat="server" Text="Скрининг (Профосмотр)" Value="11" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt12" runat="server" Text="Патронаж" Value="12" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt13" runat="server" Text="Услуги по вопросам планирования семьи" Value="13" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt14" runat="server" Text="Прием при антенатальном наблюдении" Value="14" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt15" runat="server" Text="Прием при постнатальном наблюдении" Value="15" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt16" runat="server" Text="Услуги по охране здоровья обучающихся (школьная медицина)" Value="16" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt17" runat="server" Text="Мероприятия по здоровому образу жизни" Value="17" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt18" runat="server" Text="Платные медосмотры" Value="18" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt19" runat="server" Text="Стоматологические услуги" Value="19" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt20" runat="server" Text="Динамическое наблюдение с хроническими заболеваниями" Value="20" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt21" runat="server" Text="Медико-социальная поддержка" Value="21" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt22" runat="server" Text="Психологическая поддержка" Value="22" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt23" runat="server" Text="Административный" Value="23" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt24" runat="server" Text="Оформление документов на медико-социальную экспертизу" Value="24" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt25" runat="server" Text="Выписка рецептов" Value="25" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt01" runat="server" Text="Острое заболевание (состояние)/Обострение хронического заболевания" Value="7" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt02" runat="server" Text="Подозрение на социально-значимое заболевание" Value="8" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt03" runat="server" Text="Консультирование дистанционное по поводу заболевания" Value="9" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt04" runat="server" Text="Актив" Value="10" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt05" runat="server" Text="Медицинская реабилитация (3 этап)" Value="11" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt06" runat="server" Text="Стоматологическая помощь" Value="12" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt07" runat="server" Text="Острая травма (Травмпункт, АПО)" Value="13" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt08" runat="server" Text="Последствия травмы (АПО)" Value="14" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt09" runat="server" Text="Обращение с профилактической целью (кроме скрининга)" Value="15" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt10" runat="server" Text="Иммунопрофилактика" Value="16" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt11" runat="server" Text="Скрининг (Профосмотр)" Value="17" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt12" runat="server" Text="Патронаж" Value="18" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt13" runat="server" Text="Услуги по вопросам планирования семьи" Value="19" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt14" runat="server" Text="Прием при антенатальном наблюдении" Value="20" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt15" runat="server" Text="Прием при постнатальном наблюдении" Value="20" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt16" runat="server" Text="Услуги по охране здоровья обучающихся (школьная медицина)" Value="22" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt17" runat="server" Text="Мероприятия по здоровому образу жизни" Value="23" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt18" runat="server" Text="Платные медосмотры" Value="24" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt19" runat="server" Text="Стоматологические услуги" Value="25" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt20" runat="server" Text="Динамическое наблюдение с хроническими заболеваниями" Value="26" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt21" runat="server" Text="Медико-социальная поддержка" Value="27" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt22" runat="server" Text="Психологическая поддержка" Value="28" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt23" runat="server" Text="Административный" Value="29" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt24" runat="server" Text="Оформление документов на медико-социальную экспертизу" Value="30" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt25" runat="server" Text="Выписка рецептов" Value="31" />
+                                            <obout:ComboBoxItem ID="ComboBoxIt26" runat="server" Text="Обследование на короновирусную инфекцию COVID-19" Value="32" />
                                          </Items>
                                          <ClientSideEvents OnSelectedIndexChanged="OnSelectedIndexChanged" />
-                                 </obout:ComboBox>  
+                                 </obout:ComboBox>  --%>
                                  
                                  <asp:Label id="LblNpr" Text="Кем напр.:" runat="server"  Width="8%" Font-Bold="true" />                             
                                  <obout:ComboBox runat="server" ID="BoxDocNpr"  Width="16%" Height="200"
@@ -1300,7 +1305,8 @@
    }
 </style>
 
-  <asp:SqlDataSource runat="server" ID="sdsNoz" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
+<%--  <asp:SqlDataSource runat="server" ID="sdsNoz" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>--%>
+  <asp:SqlDataSource runat="server" ID="sdsPvd" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
 
 
  
