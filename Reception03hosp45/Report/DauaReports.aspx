@@ -1485,10 +1485,11 @@
                         this.DauaReport.ServerReport.SetParameters(parameters122);
                         break;
                     case "HspSttNazPrz":
-                        ReportParameter[] parameters123 = new ReportParameter[3];
+                        ReportParameter[] parameters123 = new ReportParameter[4];
                         parameters123[0] = new ReportParameter("GRFFRM", TekDocFrm.ToString(), false);
-                        parameters123[1] = new ReportParameter("GLVBEGDAT", TekDocBeg.ToString(), false);
-                        parameters123[2] = new ReportParameter("GLVENDDAT", TekDocEnd.ToString(), false);
+                        parameters123[1] = new ReportParameter("GRFKOD", TekDocKod.ToString(), false);
+                        parameters123[2] = new ReportParameter("GLVBEGDAT", TekDocBeg.ToString(), false);
+                        parameters123[3] = new ReportParameter("GLVENDDAT", TekDocEnd.ToString(), false);
                         this.DauaReport.ServerReport.SetParameters(parameters123);
                         format = "NONE"; //Desired format goes here (PDF, Excel, or Image)
                         break;

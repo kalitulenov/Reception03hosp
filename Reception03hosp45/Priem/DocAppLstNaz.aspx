@@ -77,23 +77,18 @@
 
      //    ==========================  ПЕЧАТЬ =============================================================================================
      function PrtButton_Click() {
-
-         var GrfFrm = document.getElementById('ctl00$MainContent$HidBuxFrm').value;
-         var GrfKod = document.getElementById('ctl00$MainContent$HidBuxKod').value;
-         var GrfTyp = document.getElementById('ctl00$MainContent$parDocTyp').value;
-         var GrfBeg = document.getElementById('ctl00$MainContent$txtDate1').value;
-         var GrfEnd = document.getElementById('ctl00$MainContent$txtDate2').value;
-
-         var GlvDocTyp = document.getElementById('<%= parDocTyp.ClientID%>').value;
-         if (GlvDocTyp == 'ЛБР') return;
+         var GrfFrm = document.getElementById('MainContent_HidBuxFrm').value;
+         var GrfKod = document.getElementById('MainContent_HidBuxKod').value;
+         var GrfBeg = document.getElementById('MainContent_txtDate1').value;
+         var GrfEnd = document.getElementById('MainContent_txtDate2').value;
 
          var ua = navigator.userAgent;
 
          if (ua.search(/Chrome/) > -1)
-             window.open("/Report/DauaReports.aspx?ReportName=HspDocAppLst&TekDocIdn=" + GrfTyp + "&TekDocKod=" + GrfKod + "&TekDocFrm=" + GrfFrm + "&TekDocBeg=" + GrfBeg + "&TekDocEnd=" + GrfEnd,
+             window.open("/Report/DauaReports.aspx?ReportName=HspSttNazPrz&TekDocIdn=0&TekDocKod=" +GrfKod +"&TekDocFrm=" + GrfFrm + "&TekDocBeg=" + GrfBeg + "&TekDocEnd=" + GrfEnd,
                  "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
          else
-             window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspDocAppLst&TekDocIdn=" + GrfTyp + "&TekDocKod=" + GrfKod + "&TekDocFrm=" + GrfFrm + "&TekDocBeg=" + GrfBeg + "&TekDocEnd=" + GrfEnd,
+             window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspSttNazPrz&TekDocIdn=0&TekDocKod=" + GrfKod +"&TekDocFrm=" + GrfFrm + "&TekDocBeg=" + GrfBeg + "&TekDocEnd=" + GrfEnd,
                  "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
      }
 
