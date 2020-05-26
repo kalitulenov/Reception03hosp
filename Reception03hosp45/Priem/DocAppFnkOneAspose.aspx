@@ -182,6 +182,7 @@
     void GetGrid()
     {
         int TekUsl;
+        int UziXlsKod = 0;
         string UziXlsNam = "";
         string UziXlsImg = "";
         string UziXlsOrg = "";
@@ -219,6 +220,7 @@
         //int EndRow = 0;
         string Papka = "";
         string Sablon = "";
+        string XlsFlg = "";
 
         double ColWdt = 0;
 
@@ -259,6 +261,8 @@
 
         if (ds.Tables[0].Rows.Count > 0)
         {
+            XlsFlg = Convert.ToString(ds.Tables[0].Rows[0]["XLSFLG"]);
+            UziXlsKod = Convert.ToInt32(ds.Tables[0].Rows[0]["XLSKOD"]);
             UziXlsNam = Convert.ToString(ds.Tables[0].Rows[0]["XLSNAMSBL"]);
             UziXlsImg = Convert.ToString(ds.Tables[0].Rows[0]["UZINAMXLS"]);
             UziXlsOrg = Convert.ToString(ds.Tables[0].Rows[0]["ORGKLTNAM"]);    // #НаимОрг#
@@ -307,43 +311,57 @@
             if (parDocTyp.Value == "РНТ") Papka = @"C:\BASEXRY\" + Convert.ToInt32(BuxFrm).ToString("D5") + @"\" + Convert.ToDateTime(DateTime.Today).ToString("yyyy.MM");
             if (parDocTyp.Value == "ЛАБ") Papka = @"C:\BASELAB\" + Convert.ToInt32(BuxFrm).ToString("D5") + @"\" + Convert.ToDateTime(DateTime.Today).ToString("yyyy.MM");
             if (parDocTyp.Value == "МЕД") Papka = @"C:\BASEMEDFORM\" + Convert.ToInt32(BuxFrm).ToString("D5") + @"\" + Convert.ToDateTime(DateTime.Today).ToString("yyyy.MM");
-            XlsFil = Papka + @"\" + UziXlsIin + "_" + Convert.ToInt32(AmbUslIdn).ToString("D10");
-            parXlsFil.Value = XlsFil + ".xls";
-            parXlsFilPdf.Value = XlsFil + ".pdf";
-            UziXlsImg = XlsFil;
 
-            //  показывает в виде HTML без корректировки             
-            //              string XlsFil = Papka + @"\" + UziXlsFio.Substring(0, 12) + "_" + Convert.ToInt32(AmbUslIdn).ToString("D10") + ".html";
+            if (XlsFlg == "")
+            {
+                //  Создать имя образа
+                XlsFil = Papka + @"\" + UziXlsIin + "_" + Convert.ToInt32(AmbCrdIdn).ToString("D10") + "_" + Convert.ToInt32(UziXlsKod).ToString("D4");
+                //  Добавить расширение xls
+                parXlsFil.Value = XlsFil + ".xls";
+                //  Добавить расширение pdf
+                parXlsFilPdf.Value = XlsFil + ".pdf";
+                UziXlsImg = XlsFil;
 
-            // поверить каталог, если нет создать ----------------------------------------------------------------
-            if (Directory.Exists(Papka)) i = 0;
-            else Directory.CreateDirectory(Papka);
+                //  показывает в виде HTML без корректировки             
+                //              string XlsFil = Papka + @"\" + UziXlsFio.Substring(0, 12) + "_" + Convert.ToInt32(AmbUslIdn).ToString("D10") + ".html";
 
-            // проверить если фаил есть удалить ----------------------------------------------------------------
-            if (File.Exists(XlsFil)) File.Delete(XlsFil);
-
-            // ЗАПИСАТЬ НА ДИСК ===========================================================================================
-            //Save and Launch
-            //       book.SaveToFile(XlsFil, ExcelVersion.Version97to2003);
-            //        book.Worksheets[0].SaveToHtml(XlsFil);    // тоже работает
-            // скорировать скачанный файл ----------------------------------------------------------------
-            if (parDocTyp.Value == "УЗИ") Sablon = @"C:\BASEUZI\UziSablon\" + UziXlsNam + ".xls";
-            if (parDocTyp.Value == "ФНК") Sablon = @"C:\BASEUZI\UziSablon\" + UziXlsNam + ".xls";
-            if (parDocTyp.Value == "РНТ") Sablon = @"C:\BASEXRY\XrySablon\Рентген.xls";
-            if (parDocTyp.Value == "ЛАБ") Sablon = @"C:\BASELAB\LabSablon\" + UziXlsNam + ".xls";
-            if (parDocTyp.Value == "МЕД") Sablon = @"C:\BASEMEDFORM\MedFormSablon\" + UziXlsNam + ".xls";
-            File.Copy(Sablon, parXlsFil.Value);
+                // поверить каталог, если нет создать ----------------------------------------------------------------
+                if (Directory.Exists(Papka)) i = 0;
+                else Directory.CreateDirectory(Papka);
 
 
-            //        sheet.SaveToHtml(XlsFil);
+                // ЗАПИСАТЬ НА ДИСК ===========================================================================================
+                //Save and Launch
+                //       book.SaveToFile(XlsFil, ExcelVersion.Version97to2003);
+                //        book.Worksheets[0].SaveToHtml(XlsFil);    // тоже работает
+                // скорировать скачанный файл ----------------------------------------------------------------
+                if (parDocTyp.Value == "УЗИ") Sablon = @"C:\BASEUZI\UziSablon\" + UziXlsNam + ".xls";
+                if (parDocTyp.Value == "ФНК") Sablon = @"C:\BASEUZI\UziSablon\" + UziXlsNam + ".xls";
+                if (parDocTyp.Value == "РНТ") Sablon = @"C:\BASEXRY\XrySablon\Рентген.xls";
+                if (parDocTyp.Value == "ЛАБ") Sablon = @"C:\BASELAB\LabSablon\" + UziXlsNam + ".xls";
+                if (parDocTyp.Value == "МЕД") Sablon = @"C:\BASEMEDFORM\MedFormSablon\" + UziXlsNam + ".xls";
 
-            // ЗАПИСАТЬ НА ДИСК МЕСТОПОЛОЖЕНИЕ ===========================================================================================
-            SqlCommand cmdUsl = new SqlCommand("UPDATE AMBUSL SET USLIG1='',USLXLS='" + XlsFil + "' WHERE USLIDN=" + AmbUslIdn, con);
-            cmdUsl.ExecuteNonQuery();
-            con.Close();
+                  // проверить если фаил есть удалить ----------------------------------------------------------------
+                if (File.Exists(parXlsFil.Value)) File.Delete(parXlsFil.Value);
+                File.Copy(Sablon, parXlsFil.Value);
 
-            GridWeb1.ImportExcelFile(parXlsFil.Value);
-            this.GridWeb1.WebWorksheets.SaveToExcelFile(parXlsFil.Value, GridSaveFormat.Excel2007);
+                //        sheet.SaveToHtml(XlsFil);
+
+                // ЗАПИСАТЬ НА ДИСК МЕСТОПОЛОЖЕНИЕ ===========================================================================================
+                SqlCommand cmdUsl = new SqlCommand("UPDATE AMBUSL SET USLIG1='',USLXLS='" + XlsFil + "' WHERE USLIDN=" + AmbUslIdn, con);
+                cmdUsl.ExecuteNonQuery();
+                con.Close();
+
+                GridWeb1.ImportExcelFile(parXlsFil.Value);
+                this.GridWeb1.WebWorksheets.SaveToExcelFile(parXlsFil.Value, GridSaveFormat.Excel2007);
+            }
+            else
+            {
+                XlsFil = XlsFlg;
+                parXlsFil.Value = XlsFil + ".xls";
+                parXlsFilPdf.Value = XlsFil + ".pdf";
+                GridWeb1.ImportExcelFile(parXlsFil.Value);
+            }
         }
         else
         {
@@ -410,7 +428,7 @@
         }
 
         // Accessing the cells collection of the worksheet that is currently active
-      //  GridCells cells = GridWeb1.WorkSheets[GridWeb1.ActiveSheetIndex].Cells;
+        //  GridCells cells = GridWeb1.WorkSheets[GridWeb1.ActiveSheetIndex].Cells;
 
         sheet.SetAllCellsEditable();
 
@@ -526,7 +544,8 @@
             }   ///// JJJJJJJJJJJJJJJJJJ
                 //   ------------------------------  УСТАНОВИТЬ ВЫСОТУ ЯЧЕЙКИ -------------------------------------------------
                 //cells.SetRowHeight(i, j7 * (L * 1.1 / ColWdt + 1));  //пример
-            VisotaCol = 17 * (KolSim * 1.2 /ColWdt + 1);
+      //      VisotaCol = 17 * (KolSim * 1.2 /ColWdt + 1);
+            VisotaCol = 8 * (KolSim * 1.2 /ColWdt + 1);
             //  VisotaCol = 17 * (KolColFin * 1.7 + 1);
             if (KolColFin > 0) cells.SetRowHeight(i, VisotaCol);
             else cells.SetRowHeight(i, 17);
