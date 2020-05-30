@@ -187,6 +187,16 @@
                  }
              });
          }
+
+         function PasButton() {
+             //         alert('GridKas_dbl=');
+             //var AmbCrdIdn000 = GridCrd.Rows[rowIndex].Cells[0].Value;
+
+             //document.getElementById('MainContent_parCrdIdn').value = AmbCrdIdn000;
+             //document.getElementById('MainContent_parDbl').value = "DBL";
+             myDialogDubl.Open();
+         }
+
          //    ==========================  ПЕЧАТЬ =============================================================================================
 
          function PrtButton_Click() {
@@ -196,6 +206,16 @@
                  window.open("/Report/DauaReports.aspx?ReportName=HspAmbKrt003&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
              else
                  window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspAmbKrt003&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
+         }
+
+         function SgnButton_Click() {
+             var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
+          //   alert(AmbCrdIdn);
+             var ua = navigator.userAgent;
+             if (ua.search(/Chrome/) > -1)
+                 window.open("/Report/DauaReports.aspx?ReportName=HspAmbSgnKrt&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+             else
+                 window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspAmbSgnKrt&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
          }
 
  </script>
@@ -279,7 +299,9 @@
              Style="left: 2%; position: relative; top: -40px; width: 96%; height: 30px;">
              <center>
                  <asp:Button ID="CanButton" runat="server" CommandName="Cancel" Text="Назад к списку" onclick="CanButton_Click"/>
-                 <input type="button" value="Печать"  onclick="PrtButton_Click()" />
+                 <input type="Button" value="Печать амб.карты"  onclick="PrtButton_Click()" />
+                 <input type="Button" value="Печать сигн.лист"  onclick="SgnButton_Click()" />
+                 <input type="Button" value="Передать в участок"  onclick="PasButton()" />
              </center>
              
 
@@ -312,7 +334,26 @@
         </table>
         </center>
     </owd:Dialog>
-    
+  
+        <%-- =================  диалоговое окно для подтверждения записи докуумента  ============================================ --%>
+     <owd:Dialog ID="myDialogDubl" runat="server" Height="180" StyleFolder="/Styles/Window/wdstyles/aura" Title="Дублирования амбулаторной карты" Width="300" IsModal="true">
+            <br />
+            <center>
+                <table>
+                    <tr>
+                        <td>Хотите передать на участок?</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <br />
+                              <asp:Button runat="server" ID="Button3" Text="ОК" onclick="PasButton_Click" />
+                              <input type="button" value="Отмена" onclick="myDialogDubl.Close();" />
+                        </td>
+                    </tr>
+                </table>  
+            </center>      
+        </owd:Dialog> 
+
 <%-- =================  источник  для ГРИДА============================================ --%>
 
  <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource> 

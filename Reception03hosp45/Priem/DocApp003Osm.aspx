@@ -309,7 +309,7 @@
              switch (DatDocTyp) {
                  case 'Sql':
                      DatDocTyp = 'Sql';
-                     SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "='" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
+                     SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "=N'" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
                      break;
                  case 'Str':
                      DatDocTyp = 'Str';
@@ -325,10 +325,10 @@
                      break;
                  default:
                      DatDocTyp = 'Sql';
-                     SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "='" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
+                     SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "=N'" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
                      break;
              }
- //            alert("SqlStr=" + SqlStr);
+          //   alert("SqlStr=" + SqlStr);
 
              $.ajax({
                  type: 'POST',
@@ -478,6 +478,13 @@
              }
              //         document.getElementById('ctl00$MainContent$HidTextBoxFio').value = result;
          }
+
+         // --------------------- клише на анамнез жизни 
+         function SablonSts() {
+             document.getElementById('Stt003').value = "АҚҚ (АД)  000/00   ЖСЖ(ЧСС) 00 ТАЖ(ЧД)  00  Дене қызуы(температура) 00";
+             onChangeTxt('Stt003', document.getElementById('Stt003').value);
+         }
+
          </script>
 
 </head>
@@ -485,140 +492,140 @@
     
   <script runat="server">
 
-        string BuxSid;
-        string BuxFrm;
-        string BuxKod;
-        string AmbCrdIdn = "";
-        string whereClause = "";
-        
-        string MdbNam = "HOSPBASE";
-        //=============Установки===========================================================================================
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            //=====================================================================================
-            BuxSid = (string)Session["BuxSid"];
-            BuxFrm = (string)Session["BuxFrmKod"];
-            BuxKod = (string)Session["BuxKod"];
-//            AmbCrdIdn = (string)Session["AmbCrdIdn"];
-            AmbCrdIdn = Convert.ToString(Request.QueryString["AmbCrdIdn"]);
-            //=====================================================================================
-            sdsIsx.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
-            sdsIsx.SelectCommand = "SELECT * FROM Spr003Isx ORDER BY SmpIsxNam";
-            sdsMkb.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
-            sdsMkb.SelectCommand = "SELECT TOP 100 * FROM MKB10 ORDER BY MkbNam";
-            //=====================================================================================
-            
-            if (!Page.IsPostBack)
-            {
-                Session.Add("KLTIDN", (string)"");
-                Session.Add("WHERE", (string)"");
-            
-            }
-                 getDocNum();
-//               filComboBox();
+      string BuxSid;
+      string BuxFrm;
+      string BuxKod;
+      string AmbCrdIdn = "";
+      string whereClause = "";
 
-        }
-      
-        // ============================ чтение заголовка таблицы а оп ==============================================
-        void getDocNum()
-        {
+      string MdbNam = "HOSPBASE";
+      //=============Установки===========================================================================================
+      protected void Page_Load(object sender, EventArgs e)
+      {
+          //=====================================================================================
+          BuxSid = (string)Session["BuxSid"];
+          BuxFrm = (string)Session["BuxFrmKod"];
+          BuxKod = (string)Session["BuxKod"];
+          //            AmbCrdIdn = (string)Session["AmbCrdIdn"];
+          AmbCrdIdn = Convert.ToString(Request.QueryString["AmbCrdIdn"]);
+          //=====================================================================================
+          sdsIsx.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
+          sdsIsx.SelectCommand = "SELECT * FROM Spr003Isx ORDER BY SmpIsxNam";
+          sdsMkb.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
+          sdsMkb.SelectCommand = "SELECT TOP 100 * FROM MKB10 ORDER BY MkbNam";
+          //=====================================================================================
 
-            //------------       чтение уровней дерево
-            DataSet ds = new DataSet();
-            string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("HspAmbDocIdn", con);
-            // указать тип команды
-            cmd.CommandType = CommandType.StoredProcedure;
-            // передать параметр
-            cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
+          if (!Page.IsPostBack)
+          {
+              Session.Add("KLTIDN", (string)"");
+              Session.Add("WHERE", (string)"");
 
-            // создание DataAdapter
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            // заполняем DataSet из хран.процедуры.
-            da.Fill(ds, "HspAmbDocIdn");
+          }
+          getDocNum();
+          //               filComboBox();
 
-            con.Close();
+      }
 
-            if (ds.Tables[0].Rows.Count > 0)
-            {
+      // ============================ чтение заголовка таблицы а оп ==============================================
+      void getDocNum()
+      {
 
-                //     obout:OboutTextBox ------------------------------------------------------------------------------------      
-                Jlb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCJLB"]);
-                Anm003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANM"]);
-                AnmLif003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANMLIF"]);
-               // Stt003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCLOC"]);
-                Dig003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIG"]);
-                Dsp003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIGSOP"]);
-                Lch003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCPLNLCH"]);
-                Mkb001.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB001"]);
-                Mkb002.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB002"]);
-         //       Mkb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB003"]);
+          //------------       чтение уровней дерево
+          DataSet ds = new DataSet();
+          string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
+          SqlConnection con = new SqlConnection(connectionString);
+          con.Open();
+          SqlCommand cmd = new SqlCommand("HspAmbDocIdn", con);
+          // указать тип команды
+          cmd.CommandType = CommandType.StoredProcedure;
+          // передать параметр
+          cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
 
-                //     obout:ComboBox ------------------------------------------------------------------------------------ 
+          // создание DataAdapter
+          SqlDataAdapter da = new SqlDataAdapter(cmd);
+          // заполняем DataSet из хран.процедуры.
+          da.Fill(ds, "HspAmbDocIdn");
 
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["SMPENDSTT"].ToString())) BoxRes.SelectedIndex = 0;
-                else BoxRes.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["SMPENDSTT"]);
+          con.Close();
 
-                TxtResAdd.Text = Convert.ToString(ds.Tables[0].Rows[0]["SMPENDADD"]);
-                TxtResChs.Text = Convert.ToString(ds.Tables[0].Rows[0]["SMPENDCHS"]);
-                TxtResPls.Text = Convert.ToString(ds.Tables[0].Rows[0]["SMPENDPLS"]);
-                TxtResGdd.Text = Convert.ToString(ds.Tables[0].Rows[0]["SMPENDGDD"]);
-                //     obout:CheckBox ------------------------------------------------------------------------------------ 
+          if (ds.Tables[0].Rows.Count > 0)
+          {
 
-            }
+              //     obout:OboutTextBox ------------------------------------------------------------------------------------      
+              Jlb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCJLB"]);
+              Anm003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANM"]);
+              AnmLif003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANMLIF"]);
+              Stt003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCLOC"]);
+              //Dig003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIG"]);
+              //Dsp003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIGSOP"]);
+              Lch003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCPLNLCH"]);
+              //Mkb001.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB001"]);
+              //Mkb002.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB002"]);
+              //       Mkb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB003"]);
 
-  //          string name = value ?? string.Empty;
-        }
-        // ============================ чтение заголовка таблицы а оп ==============================================
-        void filComboBox()
-        {
-        }
-        
-        //------------------------------------------------------------------------
-        // ==================================== поиск клиента по фильтрам  ============================================
-        protected void FndBtn_Click(object sender, EventArgs e)
-        {
-            int I = 0;
-            string commandText = "SELECT * FROM MKB10 ";
-            string whereClause = "";
+              //     obout:ComboBox ------------------------------------------------------------------------------------ 
 
-            string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
-            // создание соединение Connection
-            SqlConnection con = new SqlConnection(connectionString);
-            // создание команды
-            whereClause = "";
-            if (FndTxt.Text != "")
-            {
-                I = I + 1;
-                whereClause += "MKBNAM LIKE '%" + FndTxt.Text.Replace("'", "''") + "%'";
-            }
-            if (FndKod.Text != "")
-            {
-                I = I + 1;
-                if (I > 1) whereClause += " AND ";
-                whereClause += "MKBKOD LIKE '" + FndKod.Text.Replace("'", "''") + "%'";
-            }
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["SMPENDSTT"].ToString())) BoxRes.SelectedIndex = 0;
+              else BoxRes.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["SMPENDSTT"]);
 
-            if (whereClause != "")
-            {
-                whereClause = whereClause.Replace("*", "%");
+              TxtResAdd.Text = Convert.ToString(ds.Tables[0].Rows[0]["SMPENDADD"]);
+              TxtResChs.Text = Convert.ToString(ds.Tables[0].Rows[0]["SMPENDCHS"]);
+              TxtResPls.Text = Convert.ToString(ds.Tables[0].Rows[0]["SMPENDPLS"]);
+              TxtResGdd.Text = Convert.ToString(ds.Tables[0].Rows[0]["SMPENDGDD"]);
+              //     obout:CheckBox ------------------------------------------------------------------------------------ 
 
-                if (whereClause.IndexOf("SELECT") != -1) return;
-                if (whereClause.IndexOf("UPDATE") != -1) return;
-                if (whereClause.IndexOf("DELETE") != -1) return;
+          }
 
-                commandText += " where " + whereClause;
-                SqlCommand cmd = new SqlCommand(commandText, con);
-                con.Open();
-                SqlDataReader myReader = cmd.ExecuteReader();
-                gridMkb.DataSource = myReader;
-                gridMkb.DataBind();
-                con.Close();
-            }
-        }
-                
+          //          string name = value ?? string.Empty;
+      }
+      // ============================ чтение заголовка таблицы а оп ==============================================
+      void filComboBox()
+      {
+      }
+
+      //------------------------------------------------------------------------
+      // ==================================== поиск клиента по фильтрам  ============================================
+      protected void FndBtn_Click(object sender, EventArgs e)
+      {
+          int I = 0;
+          string commandText = "SELECT * FROM MKB10 ";
+          string whereClause = "";
+
+          string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
+          // создание соединение Connection
+          SqlConnection con = new SqlConnection(connectionString);
+          // создание команды
+          whereClause = "";
+          if (FndTxt.Text != "")
+          {
+              I = I + 1;
+              whereClause += "MKBNAM LIKE '%" + FndTxt.Text.Replace("'", "''") + "%'";
+          }
+          if (FndKod.Text != "")
+          {
+              I = I + 1;
+              if (I > 1) whereClause += " AND ";
+              whereClause += "MKBKOD LIKE '" + FndKod.Text.Replace("'", "''") + "%'";
+          }
+
+          if (whereClause != "")
+          {
+              whereClause = whereClause.Replace("*", "%");
+
+              if (whereClause.IndexOf("SELECT") != -1) return;
+              if (whereClause.IndexOf("UPDATE") != -1) return;
+              if (whereClause.IndexOf("DELETE") != -1) return;
+
+              commandText += " where " + whereClause;
+              SqlCommand cmd = new SqlCommand(commandText, con);
+              con.Open();
+              SqlDataReader myReader = cmd.ExecuteReader();
+              gridMkb.DataSource = myReader;
+              gridMkb.DataBind();
+              con.Close();
+          }
+      }
+
   </script>   
     
     
@@ -699,7 +706,34 @@
                                 <button id="start_Anm" onclick="Speech('GrfAnmLif')">
                                  <img id="start_img2" src="/Icon/Microphone.png" alt="Start"></button>
                              </td>
-                        </tr>               
+                        </tr>      
+             <!--  Статус ----------------------------------------------------------------------------------------------------------  --> 
+                         <tr>                            
+                            <td width="3%" style="vertical-align: top;">
+                                <asp:Button ID="Stt001" runat="server"
+                                    Width="100%" CommandName="" CommandArgument=""
+                                    Text="<<<" Height="25px"
+                                    Style="position: relative; top: 0px; left: 0px" />
+                            </td>
+                            <td width="7%" style="vertical-align: top;">
+                                <asp:Button ID="Stt002" runat="server"
+                                    OnClientClick="SablonSts()"
+                                    Width="100%" CommandName="" CommandArgument=""
+                                    Text="Статус" Height="25px"
+                                    Style="position: relative; top: 0px; left: 0px" />
+                            </td>
+                             <td width="90%" style="vertical-align: top;">
+                                 <obout:OboutTextBox runat="server" ID="Stt003"  width="100%" BackColor="White" Height="60px" 
+                                     TextMode="MultiLine" FolderStyle="~/Styles/Interface/plain/OboutTextBox">
+		                             <ClientSideEvents OnTextChanged="onChange" />
+		                         </obout:OboutTextBox>
+                            </td>                     
+                              <td style="vertical-align: top; width:7%" >
+                                <button id="start_Stt" onclick="Speech('GrfStt')">
+                                 <img id="start_img3" src="/Icon/Microphone.png" alt="Start"></button>
+                             </td>
+                          </tr> 
+             
 <!--  Анамнез болезни ----------------------------------------------------------------------------------------------------------  -->    
                          <tr> 
                             <td width="3%" style="vertical-align: top;">
@@ -717,7 +751,7 @@
                                     Style="position: relative; top: 0px; left: 0px" />
                             </td>
                              <td width="90%" style="vertical-align: top;">
-                                 <obout:OboutTextBox runat="server" ID="Anm003"  width="100%" BackColor="White" Height="100px"
+                                 <obout:OboutTextBox runat="server" ID="Anm003"  width="100%" BackColor="White" Height="80px"
                                      TextMode="MultiLine" FolderStyle="~/Styles/Interface/plain/OboutTextBox">
 		                             <ClientSideEvents OnTextChanged="onChange" />
 		                         </obout:OboutTextBox>
@@ -731,7 +765,7 @@
 
              <!--  Статус ----------------------------------------------------------------------------------------------------------  --> 
  <!--  Диагноз ----------------------------------------------------------------------------------------------------------  -->  
-                         <tr>                             
+<%--                         <tr>                             
                             <td width="3%" style="vertical-align: top;">
                                 <asp:Button ID="Dig001" runat="server"
                                     OnClientClick="clearfilter()"
@@ -806,7 +840,7 @@
                                 <button id="start_Dsp" onclick="Speech('GrfDsp')">
                                  <img id="start_img5" src="/Icon/Microphone.png" alt="Start"></button>
                              </td>
-                        </tr>
+                        </tr>--%>
                 
  <!--  Лечение ----------------------------------------------------------------------------------------------------------  -->  
  <!--  Нозология ----------------------------------------------------------------------------------------------------------  -->    
@@ -834,7 +868,7 @@
 
                             </td>
                              <td width="90%" style="vertical-align: top;">
-                                 <obout:OboutTextBox runat="server" ID="Lch003"  width="100%" BackColor="White" Height="100px"
+                                 <obout:OboutTextBox runat="server" ID="Lch003"  width="100%" BackColor="White" Height="120px"
                                      TextMode="MultiLine" FolderStyle="~/Styles/Interface/plain/OboutTextBox">
 		                             <ClientSideEvents OnTextChanged="onChange" />
  		                         </obout:OboutTextBox>

@@ -141,6 +141,45 @@ namespace Reception03hosp45.Priem
           //  Response.Redirect("~/GlavMenu.aspx");
 
         }
+        protected void PasButton_Click(object sender, EventArgs e)
+        {
+          //  int AmbCrdIdn;
+            string AmbCrdIdnDbl;
+
+            //    myDialogDubl.Visible = false;
+            //    myDialogDubl.VisibleOnLoad = false;
+
+           // AmbCrdIdn = Convert.ToInt32(parCrdIdn.Value);
+
+            string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
+            // создание соединение Connection
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+
+            // создание команды
+            SqlCommand cmd = new SqlCommand("HspDocAppLstDbl", con);
+            // указать тип команды
+            cmd.CommandType = CommandType.StoredProcedure;
+            // передать параметр
+            cmd.Parameters.Add("@GRFIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
+            cmd.Parameters.Add("@GRFBUX", SqlDbType.VarChar).Value = BuxKod;
+            cmd.Parameters.Add("@GRFBUXOUT", SqlDbType.VarChar).Value = 0;
+            cmd.Parameters.Add("@GRFIDNOUT", SqlDbType.Int, 4).Value = 0;
+            cmd.Parameters["@GRFIDNOUT"].Direction = ParameterDirection.Output;
+
+            try
+            {
+                int numAff = cmd.ExecuteNonQuery();
+                // Получить вновь сгенерированный идентификатор.
+                AmbCrdIdnDbl = Convert.ToString(cmd.Parameters["@GRFIDNOUT"].Value);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+       //     ExecOnLoad("OpenDublCrd(" + AmbCrdIdnDbl + ");");
+        }
 
         // ============================ чтение заголовка таблицы а оп ==============================================
         void getDocNum()

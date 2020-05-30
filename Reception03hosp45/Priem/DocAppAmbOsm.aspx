@@ -423,7 +423,7 @@
              switch (DatDocTyp) {
                  case 'Sql':
                      DatDocTyp = 'Sql';
-                     SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "='" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
+                     SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "=N'" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
                      break;
                  case 'Str':
                      DatDocTyp = 'Str';
@@ -439,7 +439,7 @@
                      break;
                  default:
                      DatDocTyp = 'Sql';
-                     SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "='" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
+                     SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "=N'" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
                      break;
              }
          //  alert("SqlStr=" + SqlStr);

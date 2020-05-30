@@ -1505,6 +1505,11 @@
                         this.DauaReport.ServerReport.SetParameters(parameters125);
                         format = "NONE"; //Desired format goes here (PDF, Excel, or Image)
                         break;
+                    case "HspAmbSgnKrt":
+                        ReportParameter[] parameters126 = new ReportParameter[1];
+                        parameters126[0] = new ReportParameter("GLVDOCIDN", TekDocIdn.ToString(), false);
+                        this.DauaReport.ServerReport.SetParameters(parameters126);
+                        break;
                     default:
                         break;
                 }

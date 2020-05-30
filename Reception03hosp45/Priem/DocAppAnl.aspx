@@ -101,6 +101,7 @@
 
     string UslNam;
     string UslMem;
+    string UslTyp;
 
     int NumDoc;
 
@@ -231,18 +232,9 @@
         {
             StxKey = Convert.ToString(ds.Tables[0].Rows[0]["STXKEY"]);
             parGrfIIN.Value = Convert.ToString(ds.Tables[0].Rows[0]["GRFIIN"]);
-
-            //sdsUsl.SelectCommand = "SELECT SprUsl.UslKod,SprUsl.UslNam " +
-            //                       "FROM  SprUsl INNER JOIN SprUslFrm INNER JOIN SprBuxUsl ON SprUslFrm.UslFrmHsp=SprBuxUsl.BuxUslFrm AND SprUslFrm.UslFrmKod=SprBuxUsl.BuxUslPrcKod " +
-            //                                                                             " ON SprUsl.UslKod=SprUslFrm.UslFrmKod " +
-            //                                    "INNER JOIN SprFrmStx ON SprUslFrm.UslFrmHsp=SprFrmStx.FrmStxKodFrm AND SprUslFrm.UslFrmPrc=SprFrmStx.FrmStxPrc " +
-            //                       "WHERE SprBuxUsl.BuxUslFrm=" + BuxFrm + " AND SprBuxUsl.BuxUslDocKod=" + BuxKod + " AND SprFrmStx.FrmStxKodStx='" +StxKey + "' AND SprUslFrm.UslFrmZen>0 " +
-            //                       "ORDER BY SprUsl.UslNam";
         }
 
         con.Close();
-
-        //   sdsStx.SelectCommand = "SELECT CntKey AS StxKod,CntNam AS StxNam FROM SprCnt WHERE CntLvl=0 AND CntFrm=" + BuxFrm + " ORDER BY CntNam";
 
         GridUsl.DataSource = ds;
         GridUsl.DataBind();
@@ -271,6 +263,12 @@
     {
         if (e.Record["USLMEM"] == null | e.Record["USLMEM"] == "") UslMem = "";
         else UslMem = Convert.ToString(e.Record["USLMEM"]);
+        
+        if (e.Record["USLBINGDE"] == null | e.Record["USLBINGDE"] == "") UslGde = "";
+        else UslGde = Convert.ToString(e.Record["USLBINGDE"]);
+        
+        if (e.Record["USLPRMGDE"] == null | e.Record["USLPRMGDE"] == "") UslTyp = "";
+        else UslTyp = Convert.ToString(e.Record["USLPRMGDE"]);
 
         if (e.Record["USLKTO"] == null | e.Record["USLKTO"] == "") UslKto =  Convert.ToInt32(BuxKod);
         else UslKto = Convert.ToInt32(e.Record["USLKTO"]);
@@ -285,26 +283,13 @@
         string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
         SqlConnection con = new SqlConnection(connectionString);
         con.Open();
-        SqlCommand cmd = new SqlCommand("INSERT INTO AMBUSL (USLAMB,USLKTO,USLDAT,USLSTX,USLDOCNAM,USLMEM) " +
+        SqlCommand cmd = new SqlCommand("INSERT INTO AMBUSL (USLAMB,USLKTO,USLDAT,USLSTX,USLDOCNAM,USLMEM,USLBINGDE,USLPRMGDE) " +
                                         "VALUES("+HidAmbCrdIdn.Value+","+
                                                   UslKto+","+
                                                   "CONVERT(DATETIME,'" + UslDat + "',104)," +
                                                   "'00000','АНЛ','"+
-                                                  UslMem +"')", con);
+                                                  UslMem +"','"+ UslGde +"','" + UslTyp + "')", con);
 
-
-        //// указать тип команды
-        //cmd.CommandType = CommandType.StoredProcedure;
-        //// передать параметр
-        //cmd.Parameters.Add("@USLAMB", SqlDbType.Int, 4).Value = AmbCrdIdn;
-        //cmd.Parameters.Add("@USLKOD", SqlDbType.Int, 4).Value = 0;
-        //cmd.Parameters.Add("@USLKOL", SqlDbType.Int, 4).Value = 0;
-        //cmd.Parameters.Add("@USLLGT", SqlDbType.Int, 4).Value = 0;
-        //cmd.Parameters.Add("@USLNAP", SqlDbType.VarChar).Value = "";
-        //cmd.Parameters.Add("@USLSTX", SqlDbType.VarChar).Value = "00000";
-        //cmd.Parameters.Add("@USLKTO", SqlDbType.Int, 4).Value = UslKto;
-        //cmd.Parameters.Add("@USLGDE", SqlDbType.VarChar).Value = "";
-        //cmd.Parameters.Add("@USLMEM", SqlDbType.VarChar).Value = UslMem;
         // создание команды
         cmd.ExecuteNonQuery();
         con.Close();
@@ -321,6 +306,12 @@
 
         if (e.Record["USLMEM"] == null | e.Record["USLMEM"] == "") UslMem = "";
         else UslMem = Convert.ToString(e.Record["USLMEM"]);
+        
+        if (e.Record["USLBINGDE"] == null | e.Record["USLBINGDE"] == "") UslGde = "";
+        else UslGde = Convert.ToString(e.Record["USLBINGDE"]);
+        
+        if (e.Record["USLPRMGDE"] == null | e.Record["USLPRMGDE"] == "") UslTyp = "";
+        else UslTyp = Convert.ToString(e.Record["USLPRMGDE"]);
 
         if (e.Record["USLKTO"] == null | e.Record["USLKTO"] == "") UslKto =  Convert.ToInt32(BuxKod);
         else UslKto = Convert.ToInt32(e.Record["USLKTO"]);
@@ -338,19 +329,9 @@
 
         SqlCommand cmd = new SqlCommand("UPDATE AMBUSL SET USLKTO="+UslKto+","+
                                                           "USLDAT=CONVERT(DATETIME,'" + UslDat + "',104)," +
-                                                          "USLMEM='"+UslMem +"' WHERE USLIDN="+UslIdn, con);
-        //// указать тип команды
-        //cmd.CommandType = CommandType.StoredProcedure;
-        //// передать параметр
-        //cmd.Parameters.Add("@USLIDN", SqlDbType.Int, 4).Value = UslIdn;
-        //cmd.Parameters.Add("@USLKOD", SqlDbType.Int, 4).Value = 0;
-        //cmd.Parameters.Add("@USLKOL", SqlDbType.Int, 4).Value = 0;
-        //cmd.Parameters.Add("@USLLGT", SqlDbType.Int, 4).Value = 0;
-        //cmd.Parameters.Add("@USLNAP", SqlDbType.VarChar).Value = "";
-        //cmd.Parameters.Add("@USLKTO", SqlDbType.Int, 4).Value = UslKto;
-        //cmd.Parameters.Add("@USLSTX", SqlDbType.VarChar).Value = "00000";
-        //cmd.Parameters.Add("@USLGDE", SqlDbType.VarChar).Value = "";
-        cmd.Parameters.Add("@USLMEM", SqlDbType.VarChar).Value = UslMem;
+                                                          "USLMEM='"+UslMem + "'," +
+                                                          "USLBINGDE='"+UslGde + "'," +
+                                                          "USLPRMGDE='"+UslTyp +"' WHERE USLIDN="+UslIdn, con);
         // создание команды
         cmd.ExecuteNonQuery();
         con.Close();
@@ -428,7 +409,7 @@
 
             <%-- ============================  шапка экрана ============================================ --%>
             <asp:TextBox ID="Sapka"
-                Text="УСЛУГИ"
+                Text="СКАНИРОВАННЫЕ ДОКУМЕНТЫ"
                 BackColor="yellow"
                 Font-Names="Verdana"
                 Font-Size="12px"
@@ -468,10 +449,9 @@
                     <obout:Column ID="Column03" DataField="USLDAT" HeaderText="ДАТА" DataFormatString="{0:dd.MM.yyyy}" ApplyFormatInEditMode="true" Width="12%" >
                         <TemplateSettings EditTemplateId="tplDatePicker" />
                     </obout:Column>
-                    <obout:Column ID="Column07" DataField="USLMEM" HeaderText="НАИМЕНОВАНИЕ УСЛУГИ" Width="55%" Align="left" />
-                    <obout:Column ID="Column14" DataField="USLKTO" HeaderText="ОТВЕТСТВЕННЫЙ" Width="18%">
-                        <TemplateSettings TemplateId="TemplateKtoNam" EditTemplateId="TemplateEditKtoNam" />
-                    </obout:Column>
+                    <obout:Column ID="Column04" DataField="USLPRMGDE" HeaderText="ВИД ДОКУМ" Width="10%" Align="left" />
+                    <obout:Column ID="Column07" DataField="USLMEM" HeaderText="НАИМЕНОВАНИЕ УСЛУГИ" Width="45%" Wrap="true" Align="left" />
+                    <obout:Column ID="Column14" DataField="USLBINGDE" HeaderText="ОТКУДА ДОКУМЕНТ" Width="18%" />
 
                     <obout:Column HeaderText="ИЗМЕН УДАЛЕНИЕ" Width="10%" AllowEdit="true" AllowDelete="true" runat="server">
                         <TemplateSettings TemplateId="editBtnTemplate" EditTemplateId="updateBtnTemplate" />
@@ -528,32 +508,6 @@
                             <input type="button" id="btnImg" class="tdTextSmall" value="Образ" onclick="WebCam(<%# Container.PageRecordIndex %>)" />
                         </Template>
                     </obout:GridTemplate>
-                   			
-
-
-                    <obout:GridTemplate runat="server" ID="TemplateKtoNam">
-                        <Template>
-                            <%# Container.DataItem["FI"]%>
-                        </Template>
-                    </obout:GridTemplate>
-
-                    <obout:GridTemplate runat="server" ID="TemplateEditKtoNam" ControlID="ddlKtoNam" ControlPropertyName="value">
-                        <Template>
-                            <asp:DropDownList ID="ddlKtoNam" runat="server" AppendDataBoundItems="True" Width="99%" DataSourceID="sdsKto" CssClass="ob_gEC" DataTextField="FI" DataValueField="BuxKod">
-                                <asp:ListItem Text="Выберите ..." Value="" Selected="True" />
-                            </asp:DropDownList>
-                        </Template>
-                    </obout:GridTemplate>
-
-                    <obout:GridTemplate runat="server" ControlID="ddlGde" ID="TemplateEditGde" ControlPropertyName="value">
-                        <Template>
-                           <obout:ComboBox runat="server" ID="ddlGde" Width="100%" Height="150" MenuWidth="200"
-                                DataSourceID="sdsGde" DataTextField="GdePrmNam" DataValueField="GdePrmNam">
-                            </obout:ComboBox>
-                        </Template>
-                    </obout:GridTemplate>
-
-
                 </Templates>
             </obout:Grid>
 

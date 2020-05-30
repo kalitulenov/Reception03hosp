@@ -516,7 +516,6 @@
     <Content Include="Priem\DocAppXryEml009.aspx" />
     <Content Include="WebCam\DocAppWebCam.aspx" />
     <Content Include="WebCam\DocAppWebCamEml.aspx" />
-    <Content Include="WebCam\DocAppWebCam_OLD.aspx" />
     <Content Include="WebCam\DocAppWebCamJpg.aspx" />
     <Content Include="WebCam\ImageConversions.aspx" />
     <Content Include="WebCam\WebCam.aspx" />
@@ -632,7 +631,6 @@
     <Content Include="BuxDoc\BuxDocPrxVvdOne_OLD.aspx" />
     <Content Include="Priem\DocAppAmbUslOne.aspx" />
     <Content Include="AIS\DocAis.aspx" />
-    <Content Include="WebCam\DocAppWebCam_OLD2.aspx" />
     <Content Include="Referent\RefGlv003086.aspx" />
     <Content Include="AIS\DocAisKof.aspx" />
     <Content Include="Spravki\BuxSprOrgBnk.aspx" />

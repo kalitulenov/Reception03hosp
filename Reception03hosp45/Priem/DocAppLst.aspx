@@ -999,6 +999,7 @@
             // передать параметр
             cmd.Parameters.Add("@GRFIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
             cmd.Parameters.Add("@GRFBUX", SqlDbType.VarChar).Value = BuxKod;
+            cmd.Parameters.Add("@GRFBUXOUT", SqlDbType.VarChar).Value = BuxKod;
             cmd.Parameters.Add("@GRFIDNOUT", SqlDbType.Int, 4).Value = 0;
             cmd.Parameters["@GRFIDNOUT"].Direction = ParameterDirection.Output;
 
@@ -1147,7 +1148,7 @@
 	                <obout:Column ID="Column08" DataField="GRFBRTGOD" HeaderText="ГОД/Р" Width="5%" />
 	                <obout:Column ID="Column09" DataField="ORGSTXNAM" HeaderText="СТРАХОВЩИК" Width="8%" />
 	                <obout:Column ID="Column10" DataField="GRFPOL" HeaderText="ЗАПОЛНЯЕМ." Width="6%" />
-	                <obout:Column ID="Column11" DataField="GRFERR" HeaderText="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ПРИМЕЧАНИЕ" Width="19%"/>
+	                <obout:Column ID="Column11" DataField="GRFERR" HeaderText="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;КЕМ НАПРАВЛЕН" Width="19%"/>
 	                <obout:Column ID="Column12" DataField="GRFSUM" HeaderText="СУММА" Align="right" Width="5%"/>
  	                <obout:Column ID="Column13" DataField="FI" HeaderText="ОТВЕТСТВЕННЫЙ" Width="10%" Visible="false"/>
 	                <obout:Column ID="Column14" DataField="TIMCMP" HeaderText="ПРИНЯЛ" DataFormatString = "{0:hh:mm}" Width="5%" Visible="false" />
