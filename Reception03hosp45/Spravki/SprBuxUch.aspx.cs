@@ -47,7 +47,7 @@ namespace Reception03hosp45.Spravki
             parBuxSid.Value = BuxSid;
 
             sdsBux.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
-            sdsBux.SelectCommand = "SELECT BUXKOD,FIO FROM SprBuxKdr WHERE (DLGNAM='Врач общей практики' OR DLGNAM='Врач педиатр' OR DLGNAM='Врач терапевт') AND ISNULL(BUXUBL,0)=0 AND BUXFRM='" + BuxFrm + "' ORDER BY FIO";
+            sdsBux.SelectCommand = "SELECT BUXKOD,FIO FROM SprBuxKdr WHERE (DLGZAN=2 OR DLGZAN=3) AND ISNULL(BUXUBL,0)=0 AND BUXFRM='" + BuxFrm + "' ORDER BY FIO";
             sdsUch.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
             sdsUch.SelectCommand = "SELECT SprKlt.KLTUCH AS UCHNAM FROM SprCntKlt INNER JOIN SprKlt ON SprCntKlt.CNTKLTIIN=SprKlt.KLTIIN " +
                                    "WHERE SprCntKlt.CNTKLTFRM=" + BuxFrm + " AND ISNULL(SprCntKlt.CNTKLTUBLFLG, 0) = 0 AND LEFT(SprCntKlt.CNTKLTKEY, 5) = '00001' AND LEN(SprKlt.KLTUCH) > 0 " +

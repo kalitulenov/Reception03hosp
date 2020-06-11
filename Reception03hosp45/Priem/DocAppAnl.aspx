@@ -42,6 +42,7 @@
              var AmbUslIdn = GridUsl.Rows[rowIndex].Cells[0].Value;
              var AmbAnlPth = "";  //document.getElementById('parXlsFio').value;
              var AmbUslIIN = document.getElementById('parGrfIIN').value;
+           //  alert("AmbUslIIN=" + AmbUslIIN);
 
              AnlWindow.setTitle(AmbAnlPth);
              AnlWindow.setUrl("/WebCam/DocAppWebCam.aspx?AmbUslIdn=" + AmbUslIdn + "&AmbUslPth=" + AmbAnlPth + "&AmbUslIIN=" + AmbUslIIN);
@@ -107,7 +108,7 @@
 
     string AmbCrdIdn;
     string AmbCntIdn;
-    string AmbUslIdn;
+    string AmbCrdIIN;
 
     string GlvDocTyp;
     string MdbNam = "HOSPBASE";
@@ -120,6 +121,7 @@
     {
         AmbCrdIdn = Convert.ToString(Request.QueryString["AmbCrdIdn"]);
         AmbCntIdn = Convert.ToString(Request.QueryString["AmbCntIdn"]);
+        AmbCrdIIN = Convert.ToString(Request.QueryString["AmbCrdIIN"]);
         //           TxtDoc = (string)Request.QueryString["TxtSpr"];
         //       Session.Add("AmbCrdIdn", AmbCrdIdn);
         //=====================================================================================
@@ -199,7 +201,7 @@
 
             //Session["AmbCrdIdn"] = Convert.ToString(AmbCrdIdn);
             HidAmbCrdIdn.Value = AmbCrdIdn;
-            //parBuxFrm.Value = BuxFrm;
+            parGrfIIN.Value = AmbCrdIIN;
         }
 
         getGrid();

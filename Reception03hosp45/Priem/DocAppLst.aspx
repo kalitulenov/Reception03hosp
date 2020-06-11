@@ -79,10 +79,11 @@
          KltWindow.Close();
 
          var hashes = result.split('&');
-         //            alert("hashes=" + hashes);
+       //             alert("hashes=" + hashes);
 
          var GlvDocTyp = document.getElementById('<%= parDocTyp.ClientID%>').value;
          var GrfFrm = document.getElementById('MainContent_HidBuxFrm').value;
+         var AmbCrdIIN = hashes[2];
 
          var AmbCntIdn = hashes[0];
 
@@ -141,7 +142,7 @@
              case 'АНЛ':
                  h = h - 200;
                  w = w - 200;
-                 window.open("/Priem/DocAppAnl.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                 window.open("/Priem/DocAppAnl.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&AmbCrdIIN=" + AmbCrdIIN, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
                  break;
              case 'ВЫС':
                  window.open("/Priem/DocApp003Dsp.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=СМП", "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
@@ -240,10 +241,11 @@
 
          var GlvDocTyp = document.getElementById('<%= parDocTyp.ClientID%>').value;
          var GrfFrm = document.getElementById('MainContent_HidBuxFrm').value;
+         var AmbCrdIIN = selectedRecords[0].GRFIIN;
 
          //        var AmbCrdIdn = GridCrd.Rows[iRecordIndex].Cells[0].Value;
          //        var GlvDocPrv = GridCrd.Rows[iRecordIndex].Cells[1].Value;
-         //     alert("GlvDocTyp=" + GlvDocTyp);
+         //     alert("AmbCrdIIN=" + AmbCrdIIN);
 
          var ua = navigator.userAgent;
          //     alert("ua=" + ua);
@@ -310,7 +312,7 @@
                  //location.href = "/Priem/DocAppXry.aspx?AmbCrdIdn=0&AmbCntIdn=" + AmbCntIdn + "&GlvDocTyp=" + GlvDocTyp; break;
                  h = h - 200;
                  w = w - 200;
-                 window.open("/Priem/DocAppAnl.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                 window.open("/Priem/DocAppAnl.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&AmbCrdIIN=" + AmbCrdIIN, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=150,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no");
                  break;
              case 'ВЫС':
                  window.open("/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=СМП", "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
@@ -437,7 +439,7 @@
 
          var ua = navigator.userAgent;
          var GlvDocTyp = document.getElementById('<%= parDocTyp.ClientID%>').value;
-//         alert("GlvDocTyp1=" + GlvDocTyp);
+      //   alert("GlvDocTyp1=" + GlvDocTyp);
 
          KltWindow.setTitle("Поиск клиентов");
          KltWindow.setUrl("/Referent/RefGlv003Klt.aspx");
@@ -608,7 +610,7 @@
              case 'AMB': location.href = "/Priem/DocAppAmbAcm.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=АМБ"; break;
              case 'СМП': location.href = "/Priem/DocAppCmp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
              case 'АКТ': location.href = "/Priem/DocAppAkt.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
-             case 'АНЛ': location.href = "/Priem/DocAppAnl.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp; break;
+         //    case 'АНЛ': location.href = "/Priem/DocAppAnl.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&AmbCrdIIN=" + AmbCrdIIN; break;
              case 'ВЫС': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=СМП"; break;
              case 'ВЫД': location.href = "/Priem/DocApp003Dsp.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=ДОМ"; break;
              case 'ДОМ': location.href = "/Priem/DocAppDom.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=ДОМ"; break;

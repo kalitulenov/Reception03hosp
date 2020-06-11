@@ -56,7 +56,7 @@
    //         alert("SqlStr=" + SqlStr);
             if (Num == "X") SqlStr = "UPDATE AMBUSL SET USLXLS='' WHERE USLIDN=" + DatDocIdn;
             else SqlStr = "UPDATE AMBUSL SET USLIG" + Num + "='' WHERE USLIDN=" + DatDocIdn;
-   //         alert("SqlStr=" + SqlStr);
+     //       alert("SqlStr=" + SqlStr);
 
             $.ajax({
                 type: 'POST',
@@ -67,6 +67,9 @@
                 success: function () { },
                 error: function () { alert("ERROR=" + SqlStr); }
             });
+
+            var jsVar = "dotnetcurry.com";
+            __doPostBack('callPostBack', jsVar);
         }
 
         //    ------------------------------------------------------------------------------------------------------------------------

@@ -143,9 +143,11 @@
             var AmbPrsIdn = GridNap.Rows[rowIndex].Cells[0].Value;
             var PrsTrf = GridNap.Rows[rowIndex].Cells[3].Value;
             if (PrsTrf.length == 0)
-                window.open("/Report/DauaReports.aspx?ReportName=HspDocStzNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                //window.open("/Report/DauaReports.aspx?ReportName=HspDocStzNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                window.open("/Report/DauaReports.aspx?ReportName=HspDocAisNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
             else
-                window.open("/Report/DauaReports.aspx?ReportName=HspDocStzNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                //window.open("/Report/DauaReports.aspx?ReportName=HspDocStzNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                window.open("/Report/DauaReports.aspx?ReportName=HspDocAisNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
         }
 
         function GridPrs_app_exp(rowIndex) {
