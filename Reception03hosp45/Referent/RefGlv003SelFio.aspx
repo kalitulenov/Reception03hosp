@@ -113,12 +113,12 @@
             string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT TOP 50 MAX(AMBCRD.GrfDat) AS DATLST, MAX(AMBCRD.GrfIIN) AS IIN,AMBCRD.GrfPth AS FIO," +
+            SqlCommand cmd = new SqlCommand("SELECT TOP 50 MAX(AMBCRD.GrfDat) AS DATLST, AMBCRD.GrfIIN AS IIN,AMBCRD.GrfPth AS FIO," +
                                             "MAX(SprCnt.CntNam) AS VIDOPL "+
                                             "FROM AMBCRD LEFT OUTER JOIN SprCnt ON AMBCRD.GrfStx = SprCnt.CntKey AND " +
                                                                                     "AMBCRD.GrfFrm = dbo.SprCnt.CntFrm " +
                                             "WHERE AMBCRD.GrfFrm = 1 AND SprCnt.CntLvl=0 " +
-                                            "GROUP BY AMBCRD.GrfPth " +
+                                            "GROUP BY AMBCRD.GrfPth,AMBCRD.GrfIIN " +
                                             "HAVING " + whereClause +
                                             " ORDER BY FIO", con);
             //cmd = new SqlCommand("HspAmbFioSelFin", con);

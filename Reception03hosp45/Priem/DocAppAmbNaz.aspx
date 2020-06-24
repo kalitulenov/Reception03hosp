@@ -103,15 +103,26 @@
         }
 
         //    ==========================  ПЕЧАТЬ =============================================================================================
-        function PrtRzpButton_Click() {
+        function PrtRzpButtonPrz_Click() {
    //         alert("PrtRzpButton=");
             var AmbCrdIdn = document.getElementById('HidAmbCrdIdn').value;
             var ua = navigator.userAgent;
 
             if (ua.search(/Chrome/) > -1)
-                window.open("/Report/DauaReports.aspx?ReportName=HspAmbRzp&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                window.open("/Report/DauaReports.aspx?ReportName=HspAmbRzp&TekDocIdn=" + AmbCrdIdn +"&TekDocKod=1", "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
             else
-                window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspAmbRzp&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
+                window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspAmbRzp&TekDocIdn=" + AmbCrdIdn +"&TekDocKod=1", "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
+        }
+
+        function PrtRzpButtonStz_Click() {
+            //         alert("PrtRzpButton=");
+            var AmbCrdIdn = document.getElementById('HidAmbCrdIdn').value;
+            var ua = navigator.userAgent;
+
+            if (ua.search(/Chrome/) > -1)
+                window.open("/Report/DauaReports.aspx?ReportName=HspAmbRzp&TekDocIdn=" + AmbCrdIdn +"&TekDocKod=2", "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+            else
+                window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspAmbRzp&TekDocIdn=" + AmbCrdIdn +"&TekDocKod=2", "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
         }
 
         function SablonNaz() {
@@ -554,7 +565,8 @@
             Style="left: 0%; position: relative; top: 0px; width: 100%; height: 30px;">
             <center>
                  <input type="button" value="Печать назначения"   onclick="PrtNazButton_Click()" />
-                 <input type="button" value="Печать рецепта"   onclick="PrtRzpButton_Click()" />
+                 <input type="button" value="Печать рецепта в Проц.кабинет"   onclick="PrtRzpButtonPrz_Click()" />
+                 <input type="button" value="Печать рецепта в Днев.стац"   onclick="PrtRzpButtonStz_Click()" />
                  <input type="button" value="Шаблон назначений"   onclick="SablonNaz()" />
             </center>
         </asp:Panel>

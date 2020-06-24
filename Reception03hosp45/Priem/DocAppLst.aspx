@@ -389,7 +389,7 @@
 
          var ua = navigator.userAgent;
 
-         if (GlvDocTyp == 'АМБ' || GlvDocTyp == 'AMB' || GlvDocTyp == 'УЗИ' || GlvDocTyp == 'РНТ' || GlvDocTyp == 'СТМ' || GlvDocTyp == 'СМП' || GlvDocTyp == 'ДОМ' || GlvDocTyp == 'ФНК') {
+         if (GlvDocTyp == 'АМБ' || GlvDocTyp == 'AMB' || GlvDocTyp == 'УЗИ' || GlvDocTyp == 'РНТ' || GlvDocTyp == 'СТМ' || GlvDocTyp == 'СМП' || GlvDocTyp == 'ДОМ' || GlvDocTyp == 'ФНК' || GlvDocTyp == 'МЕД') {
              if (ua.search(/Chrome/) > -1)
                  window.open("/Report/DauaReports.aspx?ReportName=HspDocAppLstDoc&TekDocIdn=" + GrfTyp + "&TekDocKod=" + GrfKod + "&TekDocFrm=" + GrfFrm + "&TekDocBeg=" + GrfBeg + "&TekDocEnd=" + GrfEnd,
                      "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");

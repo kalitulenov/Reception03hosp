@@ -653,7 +653,7 @@
 
                <tr>
                     <td style="width: 100%; height: 30px;"">
-                        <asp:Label ID="Label8" Text="В ПРОЦ. КАБИНЕТ:" runat="server" Width="25%" Font-Bold="true" />
+                        <asp:Label ID="Label8" Text="НА ИСПОЛНЕНИЕ:" runat="server" Width="25%" Font-Bold="true" />
                         <obout:OboutCheckBox runat="server" ID="ChkPrz" FolderStyle="~/Styles/Interface/plain/OboutCheckBox">
                             <ClientSideEvents OnCheckedChanged="onCheckedChanged" />
 		                </obout:OboutCheckBox>  

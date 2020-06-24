@@ -324,8 +324,9 @@
                     case "HspAmbRzp":
                         NamTab = "AMBCRD";
                         Cond = "YES";
-                        ReportParameter[] parameters03 = new ReportParameter[1];
+                        ReportParameter[] parameters03 = new ReportParameter[2];
                         parameters03[0] = new ReportParameter("GLVDOCIDN", TekDocIdn.ToString(), false);
+                        parameters03[1] = new ReportParameter("NAZBLN", TekDocKod.ToString(), false);
                         this.DauaReport.ServerReport.SetParameters(parameters03);
                         break;
                     case "HspAmbNazPrz":
