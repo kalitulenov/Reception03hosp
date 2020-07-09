@@ -243,7 +243,7 @@
         string UsrNam=@"win-sdlrad9r4at\Администратор";
         //       string UsrPss="Siramak70";
         //string UsrPss = "RpJl&LzQ$Kl6";
-        string UsrPss = "Panasonic2018=";
+        string UsrPss = "PANAsonic2018=";
 
         //     string UsrNam = @"BIGSERVER\Администратор";
         //     string UsrPss = "Acc600900529562";
@@ -1259,6 +1259,7 @@
                         parameters99[1] = new ReportParameter("GLVBEGDAT", TekDocBeg.ToString(), false);
                         parameters99[2] = new ReportParameter("GLVENDDAT", TekDocEnd.ToString(), false);
                         this.DauaReport.ServerReport.SetParameters(parameters99);
+                        format = "NONE"; //Desired format goes here (PDF, Excel, or Image)
                         break;
                     case "HspSttZapPrmKrd":
                         ReportParameter[] parameters100 = new ReportParameter[3];
