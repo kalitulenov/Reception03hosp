@@ -114,10 +114,15 @@
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("SELECT TOP 50 MAX(AMBCRD.GrfDat) AS DATLST, AMBCRD.GrfIIN AS IIN,AMBCRD.GrfPth AS FIO," +
-                                            "MAX(SprCnt.CntNam) AS VIDOPL "+
-                                            "FROM AMBCRD LEFT OUTER JOIN SprCnt ON AMBCRD.GrfStx = SprCnt.CntKey AND " +
-                                                                                    "AMBCRD.GrfFrm = dbo.SprCnt.CntFrm " +
-                                            "WHERE AMBCRD.GrfFrm = 1 AND SprCnt.CntLvl=0 " +
+                                            "MAX(SprCnt.CntNam) AS VIDOPL,COUNT(AMBCRD.GrfIdn) AS KOL "+
+                                            "FROM AMBCRD INNER JOIN AMBDOC ON AMBCRD.GrfIdn = AMBDOC.DocAmb " +
+                                                        "LEFT OUTER JOIN SprCnt ON AMBCRD.GrfStx = SprCnt.CntKey AND " +
+                                                                                  "AMBCRD.GrfFrm = SprCnt.CntFrm " +
+                                            "WHERE AMBCRD.GrfFrm = " +BuxFrm+ " AND SprCnt.CntLvl=0 " +
+                                                  "AND (LEN(ISNULL(AMBDOC.DocJlb, '')) > 0 OR " +
+                                                       "LEN(ISNULL(AMBDOC.DocAnm, '')) > 0 OR " +
+                                                       "LEN(ISNULL(AMBDOC.DocPlnLch, '')) > 0 OR " +
+                                                       "LEN(ISNULL(AMBDOC.DocDig, '')) > 0) " +
                                             "GROUP BY AMBCRD.GrfPth,AMBCRD.GrfIIN " +
                                             "HAVING " + whereClause +
                                             " ORDER BY FIO", con);
@@ -256,9 +261,10 @@
 				             <TemplateSettings TemplateID="TemplateWithCheckbox" />
 				        </obout:Column>--%>
                         <obout:Column ID="Column01" DataField="FIO" HeaderText="ФИО" Width="40%"  />
-                        <obout:Column ID="Column02" DataField="IIN" HeaderText="ИИН" Width="10%" />
-                        <obout:Column ID="Column03" DataField="LSTDAT" HeaderText="ПОСЛ.ДАТА" Width="10%" />
-                        <obout:Column ID="Column04" DataField="VIDOPL" HeaderText="ВИД ОПЛ" Width="40%" />
+                        <obout:Column ID="Column02" DataField="IIN" HeaderText="ИИН" Width="12%" />
+                        <obout:Column ID="Column03" DataField="DATLST" HeaderText="ПОСЛ.ДАТА" Width="10%" />
+                        <obout:Column ID="Column04" DataField="KOL" HeaderText="КОЛ КАРТ" Width="10%" Align="center" />
+                        <obout:Column ID="Column05" DataField="VIDOPL" HeaderText="ВИД ОПЛ" Width="28%" />
                     </Columns>
 
 <%--			        <Templates>

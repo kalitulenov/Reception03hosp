@@ -81,6 +81,12 @@
             cmd.Dispose();
             con.Close();
 
+            //Создание объекта для генерации чисел
+            Random rnd = new Random();
+
+            //Получить случайное число (в диапазоне от 0 до 1000000000)
+            int Rnd = rnd.Next(0, 1000000000);
+
             if (Path.IndexOf(".jpg") > 0)
             {
                 /* для просмотра IMAGE ============================================================================ */
@@ -91,7 +97,8 @@
             if (Path.IndexOf(".pdf") > 0 || Path.IndexOf(".doc") > 0 || Path.IndexOf(".xls") > 0)
             {
                 /* для просмотра PDF ============================================================================ */
-                string FilNam = Path.Substring(Path.Length-27);
+                //      string FilNam = Path.Substring(Path.Length-32);
+                string FilNam = Convert.ToInt32(Rnd).ToString("D10")+".pdf";
                 //string FilNam = Convert.ToInt32(BuxKod).ToString("D6")+".pdf";
                 //            string PathNew = Server.MapPath(@"~\Temp\" + Path.Substring(Path.Length-27));  // выделить символ с конца
                 string PathNew = Server.MapPath(@"~\Temp\" + FilNam);

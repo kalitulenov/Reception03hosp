@@ -209,11 +209,11 @@
                 ShowColumnsFooter="true">
                 <ScrollingSettings ScrollHeight="95%" />
                 <Columns>
-                    <obout:Column ID="Column0" DataField="USLIDN" HeaderText="Идн" Width="0%" />
+                    <obout:Column ID="Column0" DataField="USLIDN" HeaderText="Идн" Width="10%" />
                     <obout:Column ID="Column1" DataField="USLAMB" HeaderText="Амб" Width="0%" />
                     <obout:Column ID="Column2" DataField="TYPDOC" HeaderText="ДОКУМ" Width="5%" />
                     <obout:Column ID="Column3" DataField="GRFDAT" HeaderText="ДАТА" DataFormatString = "{0:dd/MM/yy}" Width="5%" />
-                    <obout:Column ID="Column4" DataField="NAM" HeaderText="АНАЛИЗ" Width="55%" />
+                    <obout:Column ID="Column4" DataField="NAM" HeaderText="АНАЛИЗ" Width="45%" />
                     <obout:Column ID="Column5" DataField="IMGXLS" HeaderText="1.ОБРАЗ" Width="5%" />
                     <obout:Column ID="Column6" DataField="IMG001" HeaderText="2.ОБРАЗ" Width="5%" ReadOnly="true" />
                     <obout:Column ID="Column7" DataField="IMG002" HeaderText="3.ОБРАЗ" Width="5%" ReadOnly="true" />
