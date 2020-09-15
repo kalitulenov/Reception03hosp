@@ -59,212 +59,217 @@
     
   <script runat="server">
 
-        string BuxSid;
-        string BuxFrm;
-        string BuxKod;
-        string AmbCrdIdn = "";
-        string whereClause = "";
-        
-        string MdbNam = "HOSPBASE";
-        //=============Установки===========================================================================================
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            //=====================================================================================
-            BuxSid = (string)Session["BuxSid"];
-            BuxFrm = (string)Session["BuxFrmKod"];
-            BuxKod = (string)Session["BuxKod"];
-            AmbCrdIdn = (string)Session["AmbCrdIdn"];
-            //=====================================================================================
-            sdsNoz.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
-            sdsNoz.SelectCommand = "SELECT NozKod,NozNam FROM SprNoz ORDER BY NozNam";
-            sdsMkb.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
-            sdsMkb.SelectCommand = "SELECT TOP 100 * FROM MKB10 ORDER BY MkbNam";
-            //=====================================================================================
-            
-            if (!Page.IsPostBack)
-            {
-                Session.Add("KLTIDN", (string)"");
-                Session.Add("WHERE", (string)"");
-            
-                getDocNum();
-            }
- //               filComboBox();
+      string BuxSid;
+      string BuxFrm;
+      string BuxKod;
+      string AmbCrdIdn = "";
+      string whereClause = "";
 
-        }
-      
-        // ============================ чтение заголовка таблицы а оп ==============================================
-        void getDocNum()
-        {
+      string MdbNam = "HOSPBASE";
+      //=============Установки===========================================================================================
+      protected void Page_Load(object sender, EventArgs e)
+      {
+          //=====================================================================================
+          BuxSid = (string)Session["BuxSid"];
+          BuxFrm = (string)Session["BuxFrmKod"];
+          BuxKod = (string)Session["BuxKod"];
+          AmbCrdIdn = (string)Session["AmbCrdIdn"];
+          //=====================================================================================
+          sdsNoz.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
+          sdsNoz.SelectCommand = "SELECT NozKod,NozNam FROM SprNoz ORDER BY NozNam";
+          sdsMkb.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
+          sdsMkb.SelectCommand = "SELECT TOP 100 * FROM MKB10 ORDER BY MkbNam";
+          sdsPvd.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString; ;
+          sdsPvd.SelectCommand = "SELECT ObrPvdKod,ObrPvdNam FROM SprObrPvd ORDER BY ObrPvdKod";
+          //=====================================================================================
 
-            //------------       чтение уровней дерево
-            DataSet ds = new DataSet();
-            string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("HspAmbDocIdn", con);
-            // указать тип команды
-            cmd.CommandType = CommandType.StoredProcedure;
-            // передать параметр
-            cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
+          if (!Page.IsPostBack)
+          {
+              Session.Add("KLTIDN", (string)"");
+              Session.Add("WHERE", (string)"");
 
-            // создание DataAdapter
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            // заполняем DataSet из хран.процедуры.
-            da.Fill(ds, "HspAmbDocIdn");
+              getDocNum();
+          }
+          //               filComboBox();
 
-            con.Close();
+      }
 
-            if (ds.Tables[0].Rows.Count > 0)
-            {
+      // ============================ чтение заголовка таблицы а оп ==============================================
+      void getDocNum()
+      {
 
-                //     obout:OboutTextBox ------------------------------------------------------------------------------------      
-                Jlb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCJLB"]);
-                Anm003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANM"]);
-                AnmLif003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANMLIF"]);
-                Stt003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCLOC"]);
-                Dig003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIG"]);
-                Dsp003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIGSOP"]);
-                Lch003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCPLNLCH"]);
-                Mkb001.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB001"]);
-                Mkb002.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB002"]);
- //               Mkb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB003"]);
+          //------------       чтение уровней дерево
+          DataSet ds = new DataSet();
+          string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
+          SqlConnection con = new SqlConnection(connectionString);
+          con.Open();
+          SqlCommand cmd = new SqlCommand("HspAmbDocIdn", con);
+          // указать тип команды
+          cmd.CommandType = CommandType.StoredProcedure;
+          // передать параметр
+          cmd.Parameters.Add("@GLVDOCIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
 
-                //     obout:ComboBox ------------------------------------------------------------------------------------ 
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCNOZ"].ToString())) BoxDocNoz.SelectedValue = "0";
-                else BoxDocNoz.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["DOCNOZ"]);
+          // создание DataAdapter
+          SqlDataAdapter da = new SqlDataAdapter(cmd);
+          // заполняем DataSet из хран.процедуры.
+          da.Fill(ds, "HspAmbDocIdn");
 
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRPVD"].ToString())) BoxDocPvd.SelectedIndex = 0;
-                else BoxDocPvd.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCOBRPVD"]);
+          con.Close();
 
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRNPR"].ToString())) BoxDocNpr.SelectedIndex = 0;
-                else BoxDocNpr.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCOBRNPR"]);
+          if (ds.Tables[0].Rows.Count > 0)
+          {
 
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRVID"].ToString())) BoxDocVid.SelectedIndex = 0;
-                else BoxDocVid.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCOBRVID"]);
+              //     obout:OboutTextBox ------------------------------------------------------------------------------------      
+              Jlb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCJLB"]);
+              Anm003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANM"]);
+              AnmLif003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCANMLIF"]);
+              Stt003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCLOC"]);
+              Dig003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIG"]);
+              Dsp003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCDIGSOP"]);
+              Lch003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCPLNLCH"]);
+              Mkb001.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB001"]);
+              Mkb002.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB002"]);
+              //               Mkb003.Text = Convert.ToString(ds.Tables[0].Rows[0]["DOCMKB003"]);
 
-/*
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCMKBDG1"].ToString())) BoxDig001.SelectedIndex = 0;
-                else BoxDig001.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCMKBDG1"]);
+              //     obout:ComboBox ------------------------------------------------------------------------------------ 
+              //if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCNOZ"].ToString())) BoxDocNoz.SelectedValue = "0";
+              //else BoxDocNoz.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["DOCNOZ"]);
 
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCMKBDG2"].ToString())) BoxDig002.SelectedIndex = 0;
-                else BoxDig002.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCMKBDG2"]);
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRPVD"].ToString())) BoxDocPvd.SelectedIndex = 0;
+              else BoxDocPvd.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCOBRPVD"]);
 
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCMKBDG3"].ToString())) BoxDig003.SelectedIndex = 0;
-                else BoxDig003.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCMKBDG3"]);
-*/
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESOBR"].ToString())) BoxDocResObr.SelectedIndex = 0;
-                else BoxDocResObr.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCRESOBR"]);
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRPVD"].ToString())) BoxDocPvd.SelectedValue = "0";
+              else BoxDocPvd.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["DOCOBRPVD"]);
 
-                //     obout:CheckBox ------------------------------------------------------------------------------------ 
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESNPR001"].ToString())) ChkBox001.Checked = false;
-                else ChkBox001.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESNPR001"]);
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESNPR002"].ToString())) ChkBox002.Checked = false;
-                else ChkBox002.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESNPR002"]);
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESNPR003"].ToString())) ChkBox003.Checked = false;
-                else ChkBox003.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESNPR003"]);
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESNPR004"].ToString())) ChkBox004.Checked = false;
-                else ChkBox004.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESNPR004"]);
-                if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESCPO"].ToString())) ChkBoxEnd.Checked = false;
-                else ChkBoxEnd.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESCPO"]);
+              //if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRNPR"].ToString())) BoxDocNpr.SelectedIndex = 0;
+              //else BoxDocNpr.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCOBRNPR"]);
 
-            }
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCOBRVID"].ToString())) BoxDocVid.SelectedIndex = 0;
+              else BoxDocVid.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCOBRVID"]);
 
-  //          string name = value ?? string.Empty;
-        }
-        // ============================ чтение заголовка таблицы а оп ==============================================
-        void filComboBox()
-        {
-            int i; 
-            
-            String[] MasPvd = {"Заболевание", "Профосмотр", "Диспансеризация", "Прививка", "Медико-социальный", "Прочие", 
+              /*
+                              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCMKBDG1"].ToString())) BoxDig001.SelectedIndex = 0;
+                              else BoxDig001.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCMKBDG1"]);
+
+                              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCMKBDG2"].ToString())) BoxDig002.SelectedIndex = 0;
+                              else BoxDig002.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCMKBDG2"]);
+
+                              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCMKBDG3"].ToString())) BoxDig003.SelectedIndex = 0;
+                              else BoxDig003.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCMKBDG3"]);
+              */
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESOBR"].ToString())) BoxDocResObr.SelectedIndex = 0;
+              else BoxDocResObr.SelectedIndex = Convert.ToInt32(ds.Tables[0].Rows[0]["DOCRESOBR"]);
+
+              //     obout:CheckBox ------------------------------------------------------------------------------------ 
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESNPR001"].ToString())) ChkBox001.Checked = false;
+              else ChkBox001.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESNPR001"]);
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESNPR002"].ToString())) ChkBox002.Checked = false;
+              else ChkBox002.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESNPR002"]);
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESNPR003"].ToString())) ChkBox003.Checked = false;
+              else ChkBox003.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESNPR003"]);
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESNPR004"].ToString())) ChkBox004.Checked = false;
+              else ChkBox004.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESNPR004"]);
+              if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["DOCRESCPO"].ToString())) ChkBoxEnd.Checked = false;
+              else ChkBoxEnd.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0]["DOCRESCPO"]);
+
+          }
+
+          //          string name = value ?? string.Empty;
+      }
+      // ============================ чтение заголовка таблицы а оп ==============================================
+      void filComboBox()
+      {
+          int i;
+
+          String[] MasPvd = {"Заболевание", "Профосмотр", "Диспансеризация", "Прививка", "Медико-социальный", "Прочие",
                                "Травма на производстве","Травма в сель.хоз.","Травма ДТП на производстве","Травма прочая на производстве",
                                "Травма бытовая","Травма уличная","Травма в ДТП","Травма спортивная","Травма школьная"};
-            String[] MasNpr = {"АДА(СВА)", "Скорая помощью", "Стационаром", "Самостоятельно"};
-            String[] MasVid = {"Поликлиника", "Дома", "В школе (д/с)", "В учреждении", "Дневой стационар", "Стационар на дому"};
-            String[] MasRes = { "Здоров", "Выздоровление", "Без перемен", "Улучшение", "Госпитализация", "Смерть", "Отказ больного", "Выезд", "Привит", "Прочие", "Продолжение СПО" };
-            String[] MasDig = { "Предварительный", "Клинический", "Окончательный"};
+          String[] MasNpr = {"АДА(СВА)", "Скорая помощью", "Стационаром", "Самостоятельно"};
+          String[] MasVid = {"Поликлиника", "Дома", "В школе (д/с)", "В учреждении", "Дневой стационар", "Стационар на дому"};
+          String[] MasRes = { "Здоров", "Выздоровление", "Без перемен", "Улучшение", "Госпитализация", "Смерть", "Отказ больного", "Выезд", "Привит", "Прочие", "Продолжение СПО" };
+          String[] MasDig = { "Предварительный", "Клинический", "Окончательный"};
 
-            // looping through the full names array and adding each state to the first combobox
-            BoxDocPvd.Items.Clear();
-            BoxDocPvd.SelectedIndex = -1;
-            BoxDocPvd.SelectedValue = "";
-            for (i = 0; i < MasPvd.Length; i++)
-            {
-                BoxDocPvd.Items.Add(new ComboBoxItem(MasPvd[i], Convert.ToString(i+1)));
-            }
-            // looping through the full names array and adding each state to the first combobox
-            for (i = 0; i < MasNpr.Length; i++)
-            {
-                BoxDocNpr.Items.Add(new ComboBoxItem(MasNpr[i], Convert.ToString(i+1)));
-            }
-            // looping through the full names array and adding each state to the first combobox
-            for (i = 0; i < MasVid.Length; i++)
-            {
-                BoxDocVid.Items.Add(new ComboBoxItem(MasVid[i], Convert.ToString(i+1)));
-            }
-            // looping through the full names array and adding each state to the first combobox
-            for (i = 0; i < MasRes.Length; i++)
-            {
-                BoxDocResObr.Items.Add(new ComboBoxItem(MasRes[i], Convert.ToString(i + 1)));
-            }
-            // looping through the full names array and adding each state to the first combobox
-            for (i = 0; i < MasDig.Length; i++)
-            {
-  //              BoxDig001.Items.Add(new ComboBoxItem(MasDig[i], Convert.ToString(i + 1)));
- //               BoxDig002.Items.Add(new ComboBoxItem(MasDig[i], Convert.ToString(i + 1)));
- //               BoxDig003.Items.Add(new ComboBoxItem(MasDig[i], Convert.ToString(i + 1)));
-            }
- //           BoxDocPvd.SelectedIndex = 3;
- //           BoxDocNpr.SelectedIndex = 4;
- //           BoxDocVid.SelectedIndex = 5;
-            
-        }
-        
-        //------------------------------------------------------------------------
-        // ==================================== поиск клиента по фильтрам  ============================================
-        protected void FndBtn_Click(object sender, EventArgs e)
-        {
-            int I = 0;
-            string commandText = "SELECT * FROM MKB10 ";
-            string whereClause = "";
+          // looping through the full names array and adding each state to the first combobox
+          BoxDocPvd.Items.Clear();
+          BoxDocPvd.SelectedIndex = -1;
+          BoxDocPvd.SelectedValue = "";
+          for (i = 0; i < MasPvd.Length; i++)
+          {
+              BoxDocPvd.Items.Add(new ComboBoxItem(MasPvd[i], Convert.ToString(i+1)));
+          }
+          // looping through the full names array and adding each state to the first combobox
+          //for (i = 0; i < MasNpr.Length; i++)
+          //{
+          //    BoxDocNpr.Items.Add(new ComboBoxItem(MasNpr[i], Convert.ToString(i+1)));
+          //}
+          // looping through the full names array and adding each state to the first combobox
+          for (i = 0; i < MasVid.Length; i++)
+          {
+              BoxDocVid.Items.Add(new ComboBoxItem(MasVid[i], Convert.ToString(i+1)));
+          }
+          // looping through the full names array and adding each state to the first combobox
+          for (i = 0; i < MasRes.Length; i++)
+          {
+              BoxDocResObr.Items.Add(new ComboBoxItem(MasRes[i], Convert.ToString(i + 1)));
+          }
+          // looping through the full names array and adding each state to the first combobox
+          for (i = 0; i < MasDig.Length; i++)
+          {
+              //              BoxDig001.Items.Add(new ComboBoxItem(MasDig[i], Convert.ToString(i + 1)));
+              //               BoxDig002.Items.Add(new ComboBoxItem(MasDig[i], Convert.ToString(i + 1)));
+              //               BoxDig003.Items.Add(new ComboBoxItem(MasDig[i], Convert.ToString(i + 1)));
+          }
+          //           BoxDocPvd.SelectedIndex = 3;
+          //           BoxDocNpr.SelectedIndex = 4;
+          //           BoxDocVid.SelectedIndex = 5;
 
-            string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
-            // создание соединение Connection
-            SqlConnection con = new SqlConnection(connectionString);
-            // создание команды
-            whereClause = "";
-            if (FndTxt.Text != "")
-            {
-                I = I + 1;
-                whereClause += "MKBNAM LIKE '" + FndTxt.Text.Replace("'", "''") + "%'";
-            }
-            if (FndKod.Text != "")
-            {
-                I = I + 1;
-                if (I > 1) whereClause += " AND ";
-                whereClause += "MKBKOD LIKE '" + FndKod.Text.Replace("'", "''") + "%'";
-            }
+      }
 
-            if (whereClause != "")
-            {
-                whereClause = whereClause.Replace("*", "%");
+      //------------------------------------------------------------------------
+      // ==================================== поиск клиента по фильтрам  ============================================
+      protected void FndBtn_Click(object sender, EventArgs e)
+      {
+          int I = 0;
+          string commandText = "SELECT * FROM MKB10 ";
+          string whereClause = "";
+
+          string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
+          // создание соединение Connection
+          SqlConnection con = new SqlConnection(connectionString);
+          // создание команды
+          whereClause = "";
+          if (FndTxt.Text != "")
+          {
+              I = I + 1;
+              whereClause += "MKBNAM LIKE '" + FndTxt.Text.Replace("'", "''") + "%'";
+          }
+          if (FndKod.Text != "")
+          {
+              I = I + 1;
+              if (I > 1) whereClause += " AND ";
+              whereClause += "MKBKOD LIKE '" + FndKod.Text.Replace("'", "''") + "%'";
+          }
+
+          if (whereClause != "")
+          {
+              whereClause = whereClause.Replace("*", "%");
 
 
-                if (whereClause.IndexOf("SELECT") != -1) return;
-                if (whereClause.IndexOf("UPDATE") != -1) return;
-                if (whereClause.IndexOf("DELETE") != -1) return;
+              if (whereClause.IndexOf("SELECT") != -1) return;
+              if (whereClause.IndexOf("UPDATE") != -1) return;
+              if (whereClause.IndexOf("DELETE") != -1) return;
 
-                commandText += " where " + whereClause;
-                SqlCommand cmd = new SqlCommand(commandText, con);
-                con.Open();
-                SqlDataReader myReader = cmd.ExecuteReader();
-                gridMkb.DataSource = myReader;
-                gridMkb.DataBind();
-                con.Close();
+              commandText += " where " + whereClause;
+              SqlCommand cmd = new SqlCommand(commandText, con);
+              con.Open();
+              SqlDataReader myReader = cmd.ExecuteReader();
+              gridMkb.DataSource = myReader;
+              gridMkb.DataBind();
+              con.Close();
 
-            }
-        }
-                
+          }
+      }
+
   </script>   
     
     
@@ -283,53 +288,26 @@
          <table border="0" cellspacing="0" width="100%" cellpadding="0">
  <!--  Нозология ----------------------------------------------------------------------------------------------------------  -->    
                         <tr> 
-                            <td width="7%" style="vertical-align: top;">
+<%--                            <td width="7%" style="vertical-align: top;">
                                 <asp:Button ID="Noz002" runat="server"
                                     OnClientClick="clearfilter()"
                                     Width="100%" CommandName="" CommandArgument=""
                                     Text="Нозология" Height="25px"
                                     Style="position: relative; top: 0px; left: 0px" />
-                            </td>
+                            </td>--%>
                              <td width="94%" style="vertical-align: top;" >
-                                 <obout:ComboBox runat="server" ID="BoxDocNoz" Width="18%" Height="200"
+<%--                                 <obout:ComboBox runat="server" ID="BoxDocNoz" Width="18%" Height="200"
                                         FolderStyle="/Styles/Combobox/Plain" 
                                         DataSourceID="SdsNoz" DataTextField="NozNam" DataValueField="NozKod" >
-                                 </obout:ComboBox>   
+                                 </obout:ComboBox>   --%>
                                
-                                 <asp:Label id="LblPvd" Text="Повод:" runat="server"  Width="8%" Font-Bold="true" />                             
-                                 <obout:ComboBox runat="server" ID="BoxDocPvd"  Width="22%" Height="200"
-                                        FolderStyle="/Styles/Combobox/Plain" >
-                                        <Items>
-                                            <obout:ComboBoxItem ID="ComboBoxIt00" runat="server" Text="Любой кроме <Платные профосмотры>" Value="0" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt01" runat="server" Text="Острое заболевание (состояние)/Обострение хронического заболевания" Value="1" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt02" runat="server" Text="Подозрение на социально-значимое заболевание" Value="2" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt03" runat="server" Text="Консультирование дистанционное по поводу заболевания" Value="3" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt04" runat="server" Text="Актив" Value="4" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt05" runat="server" Text="Медицинская реабилитация (3 этап)" Value="5" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt06" runat="server" Text="Стоматологическая помощь" Value="6" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt07" runat="server" Text="Острая травма (Травмпункт, АПО)" Value="7" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt08" runat="server" Text="Последствия травмы (АПО)" Value="8" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt09" runat="server" Text="Обращение с профилактической целью (кроме скрининга)" Value="9" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt10" runat="server" Text="Иммунопрофилактика" Value="10" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt11" runat="server" Text="Скрининг (Профосмотр)" Value="11" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt12" runat="server" Text="Патронаж" Value="12" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt13" runat="server" Text="Услуги по вопросам планирования семьи" Value="13" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt14" runat="server" Text="Прием при антенатальном наблюдении" Value="14" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt15" runat="server" Text="Прием при постнатальном наблюдении" Value="15" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt16" runat="server" Text="Услуги по охране здоровья обучающихся (школьная медицина)" Value="16" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt17" runat="server" Text="Мероприятия по здоровому образу жизни" Value="17" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt18" runat="server" Text="Платные медосмотры" Value="18" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt19" runat="server" Text="Стоматологические услуги" Value="19" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt20" runat="server" Text="Динамическое наблюдение с хроническими заболеваниями" Value="20" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt21" runat="server" Text="Медико-социальная поддержка" Value="21" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt22" runat="server" Text="Психологическая поддержка" Value="22" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt23" runat="server" Text="Административный" Value="23" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt24" runat="server" Text="Оформление документов на медико-социальную экспертизу" Value="24" />
-                                            <obout:ComboBoxItem ID="ComboBoxIt25" runat="server" Text="Выписка рецептов" Value="25" />
-                                         </Items>
-                                 </obout:ComboBox>  
-                                 
-                                 <asp:Label id="LblNpr" Text="Напр.:" runat="server"  Width="8%" Font-Bold="true" />                             
+                                 <asp:Label id="LblPvd" Text="Повод:" runat="server"  Width="8%" Font-Bold="true" />   
+                                 <obout:ComboBox runat="server" ID="BoxDocPvd"  Width="50%" Height="200" 
+                                        DataSourceID="SdsPvd" DataTextField="ObrPvdNam" DataValueField="ObrPvdKod" 
+                                        FolderStyle="/Styles/Combobox/Plain"> 
+                                </obout:ComboBox>  
+
+<%--                                 <asp:Label id="LblNpr" Text="Напр.:" runat="server"  Width="8%" Font-Bold="true" />                             
                                  <obout:ComboBox runat="server" ID="BoxDocNpr"  Width="16%" Height="200"
                                         FolderStyle="/Styles/Combobox/Plain">
                                         <Items>
@@ -340,9 +318,9 @@
                                             <obout:ComboBoxItem ID="ComboBoxItem28" runat="server" Text="Самостоятельно" Value="4" />
                                         </Items>
                                  </obout:ComboBox>  
-
+--%>
                                  <asp:Label id="LblVid" Text="Вид:" runat="server"  Width="8%" Font-Bold="true" />                             
-                                 <obout:ComboBox runat="server" ID="BoxDocVid"  Width="16%" Height="200"
+                                 <obout:ComboBox runat="server" ID="BoxDocVid"  Width="25%" Height="200"
                                         FolderStyle="/Styles/Combobox/Plain">
                                         <Items>
                                             <obout:ComboBoxItem ID="ComboBoxItem30" runat="server" Text="" Value="0" />
@@ -670,6 +648,7 @@
 
   <asp:SqlDataSource runat="server" ID="sdsNoz" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
   <asp:SqlDataSource runat="server" ID="sdsMkb"  SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource> 
+  <asp:SqlDataSource runat="server" ID="sdsPvd" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
 
 
  

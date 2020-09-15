@@ -1210,7 +1210,7 @@
                     <input type="button" id="RpnButton" value="ÐÏÍ" style="width: 10%" onclick="GetSqt()" />
                     <input type="button" value="Àðõèâ" style="width: 15%" onclick="SelFioCnd()" />
                     <input type="button" value="SPC" style="display: none;" onclick="FindKlt()" />
-                    <asp:Button runat="server" ID="CallButton" Text="" Style="display: none;" OnClick="GetSqt_Click" />
+<%--                    <asp:Button runat="server" ID="CallButton" Text="" Style="display: none;" OnClick="GetSqt_Click" />--%>
                 </td>
 
                 <%--                  <td width="6%" class="PO_RowCap">

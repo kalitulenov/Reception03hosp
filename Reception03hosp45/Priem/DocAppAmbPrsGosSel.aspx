@@ -1,4 +1,4 @@
-﻿<%--<%@ Page Title="" Language="C#" AutoEventWireup="true" Inherits="OboutInc.oboutAJAXPage" %>--%>
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" Inherits="OboutInc.oboutAJAXPage" %>
 
 <%@ Register TagPrefix="oajax" Namespace="OboutInc" Assembly="obout_AJAXPage" %>
 <%@ Register TagPrefix="obout" Namespace="Obout.Grid" Assembly="obout_Grid_NET" %>
@@ -32,12 +32,12 @@
     <script type="text/javascript">
         // ------------------------  при корректировке ячейки занято ------------------------------------------------------------------
         function ExitFun() {
-       //     var KasSumMem = "USL&" + document.getElementById('parKasSum').value + "&" + document.getElementById('parKasMem').value;
-        //                        alert("GrfFio=" + GrfFio); 
-       //     localStorage.setItem("KasSumMem", KasSumMem); //setter
+            //     var KasSumMem = "USL&" + document.getElementById('parKasSum').value + "&" + document.getElementById('parKasMem').value;
+            //                        alert("GrfFio=" + GrfFio); 
+            //     localStorage.setItem("KasSumMem", KasSumMem); //setter
             window.opener.HandlePopupPost("UslRef");
-           self.close();
-        //   window.parent.UslRef();
+            self.close();
+            //   window.parent.UslRef();
         }
 
         // -------изменение как EXCEL-------------------------------------------------------------------          

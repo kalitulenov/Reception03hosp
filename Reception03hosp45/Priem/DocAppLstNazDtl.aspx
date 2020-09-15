@@ -62,12 +62,14 @@
         }
 
         function onClick(rowIndex, cellIndex) {
-   //         alert(rowIndex + ' = ' + 'cellIndex=' + ' ' + cellIndex);
-            var AmbCrdIdn = GridUkl.Rows[rowIndex].Cells[0].Value;
+    //        alert(rowIndex + ' = ' + 'cellIndex=' + ' ' + cellIndex);
+            var AmbUklIdn = GridUkl.Rows[rowIndex].Cells[0].Value;
+            var AmbCrdIdn = GridUkl.Rows[rowIndex].Cells[1].Value;
+            var AmbStxKey = GridUkl.Rows[rowIndex].Cells[2].Value;
             var AmbCelVal = GridUkl.Rows[rowIndex].Cells[cellIndex].Value;
     //        alert("AmbCelVal=" + AmbCelVal);
 
-            if (AmbCelVal.indexOf('+') != -1)
+            if (AmbCelVal.indexOf('O') != -1)
             {
   //              alert("AmbCrdIdn1=");
 //                UklWindow.setUrl("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbCrdIdn + "&AmbUklCel=" + cellIndex);
@@ -75,9 +77,9 @@
                 var ua = navigator.userAgent;
 
                 if (ua.search(/Chrome/) > -1)
-                    window.open("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbCrdIdn + "&AmbUklCel=" + cellIndex, "ModalPopUp", "toolbar=no,width=900,height=350,left=200,top=200,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                    window.open("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbUklIdn + "&AmbCrdIdn=" + AmbCrdIdn + "&AmbStxKey=" + AmbStxKey + "&AmbUklCel=" + cellIndex, "ModalPopUp", "toolbar=no,width=1000,height=550,left=200,top=100,location=no,modal=0,status=no,scrollbars=no,resize=no,fullscreen=yes");
                 else
-                    window.showModalDialog("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbCrdIdn + "&AmbUklCel=" + cellIndex, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:200px;dialogWidth:900px;dialogHeight:350px;");
+                    window.showModalDialog("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbUklIdn + "&AmbCrdIdn=" + AmbCrdIdn + "&AmbStxKey=" + AmbStxKey + "&AmbUklCel=" + cellIndex, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:1000px;dialogHeight:550px;");
             }
 
             
@@ -286,8 +288,8 @@
                 ShowColumnsFooter="true">
                 <Columns>
                     <obout:Column ID="Column0" DataField="UKLIDN" HeaderText="Идн" Visible="false" Width="0%" />
-                    <obout:Column ID="Column1" DataField="UKLAMB" HeaderText="№ рецепт" Visible="false" Width="0%" />
-                    <obout:Column ID="Column2" DataField="UKLNAZ" HeaderText="Бланк"  Visible="false" Width="0%" />
+                    <obout:Column ID="Column1" DataField="UKLAMB" HeaderText="Идн" Visible="false" Width="0%" />
+                    <obout:Column ID="Column2" DataField="STXKEY" HeaderText="Вид"  Visible="false" Width="0%" />
                     <obout:Column ID="Column3" DataField="UKLNAM" HeaderText="Назначения" Width="27%" />
                     <obout:Column ID="Column4" DataField="PRMNAM" HeaderText="Примен" Width="5%" ReadOnly="true" />
                     <obout:Column ID="Column5" DataField="EDNLEKNAM" HeaderText="Ед.изм" Width="5%" ReadOnly="true" />
@@ -322,7 +324,7 @@
 
    <%-- ============================  для отображение графика врачей на один день в виде окна geryon============================================ --%>
        <owd:Window ID="UklWindow" runat="server"  Url="WinFrm.aspx" IsModal="true" ShowCloseButton="true" Status=""
-             Left="100" Top="10" Height="350" Width="700" Visible="true" VisibleOnLoad="false"
+             Left="50" Top="10" Height="450" Width="800" Visible="true" VisibleOnLoad="false"
              StyleFolder="~/Styles/Window/wdstyles/blue"
              Title="Отметка о выполнении назанчения">
        </owd:Window>   

@@ -18,15 +18,14 @@
     <%-- ============================  JAVA ============================================ --%>
 
      <script type="text/javascript">
-/*
-         $(document).ready ( function(){
-             alert("ok");
-             OsmButton_Click();
-         });​
-         */
+
+         //$(document).ready ( function(){
+         //    alert("ok");
+         // //   OsmButton_Click();
+         //});​
+         
 
          //    ------------------ смена логотипа ----------------------------------------------------------
- 
          window.onload = function () {
   //           alert("AmbCrdIdn=" + AmbCrdIdn);
              var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
@@ -723,7 +722,7 @@
              myDialogAPP.Open();
          }
 
- </script>
+     </script>
 
        <%-- ============================  для передач значении  ============================================ --%>
         <asp:HiddenField ID="HidAmbCrdIdn" runat="server" />
@@ -739,20 +738,20 @@
 
       <table border="1" cellspacing="0" width="100%">
                <tr>
-                  <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Дата</td>
+                  <td width="13%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Дата</td>
                   <td width="3%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Время</td>
                   <td width="8%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">ИИН</td>
                   <td width="30%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Фамилия И.О.</td>
                   <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Д.рож</td>
                   <td width="14%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Телефон</td>
-                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Страхов</td>
-                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">СоцНеЗащ</td>
-                  <td width="6%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Диспан.</td>
+                  <td width="5%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Страх.</td>
+                  <td width="5%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Соц.</td>
+                  <td width="5%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Дисп.</td>
                   <td width="10%" align="center" style="font-weight:bold; background-color:yellow" class="PO_RowCap">Прикрепление</td>
               </tr>
               
                <tr>
-                  <td width="10%" class="PO_RowCap">
+                  <td width="13%" class="PO_RowCap">
                       <asp:TextBox id="TextBoxDat" BorderStyle="None" Width="80px" Height="20" RunAt="server" BackColor="#FFFFE0" />
 			          <obout:Calendar ID="Calendar3" runat="server"
 			 	                    	StyleFolder="/Styles/Calendar/styles/default" 
@@ -783,13 +782,13 @@
                       <asp:TextBox id="TextBoxTel" BorderStyle="None" Width="100%" Height="20" RunAt="server" Style="position: relative; font-weight: 700; font-size: medium;" BackColor="#FFFFE0" />
                        <asp:TextBox id="TextBoxNum" BorderStyle="None" Width="0%" Height="20" RunAt="server" BackColor="#FFFFE0" Visible="false" />
                   </td>
-                   <td width="6%" align="center" class="PO_RowCap">
+                   <td width="5%" align="center" class="PO_RowCap">
                        <obout:OboutCheckBox runat="server" ID="StsFlg" FolderStyle="~/Styles/Interface/plain/OboutCheckBox"> </obout:OboutCheckBox>
                   </td> 
-                  <td width="6%" align="center" class="PO_RowCap">
+                  <td width="5%" align="center" class="PO_RowCap">
                       <obout:OboutCheckBox runat="server" ID="SozFlg" FolderStyle="~/Styles/Interface/plain/OboutCheckBox"> </obout:OboutCheckBox>
                   </td>
-                  <td width="6%" align="center" class="PO_RowCap">
+                  <td width="5%" align="center" class="PO_RowCap">
                       <obout:OboutCheckBox runat="server" ID="DspFlg" FolderStyle="~/Styles/Interface/plain/OboutCheckBox"> </obout:OboutCheckBox>
                   </td>
                   <td width="10%" class="PO_RowCap">

@@ -92,21 +92,31 @@
             var AmbCrdIdn = document.getElementById('HidAmbCrdIdn').value; 
             var ua = navigator.userAgent;
 
-            if (ua.search(/Chrome/) > -1)
-                window.open("/Report/DauaReports.aspx?ReportName=HspAmbPrs&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+            if (document.getElementById('parMkbKol').value != "0")
+                if (ua.search(/Chrome/) > -1)
+                    window.open("/Report/DauaReports.aspx?ReportName=HspAmbPrs&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                else
+                    window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspAmbPrs&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
             else
-                window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspAmbPrs&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
+                windowalert("Диагноз отсутствует!", "Предупреждения", "warning");
+
+
         }
 
         function PrtButtonAll_Click() {
             //           alert('AmbCrdIdn= ' );
             var AmbCrdIdn = document.getElementById('HidAmbCrdIdn').value;
+
             var ua = navigator.userAgent;
 
-            if (ua.search(/Chrome/) > -1)
-                window.open("/Report/DauaReports.aspx?ReportName=HspAmbPrsAll&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+            if (document.getElementById('parMkbKol').value != "0")
+                 if (ua.search(/Chrome/) > -1)
+                    window.open("/Report/DauaReports.aspx?ReportName=HspAmbPrsAll&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                 else
+                    window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspAmbPrsAll&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
             else
-                window.showModalDialog("/Report/DauaReports.aspx?ReportName=HspAmbPrsAll&TekDocIdn=" + AmbCrdIdn, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:900px;dialogHeight:650px;");
+                windowalert("Диагноз отсутствует!", "Предупреждения", "warning");
+
         }
 
         function SablonPrs() {
@@ -136,18 +146,25 @@
 
         function GridPrs_prt(rowIndex) {
             var AmbPrsIdn = GridNap.Rows[rowIndex].Cells[0].Value;
-            window.open("/Report/DauaReports.aspx?ReportName=HspAmbPrsOne&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+            if (document.getElementById('parMkbKol').value != "0")
+               window.open("/Report/DauaReports.aspx?ReportName=HspAmbPrsOne&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+            else
+                windowalert("Диагноз отсутствует!", "Предупреждения", "warning");
         }
 
         function GridPrs_prt_exp(rowIndex) {
             var AmbPrsIdn = GridNap.Rows[rowIndex].Cells[0].Value;
             var PrsTrf = GridNap.Rows[rowIndex].Cells[3].Value;
             if (PrsTrf.length == 0)
-                //window.open("/Report/DauaReports.aspx?ReportName=HspDocStzNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
-                window.open("/Report/DauaReports.aspx?ReportName=HspDocAisNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                if (document.getElementById('parMkbKol').value != "0")
+                    window.open("/Report/DauaReports.aspx?ReportName=HspDocAisNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                else
+                    windowalert("Диагноз отсутствует!", "Предупреждения", "warning");
             else
-                //window.open("/Report/DauaReports.aspx?ReportName=HspDocStzNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
-                window.open("/Report/DauaReports.aspx?ReportName=HspDocAisNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                if (document.getElementById('parMkbKol').value != "0")
+                    window.open("/Report/DauaReports.aspx?ReportName=HspDocAisNap&TekDocIdn=" + AmbPrsIdn, "ModalPopUp", "toolbar=no,width=900,height=650,left=200,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                else
+                    windowalert("Диагноз отсутствует!", "Предупреждения", "warning");
         }
 
         function GridPrs_app_exp(rowIndex) {
@@ -218,6 +235,7 @@
     string PrsMem;
     bool PrsNprFlg;
     public string HtmlResult;
+    int KolDig;
 
     string KltIin;
     string KltLgt;
@@ -642,6 +660,7 @@ citizen	 				    	Гражданство 								string	 					Required
     {
         string LenCol;
         KltIin = "";
+        KolDig = 0;
         //------------       чтение уровней дерево
         DataSet ds = new DataSet();
         string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
@@ -661,6 +680,8 @@ citizen	 				    	Гражданство 								string	 					Required
         if (ds.Tables[0].Rows.Count > 0)
         {
             KltIin = Convert.ToString(ds.Tables[0].Rows[0]["GRFIIN"]);
+            KolDig = Convert.ToInt32(ds.Tables[0].Rows[0]["KOLDIG"]);
+            parMkbKol.Value = Convert.ToString(KolDig);
         }
         con.Close();
 
@@ -1089,7 +1110,7 @@ citizen	 				    	Гражданство 								string	 					Required
 
     <form id="form1" runat="server">
         <%-- ============================  для передач значении  ============================================ --%>
-        <asp:HiddenField ID="parMkbNum" runat="server" />
+        <asp:HiddenField ID="parMkbKol" runat="server" />
         <asp:HiddenField ID="parPrsIdn" runat="server" />
         <asp:HiddenField ID="parBuxKod" runat="server" />
         <asp:HiddenField ID="HidAmbCrdIdn" runat="server" />

@@ -1118,7 +1118,7 @@
                                 <asp:Button ID="Lch002" runat="server"
                                     OnClientClick="SablonLch()"
                                     Width="100%" CommandName="" CommandArgument=""
-                                    Text="Лечение" Height="25px"
+                                    Text="Рекомендации" Height="25px"
                                     Style="position: relative; top: 0px; left: 0px" />
                             </td>
                              <td width="90%" style="vertical-align: top;">

@@ -260,7 +260,10 @@
          switch (GlvDocTyp) {
              case 'АМБ':
                  if (GrfFrm == 12) location.href = "/Priem/DocAppAmbKrd.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=АМБ";
-                 else window.open("/Priem/DocAppAmb.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                 else {
+                     var new_window = window.open("/Priem/DocAppAmb.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
+                     new_window.onbeforeunload = function () { alert("new_window"); }
+                 }
                  break;
              case 'AMB': location.href = "/Priem/DocAppAmbAcm.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=АМБ"; break;
              case 'ПРЦ':

@@ -45,6 +45,30 @@
             return queryString;
         }
 
+
+        // --------------------- РАСХОД МАТЕРИАЛОВ ПО ЭТОЙ УСЛУГЕ
+        function GridUsl_rsx() {
+            //                  alert("GridPrz_rsx=");
+            var AmbCrdIdn = document.getElementById('parCrdIdn').value;
+            var AmbUslIdn = "0";
+            var AmbUklIdn = document.getElementById('parUklIdn').value;
+            var AmbStxKey = document.getElementById('parStxKey').value;
+
+            //             RsxWindow.setTitle(AmbUslNam);
+            //             RsxWindow.setUrl("DocAppAmbUslRsx.aspx?AmbUslIdn=" + AmbUslIdn + "&AmbUslNam=" + AmbUslNam);
+            //             RsxWindow.Open();
+
+            var ua = navigator.userAgent;
+            if (ua.search(/Chrome/) > -1)
+                window.open("/Priem/DocAppAmbUslRsxMat.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbUslIdn=" + AmbUslIdn + "&AmbStxKey=" + AmbStxKey,
+                    "ModalPopUp", "toolbar=no,width=1000,height=650,left=150,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no,fullscreen=yes");
+            else
+                window.showModalDialog("/Priem/DocAppAmbUslRsxMat.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbUslIdn=" + AmbUslIdn + "&AmbStxKey=" + AmbStxKey,
+                    "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:150px;dialogtop:100px;dialogWidth:1000px;dialogHeight:650px;");
+
+            return true;
+        }
+
         // -------изменение как EXCEL-------------------------------------------------------------------          
         /*------------------------- при нажатии на поле текст --------------------------------*/
         /*------------------------- при выходе запомнить Идн --------------------------------*/
@@ -62,7 +86,7 @@
     string AmbCrdIdn;
     string AmbUklIdn;
     string AmbUklCel;
-    string AmbFizTyp;
+    string AmbStxKey;
     string BuxFrm;
     string BuxKod;
     string BuxSid;
@@ -79,23 +103,28 @@
     //=============Установки===========================================================================================
     protected void Page_Load(object sender, EventArgs e)
     {
+        AmbCrdIdn = Convert.ToString(Request.QueryString["AmbCrdIdn"]);
         AmbUklIdn = Convert.ToString(Request.QueryString["AmbUklIdn"]);
         AmbUklCel = Convert.ToString(Request.QueryString["AmbUklCel"]);
-        
+        AmbStxKey = Convert.ToString(Request.QueryString["AmbStxKey"]);
+
         BuxFrm = (string)Session["BuxFrmKod"];
- //       BuxSid = (string)Session["BuxSid"];
- //       BuxKod = (string)Session["BuxKod"];
-  //      AmbCrdIdn = (string)Session["AmbCrdIdn"];
-//        Session.Add("AmbUslIdn ", AmbUslIdn);
+        parUklIdn.Value = AmbUklIdn;
+        parCrdIdn.Value = AmbCrdIdn;
+        parStxKey.Value = AmbStxKey;
+        //       BuxSid = (string)Session["BuxSid"];
+        //       BuxKod = (string)Session["BuxKod"];
+        //      AmbCrdIdn = (string)Session["AmbCrdIdn"];
+        //        Session.Add("AmbUslIdn ", AmbUslIdn);
 
         sdsKto.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
         sdsKto.SelectCommand = "SELECT BuxKod,FI FROM SprBuxKdr WHERE BUXFRM=" + BuxFrm + " AND BUXUBL=0 AND ZANNAM='средний мед персонал' ORDER BY FI";
- //       sdsKto.SelectCommand = "SELECT BuxKod,FI FROM SprBuxKdr WHERE BUXFRM=" + BuxFrm;
+        //       sdsKto.SelectCommand = "SELECT BuxKod,FI FROM SprBuxKdr WHERE BUXFRM=" + BuxFrm;
 
         if (!Page.IsPostBack)
         {
             //============= Установки ===========================================================================================
-     //       AmbUslIdnTek = (string)Session["AmbUslIdn"];
+            //       AmbUslIdnTek = (string)Session["AmbUslIdn"];
 
             getDocNum();
         }
@@ -139,7 +168,7 @@
             NumCelInt = Convert.ToInt32(AmbUklCel)-6;
             NumCel = NumCelInt.ToString("000");
             TxtPls.Text = Convert.ToString(ds.Tables[0].Rows[0]["UKLFLG"+NumCel]);
-  //          BoxKto.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["USLKTO"]);
+            //          BoxKto.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["USLKTO"]);
         }
         else
         {
@@ -169,7 +198,7 @@
     // ============================ одобрение для записи документа в базу ==============================================
     protected void btnOK_click(object sender, EventArgs e)
     {
-        
+
         string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
         // создание соединение Connection
         SqlConnection con = new SqlConnection(connectionString);
@@ -186,7 +215,7 @@
         cmd.ExecuteNonQuery();
 
         con.Close();
-        
+
         // ------------------------------------------------------------------------------заполняем второй уровень
         ConfirmDialog.Visible = false;
         ConfirmDialog.VisibleOnLoad = false;
@@ -202,7 +231,7 @@
     //------------------------------------------------------------------------
     //===============================================================================================================
 
-        // ==================================================================================================  
+    // ==================================================================================================  
 </script>
 
 
@@ -210,8 +239,9 @@
     <form id="form1" runat="server">
 
        <%-- ============================  для передач значении  ============================================ --%>
-        <asp:HiddenField ID="parUslIdn" runat="server" />
-        <asp:HiddenField ID="DigIdn" runat="server" />
+        <asp:HiddenField ID="parUklIdn" runat="server" />
+        <asp:HiddenField ID="parCrdIdn" runat="server" />
+        <asp:HiddenField ID="parStxKey" runat="server" />
         <asp:HiddenField ID="OpsIdn" runat="server" />
         <asp:HiddenField ID="ZakIdn" runat="server" />
         <%-- ============================  верхний блок  ============================================ --%>
@@ -231,37 +261,37 @@
                    <td style="width: 100%; height: 30px;">
                         <hr>
                         <asp:Label ID="Label1" Text="ПАЦИЕНТ:" runat="server" Width="20%" Font-Bold="true" Font-Size="Medium" />
-                        <asp:TextBox ID="TxtFio" Width="70%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
+                        <asp:TextBox ID="TxtFio" Width="78%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 100%; height: 30px;">
                         <asp:Label ID="Label6" Text="НАЗНАЧЕНИЕ:" runat="server" Width="20%" Font-Bold="true" Font-Size="Medium" />
-                        <asp:TextBox ID="TxtNaz" Width="70%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
+                        <asp:TextBox ID="TxtNaz" Width="78%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 100%; height: 30px;">
                         <asp:Label ID="Label3" Text="ПРИМЕНЕНИЕ:" runat="server" Width="20%" Font-Bold="true" Font-Size="Medium" />
-                        <asp:TextBox ID="TxtPrm" Width="70%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
+                        <asp:TextBox ID="TxtPrm" Width="78%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 100%; height: 30px;">
                         <asp:Label ID="Label4" Text="ЕД.ИЗМ:" runat="server" Width="20%" Font-Bold="true" Font-Size="Medium" />
-                        <asp:TextBox ID="TxtEdn" Width="70%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
+                        <asp:TextBox ID="TxtEdn" Width="78%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 100%; height: 30px;">
                         <asp:Label ID="Label9" Text="КОЛИЧЕСТВО:" runat="server" Width="20%" Font-Bold="true" Font-Size="Medium" />
-                        <asp:TextBox ID="TxtKol" Width="70%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
+                        <asp:TextBox ID="TxtKol" Width="78%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
                     </td>
                 </tr>
                <tr>
                     <td style="width: 100%; height: 30px;">
                         <asp:Label ID="Label10" Text="ОТМЕТКИ:" runat="server" Width="20%" Font-Bold="true" Font-Size="Medium" />
-                        <asp:TextBox ID="TxtPls" Width="70%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
+                        <asp:TextBox ID="TxtPls" Width="78%" Height="20" ReadOnly="true" runat="server" Style="position: relative; font-weight: 700; font-size: medium;" />
                     </td>
                 </tr>
                 <tr>
@@ -269,7 +299,7 @@
                         <asp:Label ID="Label7" Text="ОТВЕТСТВЕН:" runat="server" Width="20%" Font-Bold="true" />
                         <obout:ComboBox runat="server"
                             ID="BoxKto"
-                            Width="70%"
+                            Width="78%"
                             Height="100"
                             EmptyText="Выберите услугу ..."
                             FolderStyle="/Styles/Combobox/Plain"
@@ -282,10 +312,11 @@
                 <tr>
                     <td style="width: 100%; height: 30px;">
                         <hr>
-                        <asp:Label ID="Label2" Text="" runat="server" Width="20%" Font-Bold="true" />
+<%--                        <asp:Label ID="Label2" Text="" runat="server" Width="20%" Font-Bold="true" />--%>
+                        <input type="button" style="width: 20%; height:25px;" value="Расходы" onclick="GridUsl_rsx()" />
                         <asp:Button ID="ButApt" runat="server"
                                                 OnClick ="AddButton_Click"
-                                                Width="70%" CommandName="" CommandArgument=""
+                                                Width="78%" CommandName="" CommandArgument=""
                                                 Text="Записать" Height="25px" Font-Bold="true"
                                                 Style="position: relative; top: 0px; left: 0px" />
                     </td>

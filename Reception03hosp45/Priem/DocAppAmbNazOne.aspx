@@ -230,7 +230,8 @@
             var DatDocTyp = 'Sql';
             var DatDocIdn = document.getElementById('parNazIdn').value;
 
-            SqlStr = "UPDATE AMBNAZ SET NAZDATNAZ=CONVERT(DATETIME,'" + DatDocVal + "',103) WHERE NAZIDN=" + DatDocIdn;
+
+            SqlStr = "UPDATE AMBNAZ SET NAZDAT=CONVERT(DATETIME,'" + DatDocVal + "',103),NAZDATNAZ=CONVERT(DATETIME,'" + DatDocVal + "',103) WHERE NAZIDN=" + DatDocIdn;
  //           alert("SqlStr=" + SqlStr);
 
             $.ajax({

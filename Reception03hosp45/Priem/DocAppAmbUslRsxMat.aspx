@@ -222,6 +222,7 @@
          string BuxFrm;
          int AmbCrdIdn;
          int AmbUslIdn;
+         string AmbStxKey;
 
          string TekAcc;
          string TekMol;
@@ -240,6 +241,17 @@
              //=====================================================================================
              AmbCrdIdn = Convert.ToInt32(Request.QueryString["AmbCrdIdn"]);
              AmbUslIdn = Convert.ToInt32(Request.QueryString["AmbUslIdn"]);
+             AmbStxKey = Convert.ToString(Request.QueryString["AmbStxKey"]);
+
+
+             sdsKtoUsl.ConnectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
+             sdsKtoUsl.SelectCommand = "SELECT SprUsl.UslKod,SprUsl.UslNam " +
+                                       "FROM  SprUsl INNER JOIN SprUslFrm INNER JOIN SprBuxUsl ON SprUslFrm.UslFrmHsp=SprBuxUsl.BuxUslFrm AND SprUslFrm.UslFrmKod=SprBuxUsl.BuxUslPrcKod " +
+                                                                                             " ON SprUsl.UslKod=SprUslFrm.UslFrmKod " +
+                                                    "INNER JOIN SprFrmStx ON SprUslFrm.UslFrmHsp=SprFrmStx.FrmStxKodFrm AND SprUslFrm.UslFrmPrc=SprFrmStx.FrmStxPrc " +
+                                       "WHERE SprBuxUsl.BuxUslFrm=" + BuxFrm + " AND SprBuxUsl.BuxUslDocKod=" + BuxKod + " AND SprFrmStx.FrmStxKodStx='" +AmbStxKey + "' AND SprUslFrm.UslFrmZen>0 " +
+                                       "ORDER BY SprUsl.UslNam";
+
 
              if (!Page.IsPostBack)
              {
@@ -442,7 +454,28 @@
   <%-- =================  диалоговое окно для резултатов проверок на корректность  ============================================ --%>
      
 <%-- ============================  шапка экрана ============================================ --%>
-       <asp:TextBox ID="Sapka0" 
+        <table border="0" cellspacing="0" width="100%" cellpadding="0">
+            <tr>
+                <td style="width: 100%; height: 30px;">
+                    <asp:Label ID="Label7" Text="УСЛУГА:" runat="server" Width="10%" Font-Bold="true" />
+                    <obout:ComboBox runat="server"
+                        ID="BoxKtoUsl"
+                        Width="87%"
+                        Height="100"
+                        EmptyText="Выберите услугу ..."
+                        FolderStyle="/Styles/Combobox/Plain"
+                        DataSourceID="sdsKtoUsl"
+                        DataTextField="UslNam"
+                        DataValueField="UslKod">
+                    </obout:ComboBox>
+                   
+                </td>
+            </tr>
+
+        </table>
+
+
+        <asp:TextBox ID="Sapka0" 
              Text="Списание материальных средств" 
              BackColor="#3CB371"  
              Font-Names="Verdana" 
@@ -554,6 +587,7 @@
              <asp:SqlDataSource runat="server" ID="sdsAccKrd" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
              <asp:SqlDataSource runat="server" ID="sdsMolKrd" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
              <asp:SqlDataSource runat="server" ID="sdsPrxDeb" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
+             <asp:SqlDataSource runat="server" ID="sdsKtoUsl" SelectCommand="" ConnectionString="" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
 
 <%-- =================  источник  для КАДРЫ ============================================ --%>
        

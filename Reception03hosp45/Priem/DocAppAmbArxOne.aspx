@@ -74,7 +74,7 @@
              var QueryString = getQueryString();
              var AmbCrdIdn = QueryString[1];
 
-             mySpl.loadPage("BottomContent", "DocAppAmbDig.aspx?AmbCrdIdn=" + AmbCrdIdn);
+             mySpl.loadPage("BottomContent", "DocAppAmbDigNoz.aspx?AmbCrdIdn=" + AmbCrdIdn);
         }
 
          function PrtButton_Click() {
