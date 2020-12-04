@@ -262,7 +262,7 @@
                  if (GrfFrm == 12) location.href = "/Priem/DocAppAmbKrd.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=АМБ";
                  else {
                      var new_window = window.open("/Priem/DocAppAmb.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=" + GlvDocTyp, "DocAppAmb", "toolbar=no,width=" + w + ",height=" + h + ",left=25,top=100,location=no,modal=1,status=no,scrollbars=no,resize=no");
-                     new_window.onbeforeunload = function () { alert("new_window"); }
+               //      new_window.onbeforeunload = function () { alert("при закрытии окна вызвать функцию"); }
                  }
                  break;
              case 'AMB': location.href = "/Priem/DocAppAmbAcm.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCntIdn=&GlvDocTyp=АМБ"; break;
@@ -538,8 +538,10 @@
      function GridCrd_dbl(rowIndex) {
          //         alert('GridKas_dbl=');
          var AmbCrdIdn000 = GridCrd.Rows[rowIndex].Cells[0].Value;
+         var AmbCrdIIN = GridCrd.Rows[rowIndex].Cells[6].Value;
 
          document.getElementById('MainContent_parCrdIdn').value=AmbCrdIdn000;
+         document.getElementById('MainContent_parCrdIIN').value = AmbCrdIIN;
          document.getElementById('MainContent_parDbl').value="DBL";
          myDialogDubl.Open();
      }
@@ -986,11 +988,13 @@
         {
             int AmbCrdIdn;
             string AmbCrdIdnDbl;
+            string AmbCrdIIN;
 
             //    myDialogDubl.Visible = false;
             //    myDialogDubl.VisibleOnLoad = false;
 
             AmbCrdIdn = Convert.ToInt32(parCrdIdn.Value);
+            AmbCrdIIN = Convert.ToString(parCrdIIN.Value);
 
             string connectionString = WebConfigurationManager.ConnectionStrings[MdbNam].ConnectionString;
             // создание соединение Connection
@@ -1003,6 +1007,7 @@
             cmd.CommandType = CommandType.StoredProcedure;
             // передать параметр
             cmd.Parameters.Add("@GRFIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
+            cmd.Parameters.Add("@GRFIININP", SqlDbType.VarChar).Value = AmbCrdIIN;
             cmd.Parameters.Add("@GRFBUX", SqlDbType.VarChar).Value = BuxKod;
             cmd.Parameters.Add("@GRFBUXOUT", SqlDbType.VarChar).Value = BuxKod;
             cmd.Parameters.Add("@GRFIDNOUT", SqlDbType.Int, 4).Value = 0;
@@ -1013,6 +1018,10 @@
                 int numAff = cmd.ExecuteNonQuery();
                 // Получить вновь сгенерированный идентификатор.
                 AmbCrdIdnDbl = Convert.ToString(cmd.Parameters["@GRFIDNOUT"].Value);
+                if (AmbCrdIdnDbl == "0")
+                {
+                    ExecOnLoad("OpenDublCrd(" + AmbCrdIdnDbl + ");");
+                }
             }
             finally
             {
@@ -1050,6 +1059,7 @@
  <asp:HiddenField ID="HidBuxFrm" runat="server" />
  <asp:HiddenField ID="HidBuxKod" runat="server" />
  <asp:HiddenField ID="parCrdIdn" runat="server" />
+ <asp:HiddenField ID="parCrdIIN" runat="server" />
  <asp:HiddenField ID="parDbl" runat="server" />
    
  

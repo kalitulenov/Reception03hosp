@@ -62,7 +62,7 @@
 
 
          function onChange(sender, newText) {
-             alert("onChangeJlb=" + sender + " " + newText);
+         //    alert("onChangeJlb=" + sender + " " + newText);
              var GrfDocRek;
              var GrfDocVal = newText;
              var GrfDocTyp = 'Txt';
@@ -244,7 +244,7 @@
              var QueryString = getQueryString();
              DatDocIdn = QueryString[1];
 
-//             alert("DatDocMdb=" + DatDocMdb + "  DatDocTab=" + DatDocTab + "  DatDocKey=" + DatDocKey + "  DatDocIdn=" + DatDocIdn + "  DatDocRek=" + DatDocRek + "  DatDocVal=" + DatDocVal + "  DatDocTyp=" + DatDocTyp);
+        //     alert("DatDocMdb=" + DatDocMdb + "  DatDocTab=" + DatDocTab + "  DatDocKey=" + DatDocKey + "  DatDocIdn=" + DatDocIdn + "  DatDocRek=" + DatDocRek + "  DatDocVal=" + DatDocVal + "  DatDocTyp=" + DatDocTyp);
              switch (DatDocTyp) {
                  case 'Sql':
                      DatDocTyp = 'Sql';
@@ -267,7 +267,7 @@
                      SqlStr = "UPDATE " + DatDocTab + " SET " + DatDocRek + "='" + DatDocVal + "' WHERE " + DatDocKey + "=" + DatDocIdn;
                      break;
              }
-  //           alert("SqlStr=" + SqlStr);
+         //    alert("SqlStr=" + SqlStr);
 
              $.ajax({
                  type: 'POST',

@@ -259,7 +259,12 @@
     <Content Include="Priem\DocAppAmbDigNoz.aspx" />
     <Content Include="Delo\EodChkRed.aspx" />
     <Content Include="Priem\DocAppAmbOsmMkb.aspx" />
+    <Content Include="Priem\DocAppAmbLabInt.aspx" />
     <Content Include="Priem\DocAppAnl.aspx" />
+    <Content Include="Priem\SpeechAmbJav04.aspx" />
+    <Content Include="Priem\SpeechAmbJav02.aspx" />
+    <Content Include="Priem\SpeechAmbJav01.aspx" />
+    <Content Include="Priem\SpeechAmbjav03.aspx" />
     <Content Include="Referent\RefGlv003SelFio.aspx" />
     <Content Include="Priem\DocAppAmbPrsGosSel.aspx" />
     <Content Include="Priem\DocAppAmbUslSel.aspx" />

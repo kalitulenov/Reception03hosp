@@ -263,12 +263,12 @@
                     <obout:Column ID="Column0" DataField="STTIDN" HeaderText="Идн" Visible="false" Width="0%" />
                     <obout:Column ID="Column1" DataField="STTDTLGRP" HeaderText="Группа" Width="10%" />
                     <obout:Column ID="Column2" DataField="STTDTLPDG" HeaderText="ПодГруппа" Width="10%" />
-                    <obout:Column ID="Column3" DataField="STTDTLSAP" HeaderText="Наименование" Width="20%" />
+                    <obout:Column ID="Column3" DataField="STTDTLSAP" HeaderText="Наименование" Wrap="true" Width="30%" />
                     <obout:Column ID="Column4" DataField="STTDTLLST" HeaderText="Значение" Width="10%" />
                     <obout:Column ID="Column5" DataField="STTFLG" HeaderText="Признак" Width="5%" Align="center">
                         <TemplateSettings TemplateId="CheckBoxEditTemplate" />
                     </obout:Column>
-                    <obout:Column ID="Column6" DataField="STTMEM" HeaderText="Примечание" Width="44%" >
+                    <obout:Column ID="Column6" DataField="STTMEM" HeaderText="Примечание" Width="34%" >
                         <TemplateSettings TemplateId="TxtEditTemplate" />
                     </obout:Column>
                 </Columns>

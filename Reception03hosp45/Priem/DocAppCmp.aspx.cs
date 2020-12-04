@@ -105,10 +105,10 @@ namespace Reception03hosp45.Priem
 
                 Session["AmbCrdIdn"] = Convert.ToString(AmbCrdIdn);
                 Session["AmbCntIdn"] = Convert.ToString(AmbCntIdn);
-                HidAmbCrdIdn.Value = AmbCrdIdn;
 
                 getDocNum();
             }
+            HidAmbCrdIdn.Value = AmbCrdIdn;
 
         }
 
@@ -162,6 +162,7 @@ namespace Reception03hosp45.Priem
             cmd.CommandType = CommandType.StoredProcedure;
             // передать параметр
             cmd.Parameters.Add("@GRFIDN", SqlDbType.VarChar).Value = AmbCrdIdn;
+            cmd.Parameters.Add("@GRFIININP", SqlDbType.VarChar).Value = HidAmbCrdIIN.Value;
             cmd.Parameters.Add("@GRFBUX", SqlDbType.VarChar).Value = BuxKod;
             cmd.Parameters.Add("@GRFBUXOUT", SqlDbType.VarChar).Value = 0;
             cmd.Parameters.Add("@GRFIDNOUT", SqlDbType.Int, 4).Value = 0;
@@ -212,7 +213,8 @@ namespace Reception03hosp45.Priem
             //    TextBoxFrm.Text = Convert.ToString(ds.Tables[0].Rows[0]["RABNAM"]);
                 TextBoxIns.Text = Convert.ToString(ds.Tables[0].Rows[0]["STXNAM"]);
                 TextBoxIIN.Text = Convert.ToString(ds.Tables[0].Rows[0]["GRFIIN"]);
-             //   TextBoxTel.Text = Convert.ToString(ds.Tables[0].Rows[0]["KLTTEL"]);
+                //   TextBoxTel.Text = Convert.ToString(ds.Tables[0].Rows[0]["KLTTEL"]);
+                HidAmbCrdIIN.Value = TextBoxIIN.Text;
             }
 
         }

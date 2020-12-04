@@ -69,6 +69,7 @@
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = 'bold';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -94,6 +95,7 @@
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = 'bold';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -127,6 +129,7 @@
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = 'bold';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -143,12 +146,36 @@
              mySpl.loadPage("BottomContent", "DocAppAmbPrsGos.aspx?AmbCrdIdn=" + AmbCrdIdn);
          }
 
+         function IntButton_Click() {
+             var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
+             var AmbCrdIIN = document.getElementById('MainContent_TextBoxIIN').value;
+           //  alert("AmbCrdIIN =" + AmbCrdIIN);
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = 'bold';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUsl').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLab').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUzi').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonSpr').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonScr').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDigUtc').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonBol').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_Button095').style.fontWeight = '';
+
+             mySpl.loadPage("BottomContent", "DocAppAmbLabInt.aspx?AmbCrdIdn=" + AmbCrdIdn + "&AmbCrdIIN=" + AmbCrdIIN);
+         }
+
          function NazButton_Click() {
              var AmbCrdIdn = document.getElementById('MainContent_HidAmbCrdIdn').value;
 
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = 'bold';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -175,6 +202,7 @@
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = 'bold';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -205,6 +233,7 @@
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -229,6 +258,7 @@
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -253,6 +283,7 @@
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = 'bold';
@@ -277,6 +308,7 @@
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -300,6 +332,7 @@
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+             document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -323,6 +356,7 @@
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -345,6 +379,7 @@
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -369,6 +404,7 @@
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -392,6 +428,7 @@
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -416,6 +453,7 @@
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -443,6 +481,7 @@
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonOsm').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonLoc').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonPrs').style.fontWeight = '';
+              document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonInt').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonNaz').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonUkl').style.fontWeight = '';
               document.getElementById('MainContent_mySpl_ctl00_ctl01_ButtonDig').style.fontWeight = '';
@@ -827,18 +866,19 @@
 			    <TopPanel HeightMin="20" HeightMax="400" HeightDefault="23">
 				    <Content>
                      <asp:Button ID="ButtonOsm" runat="server" Width="6%" CommandName="Push" Text="Осмотр" OnClientClick="OsmButton_Click(); return false;"/>
-                     <asp:Button ID="ButtonLoc" runat="server" Width="6%" CommandName="Push" Text="Статус" OnClientClick="LocButton_Click(); return false;"/>
-                     <asp:Button ID="ButtonDig" runat="server" Width="7%" CommandName="Push" Text="Диагнозы" OnClientClick="DigButton_Click(); return false"/>
+                     <asp:Button ID="ButtonLoc" runat="server" Width="5%" CommandName="Push" Text="Статус" OnClientClick="LocButton_Click(); return false;"/>
+                  <asp:Button ID="ButtonInt" runat="server" Width="9%" CommandName="Push" Text="Интерпрет.исс" OnClientClick="IntButton_Click(); return false"/>
+                     <asp:Button ID="ButtonDig" runat="server" Width="6%" CommandName="Push" Text="Диагноз" OnClientClick="DigButton_Click(); return false"/>
                      <asp:Button ID="ButtonUsl" runat="server" Width="5%" CommandName="Push" Text="Услуги" OnClientClick="UslButton_Click(); return false"/>
-                     <asp:Button ID="ButtonPrs" runat="server" Width="8%" CommandName="Push" Text="Направления" OnClientClick="PrsButton_Click(); return false"/>
-                     <asp:Button ID="ButtonNaz" runat="server" Width="7%" CommandName="Push" Text="Назначения" OnClientClick="NazButton_Click(); return false"/>
+                     <asp:Button ID="ButtonPrs" runat="server" Width="7%" CommandName="Push" Text="Направл." OnClientClick="PrsButton_Click(); return false"/>
+                     <asp:Button ID="ButtonNaz" runat="server" Width="6%" CommandName="Push" Text="Назнач." OnClientClick="NazButton_Click(); return false"/>
                      <asp:Button ID="ButtonUkl" runat="server" Width="7%" CommandName="Push" Text="В проц.каб." OnClientClick="UklButton_Click(); return false"/>
-                     <asp:Button ID="ButtonBol" runat="server" Width="7%" CommandName="Push" Text="Бол.лист" OnClientClick="BolButton_Click(); return false"/>
+                     <asp:Button ID="ButtonBol" runat="server" Width="6%" CommandName="Push" Text="Бол.лист" OnClientClick="BolButton_Click(); return false"/>
                      <asp:Button ID="Button095" runat="server" Width="4%" CommandName="Push" Text="095/у" OnClientClick="S95Button_Click(); return false"/>
                      <asp:Button ID="ButtonSpr" runat="server" Width="6%" CommandName="Push" Text="Справки" OnClientClick="StfButton_Click(); return false"/>
-                     <asp:Button ID="ButtonLab" runat="server" Width="9%" CommandName="Push" Text="Лаб.анал / Скан" OnClientClick="LabButton_Click(); return false"/>
+                     <asp:Button ID="ButtonLab" runat="server" Width="7%" CommandName="Push" Text="Лаб.ан/Скан" OnClientClick="LabButton_Click(); return false"/>
                      <asp:Button ID="ButtonUzi" runat="server" Width="7%" CommandName="Push" Text="Функ.диагн." OnClientClick="UziXryButton_Click(); return false"/>
-                     <asp:Button ID="ButtonDigUtc" runat="server" Width="8%" CommandName="Push" Text="Все диагнозы" OnClientClick="DigUtcButton_Click(); return false"/>
+                     <asp:Button ID="ButtonDigUtc" runat="server" Width="6%" CommandName="Push" Text="Диагнозы" OnClientClick="DigUtcButton_Click(); return false"/>
                      <asp:Button ID="ButtonScr" runat="server" Width="6%" CommandName="Push" Text="Скрининг" OnClientClick="ScrButton_Click(); return false"/>
 <%--                     <asp:Button ID="ButtonDsp" runat="server" Width="8%" CommandName="Push" Text="Диспансеризация" OnClientClick="DspButton_Click(); return false"/>--%>
 				    </Content>

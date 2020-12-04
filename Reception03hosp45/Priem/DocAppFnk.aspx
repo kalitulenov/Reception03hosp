@@ -93,11 +93,12 @@
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (SprUsl) {
-                   //               alert("onSprUslLoaded=" + SprUsl.d);
+              //                    alert("onSprUslLoaded=Длина=" + SprUsl.d.length+"Текст="+ SprUsl.d);
 
                      SprUslComboBox.options.clear();
                      SprUslComboBox.options.add("");   //   без этой строки не работает !!!!!!!!!!!!!!!!!!!!!!!!
                      for (var i = 0; i < SprUsl.d.length; i = i + 2) {
+                 //        console.log(i + " ** " + SprUsl.d[i] + " **  "+ SprUsl.d[i + 1] );
                          SprUslComboBox.options.add(SprUsl.d[i], SprUsl.d[i + 1]);
                      }
                  },
@@ -150,7 +151,7 @@
     //         alert("ExitFun");
              window.opener.WindowRefresh();
          }
- </script>
+     </script>
 
 
 

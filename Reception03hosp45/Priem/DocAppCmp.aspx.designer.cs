@@ -24,6 +24,15 @@ namespace Reception03hosp45.Priem
         protected global::System.Web.UI.WebControls.HiddenField HidAmbCrdIdn;
 
         /// <summary>
+        /// HidAmbCrdIIN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HidAmbCrdIIN;
+
+        /// <summary>
         /// PanelTop control.
         /// </summary>
         /// <remarks>

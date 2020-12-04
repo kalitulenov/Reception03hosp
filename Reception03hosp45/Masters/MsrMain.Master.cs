@@ -85,9 +85,9 @@ namespace Reception03hosp45.Masters
                 case "1":
                     ImageLog.ImageUrl = "~/Logo/LogoSofi.jpg";
                     break;
-                //     case "3":
-                //         ImageLog.ImageUrl = "~/Logo/LogoAvtorMed.jpg";
-                //         break;
+                case "2":
+                    ImageLog.ImageUrl = "~/Logo/LogoSofi.jpg";
+                    break;
                 default:
                     ImageLog.ImageUrl = "~/Logo/LogoDauaBig.jpg";
                     break;

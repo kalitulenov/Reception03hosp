@@ -76,8 +76,8 @@
         }
  
         function IinButton_Click() {
-    //        var QueryString = getQueryString();
-    //        KltIin = QueryString[1];
+            //        var QueryString = getQueryString();
+            //        KltIin = QueryString[1];
 
             ConfirmDialog.Close();
 
@@ -86,35 +86,34 @@
             //      var IndFix = document.getElementById('parIndFix').value;
             // Номер строки
             //       var IndChk = document.getElementById('parIndChk').value;
-            
+
             $(".IinDialog").dialog(
-            {
-                autoOpen: true,
-                width: 500,
-                height: 400,
-                modal: true,
-                zIndex: 20000,
-                buttons:
                 {
-                    "ОК": function ()
-                        {
-                      //            alert("OK_1=" + document.getElementById('IinTxt').value);
-                      //            alert("OK_2=" + document.getElementById('txtIinNew').value);
-                                  var DatDocVal = document.getElementById('txtIinNew').value;
-                        // ===========================================================================================================================================
-                                  if (DatDocVal == "") { alert("ИИН не указан " + DatDocVal); return false; }
-                                  if (DatDocVal.length != 12) { alert("длина ИИН не верен " + DatDocVal); return false; }
+                    autoOpen: true,
+                    width: 500,
+                    height: 200,
+                    modal: true,
+                    draggable: false,
+                    buttons:
+                    {
+                        "ОК": function () {
+                            //            alert("OK_1=" + document.getElementById('IinTxt').value);
+                            //            alert("OK_2=" + document.getElementById('txtIinNew').value);
+                            var DatDocVal = document.getElementById('txtIinNew').value;
+                            // ===========================================================================================================================================
+                            if (DatDocVal == "") { alert("ИИН не указан " + DatDocVal); return false; }
+                            if (DatDocVal.length != 12) { alert("длина ИИН не верен " + DatDocVal); return false; }
 
-                                  var strCheck = "0123456789";
-                                  var i;
+                            var strCheck = "0123456789";
+                            var i;
 
-                                  for (var i = 0; i < DatDocVal.length; i++) {
-                                      //          alert("i=" + i + "DatDocVal=" + DatDocVal[i]);
-                                      if (strCheck.indexOf(DatDocVal[i]) == -1) { alert("Ошибка в ИИН " + DatDocVal + " i=" + i); return false; }
-                                  }
-                           var ParStr = document.getElementById('IinTxt').value + ':' + document.getElementById('txtIinNew').value + ':';
-                        //          alert("ParStr =" + ParStr);
-                        // ===========================================================================================================================================
+                            for (var i = 0; i < DatDocVal.length; i++) {
+                                //          alert("i=" + i + "DatDocVal=" + DatDocVal[i]);
+                                if (strCheck.indexOf(DatDocVal[i]) == -1) { alert("Ошибка в ИИН " + DatDocVal + " i=" + i); return false; }
+                            }
+                            var ParStr = document.getElementById('IinTxt').value + ':' + document.getElementById('txtIinNew').value + ':';
+                            //  alert("ParStr =" + ParStr);
+                            // ===========================================================================================================================================
                             $.ajax({
                                 type: 'POST',
                                 url: '/HspUpdDoc.aspx/HspSprKltIinMrg',
@@ -124,20 +123,17 @@
                                 success: function () { },
                                 error: function () { alert("ERROR=" + SqlStr); }
                             });
-                           
+
                             document.getElementById('IinTxt').value = document.getElementById('txtIinNew').value;
                             // ---------------------------------------------------------------------------------------------
                             IIN_OK_click();
                             $(this).dialog("close");
-
-
+                        },
+                        "Отмена": function () {
+                            $(this).dialog("close");
                         }
-                    },
-                    "Отмена": function () {
-                        $(this).dialog("close");
                     }
-                
-            });
+                });
         }
 
 
@@ -1716,7 +1712,6 @@
 
    <%-- =================  диалоговое окно для смены пароля  ============================================ --%>
     <div class="IinDialog" title="Смена ИИН" style="display: none">
-        <%--        <asp:ValidationSummary runat="server" ID="ValidationSummary" CssClass="ValidationSummary" />  --%>
         <table>
             <tr>
                 <td>Новый ИИН:</td>
@@ -1729,7 +1724,7 @@
                                         EnableClientScript="true"
                                         ErrorMessage="Ошибка"
                                         runat="server" />
-
+                </td>
             </tr>
         </table>
     </div>

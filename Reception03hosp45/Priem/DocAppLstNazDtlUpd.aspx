@@ -313,10 +313,10 @@
                     <td style="width: 100%; height: 30px;">
                         <hr>
 <%--                        <asp:Label ID="Label2" Text="" runat="server" Width="20%" Font-Bold="true" />--%>
-                        <input type="button" style="width: 20%; height:25px;" value="Расходы" onclick="GridUsl_rsx()" />
+<%--                        <input type="button" style="width: 20%; height:25px;" value="Расходы" onclick="GridUsl_rsx()" />--%>
                         <asp:Button ID="ButApt" runat="server"
                                                 OnClick ="AddButton_Click"
-                                                Width="78%" CommandName="" CommandArgument=""
+                                                Width="98%" CommandName="" CommandArgument=""
                                                 Text="Записать" Height="25px" Font-Bold="true"
                                                 Style="position: relative; top: 0px; left: 0px" />
                     </td>

@@ -243,7 +243,7 @@
         string UsrNam=@"win-sdlrad9r4at\Администратор";
         //       string UsrPss="Siramak70";
         //string UsrPss = "RpJl&LzQ$Kl6";
-        string UsrPss = "PANAsonic2018=";
+        string UsrPss = "Panasonic2020+";
 
         //     string UsrNam = @"BIGSERVER\Администратор";
         //     string UsrPss = "Acc600900529562";

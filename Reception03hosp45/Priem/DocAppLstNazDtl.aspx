@@ -62,24 +62,27 @@
         }
 
         function onClick(rowIndex, cellIndex) {
-    //        alert(rowIndex + ' = ' + 'cellIndex=' + ' ' + cellIndex);
+        //   alert(rowIndex + ' = ' + 'cellIndex=' + ' ' + cellIndex);
             var AmbUklIdn = GridUkl.Rows[rowIndex].Cells[0].Value;
             var AmbCrdIdn = GridUkl.Rows[rowIndex].Cells[1].Value;
             var AmbStxKey = GridUkl.Rows[rowIndex].Cells[2].Value;
             var AmbCelVal = GridUkl.Rows[rowIndex].Cells[cellIndex].Value;
-    //        alert("AmbCelVal=" + AmbCelVal);
+        //    alert("AmbCelVal=" + AmbCelVal);
 
-            if (AmbCelVal.indexOf('O') != -1)
+            if (AmbCelVal.indexOf('+') != -1)
             {
-  //              alert("AmbCrdIdn1=");
-//                UklWindow.setUrl("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbCrdIdn + "&AmbUklCel=" + cellIndex);
- //               UklWindow.Open();
+              //  alert("AmbCrdIdn1=");
                 var ua = navigator.userAgent;
+                // Увеличить высоту для списание расхода
+                //if (ua.search(/Chrome/) > -1)
+                //    window.open("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbUklIdn + "&AmbCrdIdn=" + AmbCrdIdn + "&AmbStxKey=" + AmbStxKey + "&AmbUklCel=" + cellIndex, "ModalPopUp", "toolbar=no,width=1000,height=550,left=200,top=100,location=no,modal=0,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                //else
+                //    window.showModalDialog("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbUklIdn + "&AmbCrdIdn=" + AmbCrdIdn + "&AmbStxKey=" + AmbStxKey + "&AmbUklCel=" + cellIndex, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:1000px;dialogHeight:550px;");
 
                 if (ua.search(/Chrome/) > -1)
-                    window.open("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbUklIdn + "&AmbCrdIdn=" + AmbCrdIdn + "&AmbStxKey=" + AmbStxKey + "&AmbUklCel=" + cellIndex, "ModalPopUp", "toolbar=no,width=1000,height=550,left=200,top=100,location=no,modal=0,status=no,scrollbars=no,resize=no,fullscreen=yes");
+                    window.open("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbUklIdn + "&AmbCrdIdn=" + AmbCrdIdn + "&AmbStxKey=" + AmbStxKey + "&AmbUklCel=" + cellIndex, "ModalPopUp", "toolbar=no,width=1000,height=350,left=200,top=200,location=no,modal=0,status=no,scrollbars=no,resize=no,fullscreen=yes");
                 else
-                    window.showModalDialog("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbUklIdn + "&AmbCrdIdn=" + AmbCrdIdn + "&AmbStxKey=" + AmbStxKey + "&AmbUklCel=" + cellIndex, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:100px;dialogWidth:1000px;dialogHeight:550px;");
+                    window.showModalDialog("/Priem/DocAppLstNazDtlUpd.aspx?AmbUklIdn=" + AmbUklIdn + "&AmbCrdIdn=" + AmbCrdIdn + "&AmbStxKey=" + AmbStxKey + "&AmbUklCel=" + cellIndex, "ModalPopUp", "center:yes;resizable:yes;status:no;dialogleft:200px;dialogtop:200px;dialogWidth:1000px;dialogHeight:350px;");
             }
 
             
@@ -107,6 +110,7 @@
     int UklIdn;
     int UklAmb;
     int UklNaz;
+    string UklGod;
     string UklNam;
     string UklFlg001;
     string UklFlg002;
@@ -183,6 +187,7 @@
         {
             if (String.IsNullOrEmpty(ds.Tables[0].Rows[0]["UKLDAT"].ToString())) TekBegDat = DateTime.Today;
             else TekBegDat = Convert.ToDateTime(ds.Tables[0].Rows[0]["UKLDAT"]);
+            UklGod = Convert.ToDateTime(TekBegDat).ToString("yyyy");
 
             GridUkl.Columns[07].HeaderText = Convert.ToDateTime(TekBegDat).ToString("dd.MM");
             GridUkl.Columns[08].HeaderText = Convert.ToDateTime(TekBegDat.AddDays(1)).ToString("dd.MM");
@@ -216,7 +221,7 @@
         for (int i = 1; i < 16; i++)
         {
 //            if (GridUkl.Columns[i + 6].HeaderText == Convert.ToDateTime(DateTime.Today).ToString("dd.MM"))
-            if (Convert.ToDateTime(GridUkl.Columns[i + 6].HeaderText+".2017") <= DateTime.Today)
+            if (Convert.ToDateTime(GridUkl.Columns[i + 6].HeaderText+"."+UklGod) <= DateTime.Today)
             {
  //               e.Row.Cells[i + 6].Attributes["onmouseover"] = "this.style.fontSize = '20px'; this.style.fontWeight = 'bold';";
                 e.Row.Cells[i + 6].Attributes["onmouseover"] = "this.style.fontSize = '16px'; this.style.color = 'red';this.style.fontWeight = 'bold';";

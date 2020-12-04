@@ -110,19 +110,28 @@
             cmd = new SqlCommand("HspAmbMkbSelFin", con);
             cmd.CommandType = CommandType.StoredProcedure;
             // создать коллекцию параметров
-            cmd.Parameters.Add("@AMBCRDIDN", SqlDbType.Int,4).Value = AmbCrdIdn;
+            cmd.Parameters.Add("@AMBCRDIDN", SqlDbType.Int, 4).Value = AmbCrdIdn;
             cmd.Parameters.Add("@BUXCND", SqlDbType.VarChar).Value = whereClause;
             // создание DataAdapter
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             // заполняем DataSet из хран.процедуры.
             da.Fill(ds, "HspAmbMkbSelFin");
 
-            TxtSoz.Text = Convert.ToString(ds.Tables[0].Rows[0]["SOZ"]);
-            TxtPvd.Text = Convert.ToString(ds.Tables[0].Rows[0]["OBR"]);
-            TxtSts.Text = Convert.ToString(ds.Tables[0].Rows[0]["STS"]);
+            try
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    TxtSoz.Text = Convert.ToString(ds.Tables[0].Rows[0]["SOZ"]);
+                    TxtPvd.Text = Convert.ToString(ds.Tables[0].Rows[0]["OBR"]);
+                    TxtSts.Text = Convert.ToString(ds.Tables[0].Rows[0]["STS"]);
 
-            GridMkb.DataSource = ds;
-            GridMkb.DataBind();
+                    GridMkb.DataSource = ds;
+                    GridMkb.DataBind();
+                }
+            }
+            catch
+            {
+            }
 
             con.Close();
         }
@@ -175,12 +184,12 @@
             {
                 whereClause += "MKBNAM LIKE '%" + FndNam.Text.Replace("'", "''") + "%'";
             }
-
-            if (FndMkb.Text != "")
-            {
-                //      if (I > 1) whereClause += " AND ";
-                whereClause += "MKBKOD LIKE '" + FndMkb.Text.Replace("'", "''") + "%'";
-            }
+            else
+                    if (FndMkb.Text != "")
+                    {
+                        //      if (I > 1) whereClause += " AND ";
+                        whereClause += "MKBKOD LIKE '" + FndMkb.Text.Replace("'", "''") + "%'";
+                    }
 
             if (whereClause != "")
             {
